@@ -1,8 +1,8 @@
-import { useAppStore } from '../store/app.store';
+import { useAppStore } from "../store/app.store";
 
-const useSectionProps = (id: string) => {
+const useSectionProps = <T>(id: string): T | undefined => {
   const sections = useAppStore((state) => state.sections);
-  return sections.find((section) => section.id === id) || {};
+  return sections.find((section) => section.id === id);
 };
 
 export default useSectionProps;

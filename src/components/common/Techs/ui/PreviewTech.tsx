@@ -1,10 +1,9 @@
 import { useSectionProps } from "../../../../hooks";
 import { useAppStore } from "../../../../store/app.store";
-import { h } from "preact";
-import { ITextSetting } from "../default";
+import { ITechSetting } from "../default";
 
-const PreviewText = ({ id }: { id: string }) => {
-  const props = useSectionProps<ITextSetting>(id);
+const PreviewTech = ({ id }: { id: string }) => {
+  const props = useSectionProps<ITechSetting>(id);
   const sectionId = useAppStore((state) => state.sectionId);
 
   if (!props) return null;
@@ -15,13 +14,11 @@ const PreviewText = ({ id }: { id: string }) => {
         sectionId === id ? "border-emerald-400" : "border-white/15"
       }`}
     >
-      {h(
-        props.settings.tag,
-        { style: { textAlign: props.settings.align } },
-        props.value
-      )}
+      {props.icons.map((icon) => (
+        <img key={icon} src={icon} />
+      ))}
     </div>
   );
 };
 
-export default PreviewText;
+export default PreviewTech;

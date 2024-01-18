@@ -1,6 +1,6 @@
-import { PreviewUI } from './components/PreviewUI';
-import { SelectorToolkit } from './components/SelectorToolkit';
-import { Settings } from './components/Settings';
+import { PreviewUI } from "./components/PreviewUI";
+import { SelectorToolkit } from "./components/SelectorToolkit";
+import { Settings } from "./components/Settings";
 
 export function App() {
   return (

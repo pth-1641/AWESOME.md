@@ -1,7 +1,15 @@
-import { ETextAlign, ETextTag } from './text.enum';
+import { ETextAlign, ETextTag } from "./text.enum";
 
-export const textSetting = {
-  value: 'Hello World',
+export interface ITextSetting {
+  value: string;
+  settings: {
+    align: ETextAlign;
+    tag: ETextTag;
+  };
+}
+
+export const textSetting: ITextSetting = {
+  value: "Hello World",
   settings: {
     align: ETextAlign.LEFT,
     tag: ETextTag.H1,
