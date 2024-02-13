@@ -13,3 +13,9 @@ export enum ETextTag {
   H6 = 'h6',
   P = 'p',
 }
+
+export enum ETextStyle {
+  ITALIC = 'italic',
+  STRIKE = 'strike',
+  NORMAL = 'normal',
+}

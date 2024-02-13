@@ -18,9 +18,9 @@ export const CustomSelect = ({
   return (
     <section class={className}>
       <h4 class="font-semibold mb-2">{label}</h4>
-      <div class="relative border border-white/15 rounded-md cursor-pointer">
+      <div class="relative amd-border cursor-pointer">
         <input
-          class="bg-transparent outline-none w-full py-1.5 px-2 capitalize"
+          class="bg-transparent outline-none w-full py-1.5 px-2 capitalize cursor-pointer"
           type="text"
           value={value || options[0]}
           readOnly

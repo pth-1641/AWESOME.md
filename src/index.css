@@ -23,7 +23,28 @@
   }
 }
 
+@layer components {
+  .amd-border {
+    @apply border border-white/15 rounded-lg;
+  }
+}
+
 body {
   background-color: #0d1117;
   color: #fff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  height: 4px;
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #52525b;
+  border-radius: 3px;
 }
