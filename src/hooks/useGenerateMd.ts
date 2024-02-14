@@ -1,17 +1,18 @@
 import { EToolkitType } from '../enums/toolkit.enum';
-import { iconsToMarkdown, textToMarkdown } from '../utils';
+import { techsToMarkdown, textToMarkdown } from '../utils';
+import socialToMarkdown from '../utils/social2md.utill';
 
 const useGenerateMd = (sections: any[]) => {
   const md = sections
     .map((section) => {
       if (section.type === EToolkitType.TEXT) return textToMarkdown(section);
-      if (section.type === EToolkitType.TECH) return iconsToMarkdown(section);
+      if (section.type === EToolkitType.TECH) return techsToMarkdown(section);
+      if (section.type === EToolkitType.SOCIAL)
+        return socialToMarkdown(section);
     })
     .join('')
     .replace('<>', '')
     .replace('</>', '');
-  // .join('<br />')
-  // .replace(/\n/g, '<br />');
 
   console.log(md);
 

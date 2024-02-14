@@ -91,8 +91,8 @@ const Search = (props: ISocialSetting) => {
   const handleDragEnd = (event: any) => {
     const { active, over } = event;
     if (active.id !== over.id) {
-      const oldIndex = props.icons.indexOf(active.id);
-      const newIndex = props.icons.indexOf(over.id);
+      const oldIndex = props.icons.findIndex((icon) => icon.name === active.id);
+      const newIndex = props.icons.findIndex((icon) => icon.name === over.id);
       editSection({
         ...props,
         icons: arrayMove(props.icons, oldIndex, newIndex),
@@ -115,10 +115,10 @@ const Search = (props: ISocialSetting) => {
             key={icon}
             class="border border-white/15 rounded p-3 hover:border-emerald-400 duration-150 group"
             onClick={() => {
-              if (props.icons.some((icon) => icon.name === icon.name)) return;
+              if (props.icons.some((i) => i.name === icon)) return;
               editSection({
                 ...props,
-                icons: [...props.icons, icon],
+                icons: [...props.icons, { name: icon, href: '' }],
               });
             }}
           >
@@ -203,6 +203,7 @@ const SelectedIcons = (props: {
   index: number;
 }) => {
   const editSection = useAppStore((state) => state.editSection);
+  const [isExpandLink, setIsExpandLink] = useState<boolean>(false);
 
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: props.icon.name, transition: null });
@@ -213,35 +214,70 @@ const SelectedIcons = (props: {
   };
 
   return (
-    <li class="amd-border flex gap-2 p-2.5 mt-2" style={style}>
-      <div
-        class="flex items-center gap-2 flex-1"
-        ref={setNodeRef}
-        {...attributes}
-        {...listeners}
-      >
-        <button>
-          <Icon icon="carbon:drag-vertical" height={20} width={20} />
-        </button>
-        <Icon icon={props.icon.name} height={36} width={36} />
-        <div class="flex-1 select-none">
-          <p>{props.icon.name.split(':')[1]}</p>
-          <p class="text-xs text-emerald-400">
-            {props.icon.name.split(':')[0]}
-          </p>
+    <li class="amd-border list-none mt-2 p-2.5" style={style}>
+      <div class="flex gap-2">
+        <div
+          class="flex items-center gap-2 flex-1"
+          ref={setNodeRef}
+          {...attributes}
+          {...listeners}
+        >
+          <button>
+            <Icon icon="carbon:drag-vertical" height={20} width={20} />
+          </button>
+          <Icon icon={props.icon.name} height={36} width={36} />
+          <div class="flex-1 select-none">
+            <p>{props.icon.name.split(':')[1]}</p>
+            <p class="text-xs text-emerald-400">
+              {props.icon.name.split(':')[0]}
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-col items-center gap-1.5">
+          <button
+            class="hover:text-red-500 duration-150"
+            onClick={() =>
+              editSection({
+                ...props.settings,
+                icons: props.settings.icons.filter(
+                  (_, idx) => idx !== props.index
+                ),
+              })
+            }
+          >
+            <Icon icon="fluent:delete-20-regular" height={18} />
+          </button>
+          <button
+            class="hover:text-sky-500 duration-150"
+            onClick={() => setIsExpandLink((status) => !status)}
+          >
+            <Icon icon="bitcoin-icons:link-outline" height={20} />
+          </button>
         </div>
       </div>
-      <button
-        class="hover:text-red-500 duration-150"
-        onClick={() =>
-          editSection({
-            ...props.settings,
-            icons: props.settings.icons.filter((_, idx) => idx !== props.index),
-          })
-        }
+      <div
+        class="duration-300 overflow-hidden"
+        style={{ maxHeight: isExpandLink ? '50px' : 0 }}
       >
-        <Icon icon="fluent:delete-20-regular" height={20} />
-      </button>
+        <input
+          type="text"
+          value={props.icon.href}
+          class="bg-transparent amd-border outline-none rounded mt-2 px-2 py-1 w-full text-xs"
+          placeholder="https://example.com"
+          onInput={(e) =>
+            editSection({
+              ...props.settings,
+              icons: props.settings.icons.map((icon, idx) => {
+                if (props.index !== idx) return icon;
+                return {
+                  ...props.icon,
+                  href: e.currentTarget.value,
+                };
+              }),
+            })
+          }
+        />
+      </div>
     </li>
   );
 };

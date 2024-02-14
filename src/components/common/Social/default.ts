@@ -16,9 +16,9 @@ export interface ISocialSetting {
 
 export const socialSetting: ISocialSetting = {
   icons: [
-    { name: 'logos:facebook', href: '#' },
-    { name: 'devicon:linkedin', href: '#' },
-    { name: 'skill-icons:gmail-light', href: '#' },
+    { name: 'logos:facebook', href: '' },
+    { name: 'devicon:linkedin', href: '' },
+    { name: 'skill-icons:gmail-light', href: '' },
   ],
   settings: {
     position: EPosition.LEFT,

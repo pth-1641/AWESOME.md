@@ -1,6 +1,6 @@
 import { ITechSetting } from '../components/common/Techs/default';
 
-const iconsToMarkdown = (props: ITechSetting) => {
+const techsToMarkdown = (props: ITechSetting) => {
   return `<div align="${props.settings.position}">
   ${props.icons
     .map(
@@ -15,4 +15,4 @@ const iconsToMarkdown = (props: ITechSetting) => {
 </div>`;
 };
 
-export default iconsToMarkdown;
+export default techsToMarkdown;
