@@ -1,4 +1,4 @@
-import { ITechSetting } from '../components/common/Techs/default';
+import { ITechSetting } from '../components/toolkits/Techs/default';
 
 const techsToMarkdown = (props: ITechSetting) => {
   return `<div align="${props.settings.position}">

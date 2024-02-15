@@ -1,6 +1,6 @@
 import { useState } from 'preact/hooks';
 
-export const CustomSelect = ({
+const CustomSelect = ({
   options,
   label,
   value,
@@ -18,11 +18,11 @@ export const CustomSelect = ({
   return (
     <section class={className}>
       <h4 class="font-semibold mb-2">{label}</h4>
-      <div class="relative amd-border cursor-pointer">
+      <div class="relative amd-border cursor-pointer text-sm">
         <input
           class="bg-transparent outline-none w-full py-1.5 px-2 capitalize cursor-pointer"
           type="text"
-          value={value || options[0]}
+          value={value?.replace(/-|_/g, ' ') || options[0]}
           readOnly
           onFocus={() => setShowOptions(true)}
           onBlur={() => setShowOptions(false)}
@@ -40,7 +40,7 @@ export const CustomSelect = ({
               class="py-1.5 px-2 duration-150 hover:bg-white/5"
               onMouseDown={() => onChange?.(option)}
             >
-              {option}
+              {option.replace(/-|_/g, ' ')}
             </li>
           ))}
         </ul>
@@ -48,3 +48,5 @@ export const CustomSelect = ({
     </section>
   );
 };
+
+export default CustomSelect;

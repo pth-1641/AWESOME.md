@@ -1,5 +1,5 @@
-import { ITextSetting } from '../components/common/Text/default';
-import { ETextStyle } from '../components/common/Text/text.enum';
+import { ITextSetting } from '../components/toolkits/Text/default';
+import { ETextStyle } from '../components/toolkits/Text/text.enum';
 
 const textToMarkdown = (props: ITextSetting) => {
   const textStyleSymbol = () => {
@@ -14,7 +14,7 @@ const textToMarkdown = (props: ITextSetting) => {
   };
 
   return `<${props.settings.tag} align="${props.settings.align}">
-    <${textStyleSymbol()}>${props.value}</${textStyleSymbol()}>
+    <${textStyleSymbol()}>${props.value.trim()}</${textStyleSymbol()}>
 </${props.settings.tag}>`;
 };
 

@@ -1,6 +1,12 @@
 export enum EToolkitType {
   TEXT = 'text',
   TECH = 'tech',
-  STAT = 'stat',
+  STATS = 'stats',
   SOCIAL = 'social',
+}
+
+export enum EAlign {
+  LEFT = 'left',
+  CENTER = 'center',
+  RIGHT = 'right',
 }

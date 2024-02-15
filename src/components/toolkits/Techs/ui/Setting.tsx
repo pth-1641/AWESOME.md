@@ -18,57 +18,41 @@ import { Icon } from '@iconify/react';
 import { useEffect, useState } from 'preact/hooks';
 import { useSectionProps } from '../../../../hooks';
 import { useAppStore } from '../../../../store/app.store';
-import CustomInputNumber from '../../CustomInputNumber';
-import { CustomSelect } from '../../CustomSelect';
 import { ITechSetting } from '../default';
-import { EPosition } from '../tech.enum';
+import CustomInputNumber from '../../../common/CustomInputNumber';
+import CustomSelect from '../../../common/CustomSelect';
+import CustomTabs from '../../../common/CustomTabs';
+import { EAlign } from '../../../../enums/toolkit.enum';
 
 const Setting = ({ id }: { id: string }) => {
-  const [currentTab, setCurrentTab] = useState<'icon' | 'edit'>('icon');
   const props = useSectionProps<ITechSetting>(id);
 
   if (!props) return null;
 
   return (
-    <>
-      <ul
-        class={`mb-4 grid grid-cols-2 border-b border-white/20 pb-2.5 relative before:duration-300 before:content-[''] before:absolute before:w-1/2 before:h-0.5 before:rounded before:bg-emerald-500 before:bottom-0
-      ${
-        currentTab === 'icon'
-          ? 'before:translate-x-0'
-          : 'before:translate-x-full'
-      }
-      `}
-      >
-        <button
-          class={`flex items-center justify-center gap-1 duration-300 ${
-            currentTab === 'icon' ? 'text-emerald-400' : ''
-          }`}
-          onClick={() => setCurrentTab('icon')}
-        >
-          <Icon icon="material-symbols-light:add" height="28" />
-          Icons
-        </button>
-        <button
-          class={`flex items-center justify-center gap-1 duration-300 ${
-            currentTab === 'edit' ? 'text-emerald-400' : ''
-          }`}
-          onClick={() => setCurrentTab('edit')}
-        >
-          <Icon icon="iconamoon:edit-thin" height="24" />
-          Edit
-        </button>
-      </ul>
-      {currentTab === 'icon' && <Search {...props} />}
-      {currentTab === 'edit' && <Edit {...props} />}
-    </>
+    <CustomTabs
+      items={[
+        {
+          key: 'icon',
+          label: 'Icons',
+          icon: 'material-symbols-light:add',
+          children: <Search {...props} />,
+        },
+        {
+          key: 'edit',
+          label: 'Edit',
+          icon: 'iconamoon:edit-thin',
+          children: <Edit {...props} />,
+        },
+      ]}
+    />
   );
 };
 
 const Search = (props: ITechSetting) => {
   const [icons, setIcons] = useState<string[]>([]);
   const [query, setQuery] = useState<string>('');
-  const editSection = useAppStore((state) => state.editSection);
+  const { editSection } = useAppStore();
 
   useEffect(() => {
     let timeout = setTimeout(async () => {
@@ -149,7 +133,7 @@ const Search = (props: ITechSetting) => {
 };
 
 const Edit = (props: ITechSetting) => {
-  const editSection = useAppStore((state) => state.editSection);
+  const { editSection } = useAppStore();
 
   return (
     <>
@@ -181,7 +165,7 @@ const Edit = (props: ITechSetting) => {
       />
       <CustomSelect
         label="Position"
-        options={Object.values(EPosition)}
+        options={Object.values(EAlign)}
         value={props.settings.position}
         onChange={(position) => {
           editSection({
@@ -202,7 +186,7 @@ const SelectedIcons = (props: {
   icon: string;
   index: number;
 }) => {
-  const editSection = useAppStore((state) => state.editSection);
+  const { editSection } = useAppStore();
 
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: props.icon, transition: null });
@@ -213,7 +197,7 @@ const SelectedIcons = (props: {
   };
 
   return (
-    <li class="amd-border flex gap-2 p-2.5 mt-2" style={style}>
+    <li style={style} class="amd-border flex gap-2 p-2.5 mt-2">
       <div
         class="flex items-center gap-2 flex-1"
         ref={setNodeRef}

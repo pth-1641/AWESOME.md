@@ -1,12 +1,13 @@
+import { EAlign } from '../../../../enums/toolkit.enum';
 import { useSectionProps } from '../../../../hooks';
 import { useAppStore } from '../../../../store/app.store';
-import { CustomSelect } from '../../CustomSelect';
+import CustomSelect from '../../../common/CustomSelect';
 import { ITextSetting } from '../default';
-import { ETextAlign, ETextStyle, ETextTag } from '../text.enum';
+import { ETextStyle, ETextTag } from '../text.enum';
 
 const Setting = ({ id }: { id: string }) => {
   const props = useSectionProps<ITextSetting>(id);
-  const editSection = useAppStore((state) => state.editSection);
+  const { editSection } = useAppStore();
 
   if (!props) return null;
 
@@ -14,7 +15,7 @@ const Setting = ({ id }: { id: string }) => {
     <div>
       <CustomSelect
         label="Align"
-        options={Object.values(ETextAlign)}
+        options={Object.values(EAlign)}
         value={props.settings.align}
         onChange={(align) =>
           editSection({

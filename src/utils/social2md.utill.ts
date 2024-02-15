@@ -1,4 +1,4 @@
-import { ISocialSetting } from '../components/common/Social/default';
+import { ISocialSetting } from '../components/toolkits/Social/default';
 
 const socialToMarkdown = (props: ISocialSetting) => {
   return `<div align="${props.settings.position}">

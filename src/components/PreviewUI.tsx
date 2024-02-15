@@ -1,15 +1,16 @@
 import { EToolkitType } from '../enums/toolkit.enum';
 import { useAppStore } from '../store/app.store';
-import TechsPreview from './common/Techs/ui/Preview';
-import TextPreview from './common/Text/ui/Preview';
-import SocialPreview from './common/Social/ui/Preview';
+import TechsPreview from './toolkits/Techs/ui/Preview';
+import TextPreview from './toolkits/Text/ui/Preview';
+import SocialPreview from './toolkits/Social/ui/Preview';
+import StatsPreview from './toolkits/Stats/ui/Preview';
 
 export const PreviewUI = () => {
   const sections = useAppStore((state) => state.sections);
   const focusOnSection = useAppStore((state) => state.focusOnSection);
 
   return (
-    <div class="flex-1 amd-border p-5 flex flex-col gap-3">
+    <div class="flex-1 amd-border p-5 flex flex-col gap-3 overflow-auto">
       {sections.map((section) => (
         <div key={section.id} onClick={() => focusOnSection(section.id)}>
           {section.type === EToolkitType.TEXT && (
@@ -20,6 +21,9 @@ export const PreviewUI = () => {
           )}
           {section.type === EToolkitType.SOCIAL && (
             <SocialPreview id={section.id} />
+          )}
+          {section.type === EToolkitType.STATS && (
+            <StatsPreview id={section.id} />
           )}
         </div>
       ))}

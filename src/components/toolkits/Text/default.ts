@@ -1,18 +1,19 @@
-import { ETextAlign, ETextStyle, ETextTag } from './text.enum';
+import { EAlign } from '../../../enums/toolkit.enum';
+import { ETextStyle, ETextTag } from './text.enum';
 
 export interface ITextSetting {
   value: string;
   settings: {
-    align: ETextAlign;
+    align: EAlign;
     tag: ETextTag;
     style: ETextStyle;
   };
 }
 
 export const textSetting: ITextSetting = {
-  value: 'Hello World',
+  value: 'Awesome Readme',
   settings: {
-    align: ETextAlign.LEFT,
+    align: EAlign.LEFT,
     tag: ETextTag.H1,
     style: ETextStyle.NORMAL,
   },

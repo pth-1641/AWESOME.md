@@ -1,4 +1,5 @@
-import { EPosition } from './social.enum';
+import { DEFAULT_GAP, DEFAULT_ICON_SIZE } from '../../../constants';
+import { EAlign } from '../../../enums/toolkit.enum';
 
 export interface SocialIcon {
   name: string;
@@ -8,7 +9,7 @@ export interface SocialIcon {
 export interface ISocialSetting {
   icons: SocialIcon[];
   settings: {
-    position: EPosition;
+    position: EAlign;
     gap: number;
     size: number;
   };
@@ -21,8 +22,8 @@ export const socialSetting: ISocialSetting = {
     { name: 'skill-icons:gmail-light', href: '' },
   ],
   settings: {
-    position: EPosition.LEFT,
-    gap: 10,
-    size: 40,
+    position: EAlign.LEFT,
+    gap: DEFAULT_GAP,
+    size: DEFAULT_ICON_SIZE,
   },
 };

@@ -38,7 +38,7 @@ const Preview = ({ id }: { id: string }) => {
         },
         h(styleTag, null, value)
       )}
-      {isLargeHeading && <div class="mt-2 h-px bg-white/20" />}
+      {isLargeHeading && <div class="mt-2 h-px bg-white/10" />}
     </div>
   );
 };

@@ -1,9 +1,10 @@
 import { EToolkitType } from '../enums/toolkit.enum';
 import { useSectionProps } from '../hooks';
 import { useAppStore } from '../store/app.store';
-import TechsSetting from './common/Techs/ui/Setting';
-import TextSetting from './common/Text/ui/Setting';
-import SocialSetting from './common/Social/ui/Setting';
+import TechsSetting from './toolkits/Techs/ui/Setting';
+import TextSetting from './toolkits/Text/ui/Setting';
+import SocialSetting from './toolkits/Social/ui/Setting';
+import StatsSetting from './toolkits/Stats/ui/Setting';
 
 export const Settings = () => {
   const sectionId = useAppStore((state) => state.sectionId);
@@ -12,10 +13,11 @@ export const Settings = () => {
   const section = useSectionProps<any>(sectionId);
 
   return (
-    <div class="flex-1 max-w-72 amd-border px-4 py-2.5 overflow-auto">
+    <div class="flex-1 max-w-72 amd-border px-4 pt-2.5 pb-5 overflow-auto">
       {section.type === EToolkitType.TEXT && <TextSetting id={sectionId} />}
       {section.type === EToolkitType.TECH && <TechsSetting id={sectionId} />}
       {section.type === EToolkitType.SOCIAL && <SocialSetting id={sectionId} />}
+      {section.type === EToolkitType.STATS && <StatsSetting id={sectionId} />}
     </div>
   );
 };

@@ -15,7 +15,7 @@ export const toolkits: IToolkit[] = [
   {
     label: 'Stats',
     iconName: 'arcticons:coinstats',
-    type: EToolkitType.STAT,
+    type: EToolkitType.STATS,
   },
   {
     label: 'Socials',
@@ -23,3 +23,8 @@ export const toolkits: IToolkit[] = [
     type: EToolkitType.SOCIAL,
   },
 ];
+
+export const DEFAULT_GAP = 10;
+export const DEFAULT_ICON_SIZE = 40;
+export const DEFAULT_LANGUAGE_COUNT = 5;
+export const MAX_LANGUAGE_COUNT = 20;

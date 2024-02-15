@@ -1,9 +1,3 @@
-export enum ETextAlign {
-  LEFT = 'left',
-  CENTER = 'center',
-  RIGHT = 'right',
-}
-
 export enum ETextTag {
   H1 = 'h1',
   H2 = 'h2',
@@ -15,7 +9,7 @@ export enum ETextTag {
 }
 
 export enum ETextStyle {
+  NORMAL = 'normal',
   ITALIC = 'italic',
   STRIKE = 'strike',
-  NORMAL = 'normal',
 }

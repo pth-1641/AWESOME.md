@@ -1,9 +1,10 @@
-import { EPosition } from './tech.enum';
+import { DEFAULT_GAP, DEFAULT_ICON_SIZE } from '../../../constants';
+import { EAlign } from '../../../enums/toolkit.enum';
 
 export interface ITechSetting {
   icons: string[];
   settings: {
-    position: EPosition;
+    position: EAlign;
     gap: number;
     size: number;
   };
@@ -18,8 +19,8 @@ export const techSetting: ITechSetting = {
     'devicon:nodejs',
   ],
   settings: {
-    position: EPosition.LEFT,
-    gap: 10,
-    size: 40,
+    position: EAlign.LEFT,
+    gap: DEFAULT_GAP,
+    size: DEFAULT_ICON_SIZE,
   },
 };

@@ -21,6 +21,9 @@
   h6 {
     @apply text-sm font-semibold;
   }
+  input {
+    @apply text-sm;
+  }
 }
 
 @layer components {
