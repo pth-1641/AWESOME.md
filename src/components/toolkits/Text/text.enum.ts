@@ -13,3 +13,8 @@ export enum ETextStyle {
   ITALIC = 'italic',
   STRIKE = 'strike',
 }
+
+export enum ETextProvider {
+  TEXT = 'text',
+  TYPING = 'typing',
+}

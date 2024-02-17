@@ -1,9 +1,10 @@
 import { EAlign } from '../../../enums/toolkit.enum';
-import { ETextStyle, ETextTag } from './text.enum';
+import { ETextProvider, ETextStyle, ETextTag } from './text.enum';
 
 export interface ITextSetting {
   value: string;
-  settings: {
+  provider: ETextProvider;
+  text: {
     align: EAlign;
     tag: ETextTag;
     style: ETextStyle;
@@ -11,8 +12,9 @@ export interface ITextSetting {
 }
 
 export const textSetting: ITextSetting = {
-  value: 'Awesome Readme',
-  settings: {
+  value: 'AWESOME.md',
+  provider: ETextProvider.TEXT,
+  text: {
     align: EAlign.LEFT,
     tag: ETextTag.H1,
     style: ETextStyle.NORMAL,

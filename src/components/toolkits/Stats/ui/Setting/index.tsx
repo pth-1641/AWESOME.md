@@ -6,6 +6,8 @@ import { IStatsSetting } from '../../default';
 import { EProvider } from '../../stats.enum';
 import StatsSetting from './Stats';
 import LanguagesSetting from './Languages';
+import StreakSetting from './Streak';
+import TrophySetting from './Trophy';
 
 const Setting = ({ id }: { id: string }) => {
   const props = useSectionProps<IStatsSetting>(id);
@@ -52,6 +54,8 @@ const Config = (props: IStatsSetting) => {
       />
       {provider === EProvider.STATS && <StatsSetting {...props} />}
       {provider === EProvider.LANGUAGES && <LanguagesSetting {...props} />}
+      {provider === EProvider.STREAK && <StreakSetting {...props} />}
+      {provider === EProvider.TROPHY && <TrophySetting {...props} />}
     </>
   );
 };

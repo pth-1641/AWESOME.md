@@ -4,7 +4,11 @@ import CustomInputNumber from '../../../../common/CustomInputNumber';
 import CustomSelect from '../../../../common/CustomSelect';
 import CustomSwitch from '../../../../common/CustomSwitch';
 import { IStatsSetting } from '../../default';
-import { EGithubReadmeStatsTheme, ELanguageLayout } from '../../stats.enum';
+import {
+  EGithubReadmeStatsLocale,
+  EGithubReadmeStatsTheme,
+  ELanguageLayout,
+} from '../../stats.enum';
 
 const Languages = (props: IStatsSetting) => {
   const { editSection } = useAppStore();
@@ -40,21 +44,6 @@ const Languages = (props: IStatsSetting) => {
           })
         }
       />
-      <CustomInputNumber
-        label="Langs Count"
-        min={1}
-        max={MAX_LANGUAGE_COUNT}
-        value={props.languages.langCount}
-        onChange={(langCount) =>
-          editSection({
-            ...props,
-            languages: {
-              ...props.languages,
-              langCount,
-            },
-          })
-        }
-      />
       <CustomSelect
         className="mb-4"
         label="Theme"
@@ -70,17 +59,45 @@ const Languages = (props: IStatsSetting) => {
           })
         }
       />
-
+      <CustomSelect
+        label="Locale"
+        options={Object.values(EGithubReadmeStatsLocale)}
+        value={props.languages.lang}
+        onChange={(lang) =>
+          editSection({
+            ...props,
+            languages: {
+              ...props.languages,
+              lang,
+            },
+          })
+        }
+      />
+      <CustomInputNumber
+        label="Langs Count"
+        min={1}
+        max={MAX_LANGUAGE_COUNT}
+        value={props.languages.langCount}
+        onChange={(langCount) =>
+          editSection({
+            ...props,
+            languages: {
+              ...props.languages,
+              langCount,
+            },
+          })
+        }
+      />
       <div class="grid grid-cols-2 gap-2">
         <CustomSwitch
-          isActive={props.languages.border}
+          isActive={props.languages.hideBorder}
           label="Hide Border"
-          onChange={(border) =>
+          onChange={(hideBorder) =>
             editSection({
               ...props,
               languages: {
                 ...props.languages,
-                border,
+                hideBorder,
               },
             })
           }

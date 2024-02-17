@@ -2,8 +2,9 @@ import { ITextSetting } from '../components/toolkits/Text/default';
 import { ETextStyle } from '../components/toolkits/Text/text.enum';
 
 const textToMarkdown = (props: ITextSetting) => {
+  console.log(props.value);
   const textStyleSymbol = () => {
-    switch (props.settings.style) {
+    switch (props.text.style) {
       case ETextStyle.ITALIC:
         return 'i';
       case ETextStyle.STRIKE:
@@ -13,9 +14,9 @@ const textToMarkdown = (props: ITextSetting) => {
     }
   };
 
-  return `<${props.settings.tag} align="${props.settings.align}">
+  return `<${props.text.tag} align="${props.text.align}">
     <${textStyleSymbol()}>${props.value.trim()}</${textStyleSymbol()}>
-</${props.settings.tag}>`;
+</${props.text.tag}>`;
 };
 
 export default textToMarkdown;

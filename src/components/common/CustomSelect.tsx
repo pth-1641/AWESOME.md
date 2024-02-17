@@ -1,18 +1,20 @@
 import { useState } from 'preact/hooks';
 
+type CustomSelectProps = {
+  options: string[];
+  label: string;
+  value?: string;
+  onChange?: (value: string) => void;
+  className?: string;
+};
+
 const CustomSelect = ({
   options,
   label,
   value,
   onChange,
   className,
-}: {
-  options: string[];
-  label: string;
-  value?: string;
-  onChange?: (value: string) => void;
-  className?: string;
-}) => {
+}: CustomSelectProps) => {
   const [showOptions, setShowOptions] = useState<boolean>(false);
 
   return (
@@ -30,7 +32,7 @@ const CustomSelect = ({
         <ul
           class={`absolute z-10 capitalize bg-[#0d1117] border border-white/15 rounded-md inset-x-0 duration-150 max-h-52 overflow-auto ${
             showOptions
-              ? 'opacity-100 top-11 pointer-events-auto'
+              ? 'opacity-100 top-10 pointer-events-auto'
               : ' opacity-0 top-14 pointer-events-none'
           }`}
         >

@@ -5,6 +5,7 @@ import CustomSwitch from '../../../../common/CustomSwitch';
 import { IStatsSetting } from '../../default';
 import {
   EAdditionStats,
+  EGithubReadmeStatsLocale,
   EGithubReadmeStatsTheme,
   EHideStats,
   ERankIcon,
@@ -45,6 +46,21 @@ const Stats = (props: IStatsSetting) => {
         }
       />
       <CustomSelect
+        label="Locale"
+        options={Object.values(EGithubReadmeStatsLocale)}
+        value={props.stats.lang}
+        className="mt-4"
+        onChange={(lang) =>
+          editSection({
+            ...props,
+            stats: {
+              ...props.stats,
+              lang,
+            },
+          })
+        }
+      />
+      <CustomSelect
         label="Theme"
         options={Object.values(EGithubReadmeStatsTheme)}
         value={props.stats.theme}
@@ -61,14 +77,14 @@ const Stats = (props: IStatsSetting) => {
       />
       <div class="grid grid-cols-2 gap-2">
         <CustomSwitch
-          isActive={props.stats.border}
+          isActive={props.stats.hideBorder}
           label="Hide Border"
-          onChange={(border) => {
+          onChange={(hideBorder) => {
             editSection({
               ...props,
               stats: {
                 ...props.stats,
-                border,
+                hideBorder,
               },
             });
           }}

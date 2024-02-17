@@ -1,13 +1,19 @@
 import { DEFAULT_LANGUAGE_COUNT } from '../../../constants';
 import {
+  EGithubReadmeStatsLocale,
   EGithubReadmeStatsTheme,
   ELanguageLayout,
   ERankIcon,
+  EStreakStatsLocale,
+  EStreakStatsMode,
+  EStreakStatsTheme,
+  ETrophyTitle,
+  ETroyphyStatsTheme,
 } from './stats.enum';
 
 export interface IGithubReadmeStats {
   theme: EGithubReadmeStatsTheme;
-  border: boolean;
+  hideBorder: boolean;
   icon: boolean;
   hideTitle: boolean;
   animation: boolean;
@@ -16,27 +22,12 @@ export interface IGithubReadmeStats {
   active: boolean;
   hideOpts: string[];
   additionOpts: string[];
-}
-
-export interface ILanguagesStats {
-  theme: EGithubReadmeStatsTheme;
-  active: boolean;
-  layout: ELanguageLayout;
-  border: boolean;
-  animation: boolean;
-  hideTitle: boolean;
-  progressBar: boolean;
-  langCount: number;
-}
-
-export interface IStatsSetting {
-  stats: IGithubReadmeStats;
-  languages: ILanguagesStats;
+  lang: EGithubReadmeStatsLocale;
 }
 
 export const githubReadmeStats: IGithubReadmeStats = {
-  theme: EGithubReadmeStatsTheme.GITHUB_DARK_DIMMED,
-  border: false,
+  theme: EGithubReadmeStatsTheme.TOKYONIGHT,
+  hideBorder: true,
   icon: true,
   hideTitle: false,
   animation: true,
@@ -45,20 +36,80 @@ export const githubReadmeStats: IGithubReadmeStats = {
   active: true,
   hideOpts: [],
   additionOpts: [],
+  lang: EGithubReadmeStatsLocale.EN,
 };
 
+export interface ILanguagesStats {
+  theme: EGithubReadmeStatsTheme;
+  active: boolean;
+  layout: ELanguageLayout;
+  hideBorder: boolean;
+  animation: boolean;
+  hideTitle: boolean;
+  progressBar: boolean;
+  langCount: number;
+  lang: EGithubReadmeStatsLocale;
+}
+
 export const githubReadmeLanguages: ILanguagesStats = {
-  theme: EGithubReadmeStatsTheme.GITHUB_DARK_DIMMED,
+  theme: EGithubReadmeStatsTheme.TOKYONIGHT,
   active: true,
   layout: ELanguageLayout.DEFAULT,
-  border: false,
+  hideBorder: true,
   animation: true,
   hideTitle: false,
   progressBar: true,
   langCount: DEFAULT_LANGUAGE_COUNT,
+  lang: EGithubReadmeStatsLocale.EN,
 };
+
+export interface IStreakStats {
+  active: boolean;
+  theme: EStreakStatsTheme;
+  hideBorder: boolean;
+  mode: EStreakStatsMode;
+  animation: boolean;
+  hideContribs: boolean;
+  hideCurrentStreak: boolean;
+  hideLongestStreak: boolean;
+  lang: EStreakStatsLocale;
+}
+
+export const streakStats: IStreakStats = {
+  active: true,
+  theme: EStreakStatsTheme.TOKYONIGHT,
+  hideBorder: true,
+  mode: EStreakStatsMode.DAILY,
+  animation: true,
+  hideContribs: false,
+  hideCurrentStreak: false,
+  hideLongestStreak: false,
+  lang: EStreakStatsLocale.EN,
+};
+
+export interface ITrophyStats {
+  active: boolean;
+  hideBorder: boolean;
+  theme: ETroyphyStatsTheme;
+  titles: string[];
+}
+
+export const trophyStats: ITrophyStats = {
+  active: true,
+  hideBorder: true,
+  theme: ETroyphyStatsTheme.TOKYONIGHT,
+  titles: Object.values(ETrophyTitle),
+};
+export interface IStatsSetting {
+  stats: IGithubReadmeStats;
+  languages: ILanguagesStats;
+  streak: IStreakStats;
+  trophy: ITrophyStats;
+}
 
 export const statsSetting: IStatsSetting = {
   stats: githubReadmeStats,
   languages: githubReadmeLanguages,
+  streak: streakStats,
+  trophy: trophyStats,
 };
