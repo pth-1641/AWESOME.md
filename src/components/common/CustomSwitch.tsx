@@ -13,7 +13,7 @@ const CustomSwitch = ({
 }: CustomSwitchProps) => {
   return (
     <div
-      class="flex mt-4 gap-2.5"
+      class="flex gap-2.5"
       style={
         vertical
           ? { flexDirection: 'column' }

@@ -19,7 +19,7 @@ const CustomSelect = ({
 
   return (
     <section class={className}>
-      <h4 class="font-semibold mb-2">{label}</h4>
+      <h6 class="font-semibold mb-2">{label}</h6>
       <div class="relative amd-border cursor-pointer text-sm">
         <input
           class="bg-transparent outline-none w-full py-1.5 px-2 capitalize cursor-pointer"
@@ -39,7 +39,9 @@ const CustomSelect = ({
           {options.map((option) => (
             <li
               key={option}
-              class="py-1.5 px-2 duration-150 hover:bg-white/5"
+              class={`py-1.5 px-2 duration-150 hover:bg-white/5 ${
+                option === value ? 'text-emerald-500 font-semibold' : ''
+              }`}
               onMouseDown={() => onChange?.(option)}
             >
               {option.replace(/-|_/g, ' ')}

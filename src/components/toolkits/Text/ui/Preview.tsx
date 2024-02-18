@@ -46,9 +46,16 @@ const Preview = ({ id }: { id: string }) => {
       )}
       {provider === ETextProvider.TYPING && (
         <img
-          src={`https://readme-typing-svg.demolab.com/?${objectToUrl({
-            lines: props.value.replace(/\n/g, ';').replace(/\s+/g, '+'),
+          src={`https://readme-typing-svg.demolab.com?${objectToUrl({
+            ...props.typing,
+            lines: props.value.replace(/\n/g, ';').replace(/\s+/g, ' '),
             vCenter: true,
+            size: props.typing.fontSize,
+            duration: props.typing.duration * 1000,
+            pause: props.typing.pause * 1000,
+            font: props.typing.font.replace(/(^\w|\s\w)/g, (w) =>
+              w.toUpperCase()
+            ),
           })}`}
         />
       )}

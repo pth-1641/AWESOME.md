@@ -17,4 +17,5 @@ export enum ETextStyle {
 export enum ETextProvider {
   TEXT = 'text',
   TYPING = 'typing',
+  CAPSULE = 'capsule',
 }

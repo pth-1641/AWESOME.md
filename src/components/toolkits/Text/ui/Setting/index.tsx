@@ -1,6 +1,7 @@
 import { useSectionProps } from '../../../../../hooks';
 import { useAppStore } from '../../../../../store/app.store';
 import CustomSelect from '../../../../common/CustomSelect';
+import CustomTextarea from '../../../../common/CustomTextarea';
 import { ITextSetting } from '../../default';
 import { ETextProvider } from '../../text.enum';
 import TextSetting from './Text';
@@ -14,28 +15,25 @@ const Setting = ({ id }: { id: string }) => {
 
   return (
     <>
-      <h4 class="font-semibold mb-2">Content</h4>
-      <textarea
-        class="bg-transparent outline-none py-1.5 px-2 w-full border border-white/15 rounded-md resize-none"
-        rows={5}
-        contentEditable={false}
-        value={props.value}
-        onChange={(e) =>
-          editSection({
-            ...props,
-            value: e.currentTarget.value,
-          })
-        }
-      />
       <CustomSelect
-        className="mb-4 mt-2"
+        className="mb-4"
         label="Provider"
-        options={Object.values(ETextProvider)}
         value={props.provider}
+        options={Object.values(ETextProvider)}
         onChange={(provider) =>
           editSection({
             ...props,
             provider,
+          })
+        }
+      />
+      <CustomTextarea
+        label="Content"
+        value={props.value}
+        onChange={(value) =>
+          editSection({
+            ...props,
+            value,
           })
         }
       />

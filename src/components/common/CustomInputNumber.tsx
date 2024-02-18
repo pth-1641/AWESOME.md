@@ -1,9 +1,10 @@
 type CustomInputNumberProps = {
-  label: string;
-  onChange?: (value: any) => void;
+  label?: string;
+  onChange?: (value: number) => void;
   value: number;
   min?: number;
   max?: number;
+  className?: string;
 };
 
 const CustomInputNumber = ({
@@ -12,12 +13,13 @@ const CustomInputNumber = ({
   value,
   min = 0,
   max,
+  className,
 }: CustomInputNumberProps) => {
   return (
-    <div>
-      <h4 class="font-semibold">{label}</h4>
+    <div class={className}>
+      <h6 class="font-semibold">{label}</h6>
       <input
-        class="bg-transparent outline-none w-full py-1.5 px-2 capitalize amd-border mt-2 mb-4 text-sm"
+        class="w-full py-1.5 px-2 capitalize amd-border mt-2 text-sm"
         type="number"
         value={value}
         onChange={(e) => onChange?.(+e.currentTarget.value)}
