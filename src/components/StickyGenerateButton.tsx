@@ -3,7 +3,7 @@ import { useState } from 'preact/hooks';
 import { useAppStore } from '../store/app.store';
 import { useGenerateMd } from '../hooks';
 
-export const StickyGenerateButton = (position?: 'top' | 'bottom') => {
+export const StickyGenerateButton = () => {
   const [open, setOpen] = useState<boolean>(false);
   const sections = useAppStore((state) => state.sections);
 

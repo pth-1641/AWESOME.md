@@ -1,11 +1,5 @@
 import { Icon } from '@iconify/react';
-import {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'preact/hooks';
+import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import { opacityToHex } from '../../utils';
 
 type CustomColorPickerProps = {

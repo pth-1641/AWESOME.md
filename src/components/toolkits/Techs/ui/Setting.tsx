@@ -201,7 +201,7 @@ const SelectedIcons = (props: {
       <div
         class="flex items-center gap-2 flex-1"
         ref={setNodeRef}
-        {...attributes}
+        {...(attributes as any)}
         {...listeners}
       >
         <button>
