@@ -13,7 +13,6 @@ const Typing = (props: ITextSetting) => {
       <CustomInput
         value={props.typing.font}
         label="Font"
-        className="mb-4"
         subtitle="Name from Google Fonts"
         onChange={(font) =>
           editSection({
@@ -26,6 +25,7 @@ const Typing = (props: ITextSetting) => {
         }
       />
       <CustomColorPicker
+        className="my-4"
         value={props.typing.color}
         label="Color"
         onChange={(color) =>
@@ -39,7 +39,6 @@ const Typing = (props: ITextSetting) => {
         }
       />
       <CustomColorPicker
-        className="mt-4"
         value={props.typing.background}
         label="Background"
         initOpacity={0}

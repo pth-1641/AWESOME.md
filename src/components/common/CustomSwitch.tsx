@@ -3,6 +3,7 @@ type CustomSwitchProps = {
   label?: string;
   onChange?: (value: boolean) => void;
   vertical?: boolean;
+  className?: string;
 };
 
 const CustomSwitch = ({
@@ -10,10 +11,11 @@ const CustomSwitch = ({
   label,
   onChange,
   vertical = true,
+  className = '',
 }: CustomSwitchProps) => {
   return (
     <div
-      class="flex gap-2.5"
+      class={`flex gap-2.5 ${className}`}
       style={
         vertical
           ? { flexDirection: 'column' }

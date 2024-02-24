@@ -10,15 +10,15 @@ const CustomTextarea = ({
   label,
   onChange,
   value,
-  className,
+  className = '',
   subtitle,
 }: CustomTextareaProps) => {
   return (
-    <div class={className}>
+    <div class={`mt-4 ${className}`}>
       <h6 class="font-semibold mb-2">{label}</h6>
       <span class="text-xs text-gray-400 leading-5 block">{subtitle}</span>
       <textarea
-        class="bg-transparent outline-none py-1.5 px-2 w-full border border-white/15 rounded-md resize-none mb-2 text-sm"
+        class="bg-transparent outline-none py-1.5 px-2 w-full border border-white/15 rounded-md resize-none text-sm"
         rows={5}
         contentEditable={false}
         value={value}

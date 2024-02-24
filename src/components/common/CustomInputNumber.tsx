@@ -13,7 +13,7 @@ const CustomInputNumber = ({
   value,
   min = 0,
   max,
-  className,
+  className = '',
 }: CustomInputNumberProps) => {
   return (
     <div class={className}>

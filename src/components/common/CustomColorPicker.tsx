@@ -8,14 +8,16 @@ type CustomColorPickerProps = {
   onChange?: (value: string) => void;
   className?: string;
   initOpacity?: number;
+  disableOpacity?: boolean;
 };
 
 const CustomColorPicker = ({
   value,
   label,
   onChange,
-  className,
+  className = '',
   initOpacity = 100,
+  disableOpacity = false,
 }: CustomColorPickerProps) => {
   const [openOpacityLine, setOpenOpacityLine] = useState<boolean>(false);
   const [opacity, setOpacity] = useState<number>(initOpacity);
@@ -47,40 +49,42 @@ const CustomColorPicker = ({
           />
           <span class="text-sm">{originColor}</span>
         </label>
-        <div class="relative">
-          <div
-            class={`absolute bottom-8 left-1/2 -translate-x-1/2 bg-[#21262d] flex flex-col items-center px-4 pb-2 pt-4 rounded z-10 duration-150 origin-bottom ${
-              openOpacityLine ? 'scale-100' : 'scale-0'
-            }`}
-            ref={popupRef}
-          >
-            <span class="absolute h-3 w-3 -bottom-1 rotate-45 bg-[#21262d]" />
+        {!disableOpacity && (
+          <div class="relative">
             <div
-              class="h-4 flex items-center"
-              style={{
-                backgroundImage: `linear-gradient(to right, ${originColor}00, ${originColor}FF)`,
-              }}
+              class={`absolute bottom-8 left-1/2 -translate-x-1/2 bg-[#21262d] flex flex-col items-center px-4 pb-2 pt-4 rounded z-10 duration-150 origin-bottom ${
+                openOpacityLine ? 'scale-100' : 'scale-0'
+              }`}
+              ref={popupRef}
             >
-              <input
-                type="range"
-                min={0}
-                max={100}
-                value={opacity}
-                onInput={(e) => {
-                  onChange?.(opacityToHex(value, +e.currentTarget.value));
-                  setOpacity(+e.currentTarget.value);
+              <span class="absolute h-3 w-3 -bottom-1 rotate-45 bg-[#21262d]" />
+              <div
+                class="h-4 flex items-center"
+                style={{
+                  backgroundImage: `linear-gradient(to right, ${originColor}00, ${originColor}FF)`,
                 }}
-              />
+              >
+                <input
+                  type="range"
+                  min={0}
+                  max={100}
+                  value={opacity}
+                  onInput={(e) => {
+                    onChange?.(opacityToHex(value, +e.currentTarget.value));
+                    setOpacity(+e.currentTarget.value);
+                  }}
+                />
+              </div>
+              <span class="text-xs mt-2">Opacity: {opacity}%</span>
             </div>
-            <span class="text-xs mt-2">Opacity: {opacity}%</span>
+            <Icon
+              icon="mdi:circle-opacity"
+              className="hover:text-emerald-500 duration-150 cursor-pointer"
+              height={20}
+              onClick={() => setOpenOpacityLine(true)}
+            />
           </div>
-          <Icon
-            icon="mdi:circle-opacity"
-            className="hover:text-emerald-500 duration-150 cursor-pointer"
-            height={20}
-            onClick={() => setOpenOpacityLine(true)}
-          />
-        </div>
+        )}
       </div>
     </div>
   );

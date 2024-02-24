@@ -22,7 +22,7 @@
     @apply text-sm font-semibold;
   }
   input {
-    @apply text-sm outline-none;
+    @apply text-sm outline-none bg-transparent;
   }
 }
 

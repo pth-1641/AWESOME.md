@@ -25,7 +25,6 @@ const Text = (props: ITextSetting) => {
       />
       <CustomSelect
         label="Align"
-        className="mt-4"
         options={Object.values(EAlign)}
         value={props.text.align}
         onChange={(align) =>
@@ -39,7 +38,6 @@ const Text = (props: ITextSetting) => {
         }
       />
       <CustomSelect
-        className="mt-4"
         label="Style"
         options={Object.values(ETextStyle)}
         value={props.text.style}

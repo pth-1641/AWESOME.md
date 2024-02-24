@@ -2,8 +2,8 @@ import { useState } from 'preact/hooks';
 
 type CustomSelectProps = {
   options: string[];
-  label: string;
-  value?: string;
+  label?: string;
+  value: string;
   onChange?: (value: string) => void;
   className?: string;
 };
@@ -13,16 +13,16 @@ const CustomSelect = ({
   label,
   value,
   onChange,
-  className,
+  className = '',
 }: CustomSelectProps) => {
   const [showOptions, setShowOptions] = useState<boolean>(false);
 
   return (
-    <section class={className}>
+    <section class={`mt-4 ${className}`}>
       <h6 class="font-semibold mb-2">{label}</h6>
       <div class="relative amd-border cursor-pointer text-sm">
         <input
-          class="bg-transparent outline-none w-full py-1.5 px-2 capitalize cursor-pointer"
+          class={`w-full py-1.5 px-2 capitalize cursor-pointer`}
           type="text"
           value={value?.replace(/-|_/g, ' ') || options[0]}
           readOnly

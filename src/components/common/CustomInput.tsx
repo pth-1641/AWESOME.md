@@ -10,7 +10,7 @@ const CustomInput = ({
   label,
   onChange,
   value,
-  className,
+  className = '',
   subtitle,
 }: CustomInputProps) => {
   return (

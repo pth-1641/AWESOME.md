@@ -3,8 +3,14 @@ import { useAppStore } from '../../../../store/app.store';
 import { h } from 'preact';
 import { ITextSetting } from '../default';
 import { useMemo } from 'preact/hooks';
-import { ETextProvider, ETextStyle } from '../text.enum';
-import { objectToUrl } from '../../../../utils';
+import {
+  ECapsuleAnimation,
+  ECapsuleBackgroundType,
+  ECapsuleType,
+  ETextProvider,
+  ETextStyle,
+} from '../text.enum';
+import { isInEnum, objectToUrl } from '../../../../utils';
 
 const Preview = ({ id }: { id: string }) => {
   const props = useSectionProps<ITextSetting>(id);
@@ -57,6 +63,49 @@ const Preview = ({ id }: { id: string }) => {
               w.toUpperCase()
             ),
           })}`}
+        />
+      )}
+      {provider === ETextProvider.CAPSULE && (
+        <img
+          src={`https://capsule-render.vercel.app/api?${objectToUrl(
+            {
+              ...props.capsule,
+              text: props.value,
+              reversal: true,
+              animation: '',
+              stroke: '',
+              strokeWidth: 0,
+              ...(isInEnum(ECapsuleBackgroundType, props.capsule.backgroundType)
+                ? {
+                    color: props.capsule.backgroundType,
+                  }
+                : { theme: props.capsule.backgroundType }),
+              ...(props.capsule.backgroundType ===
+                ECapsuleBackgroundType.CUSTOM_COLOR && {
+                color: props.capsule.color,
+              }),
+              ...(props.capsule.backgroundType ===
+                ECapsuleBackgroundType.CUSTOM_GRADIENT && {
+                color: props.capsule.color
+                  .replace('#', '0:')
+                  .replace('#', ',100:'),
+              }),
+              ...(props.capsule.type === ECapsuleType.VENOM && {
+                section: 'header',
+                reversal: false,
+              }),
+              ...(props.capsule.animation !== ECapsuleAnimation.NONE && {
+                animation: props.capsule.animation,
+              }),
+              ...(props.capsule.enableStroke && {
+                stroke: props.capsule.stroke,
+                strokeWidth: props.capsule.strokeWidth,
+              }),
+            },
+            {
+              omit: ['backgroundType', 'enableStroke'],
+            }
+          ).replace(/%23/g, '')}`}
         />
       )}
     </div>
