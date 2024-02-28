@@ -16,20 +16,6 @@ const Stats = (props: IStatsSetting) => {
 
   return (
     <>
-      <CustomSwitch
-        isActive={props.stats.active}
-        label="Active"
-        vertical={false}
-        onChange={(active) => {
-          editSection({
-            ...props,
-            stats: {
-              ...props.stats,
-              active,
-            },
-          });
-        }}
-      />
       <CustomSelect
         label="Icon"
         options={Object.values(ERankIcon)}
@@ -75,7 +61,7 @@ const Stats = (props: IStatsSetting) => {
           })
         }
       />
-      <div class="grid grid-cols-2 gap-2">
+      <div class="grid grid-cols-2 gap-2 mt-4">
         <CustomSwitch
           isActive={props.stats.hideBorder}
           label="Hide Border"

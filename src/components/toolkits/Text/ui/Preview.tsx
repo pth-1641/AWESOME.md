@@ -11,6 +11,10 @@ import {
   ETextStyle,
 } from '../text.enum';
 import { isInEnum, objectToUrl } from '../../../../utils';
+import {
+  capsuleSearchParams,
+  typingSearchParams,
+} from '../../../../utils/text2md.utils';
 
 const Preview = ({ id }: { id: string }) => {
   const props = useSectionProps<ITextSetting>(id);
@@ -52,60 +56,16 @@ const Preview = ({ id }: { id: string }) => {
       )}
       {provider === ETextProvider.TYPING && (
         <img
-          src={`https://readme-typing-svg.demolab.com?${objectToUrl({
-            ...props.typing,
-            lines: props.value.replace(/\n/g, ';').replace(/\s+/g, ' '),
-            vCenter: true,
-            size: props.typing.fontSize,
-            duration: props.typing.duration * 1000,
-            pause: props.typing.pause * 1000,
-            font: props.typing.font.replace(/(^\w|\s\w)/g, (w) =>
-              w.toUpperCase()
-            ),
-          })}`}
+          src={`https://readme-typing-svg.demolab.com?${typingSearchParams(
+            props
+          )}`}
         />
       )}
       {provider === ETextProvider.CAPSULE && (
         <img
-          src={`https://capsule-render.vercel.app/api?${objectToUrl(
-            {
-              ...props.capsule,
-              text: props.value,
-              reversal: true,
-              animation: '',
-              stroke: '',
-              strokeWidth: 0,
-              ...(isInEnum(ECapsuleBackgroundType, props.capsule.backgroundType)
-                ? {
-                    color: props.capsule.backgroundType,
-                  }
-                : { theme: props.capsule.backgroundType }),
-              ...(props.capsule.backgroundType ===
-                ECapsuleBackgroundType.CUSTOM_COLOR && {
-                color: props.capsule.color,
-              }),
-              ...(props.capsule.backgroundType ===
-                ECapsuleBackgroundType.CUSTOM_GRADIENT && {
-                color: props.capsule.color
-                  .replace('#', '0:')
-                  .replace('#', ',100:'),
-              }),
-              ...(props.capsule.type === ECapsuleType.VENOM && {
-                section: 'header',
-                reversal: false,
-              }),
-              ...(props.capsule.animation !== ECapsuleAnimation.NONE && {
-                animation: props.capsule.animation,
-              }),
-              ...(props.capsule.enableStroke && {
-                stroke: props.capsule.stroke,
-                strokeWidth: props.capsule.strokeWidth,
-              }),
-            },
-            {
-              omit: ['backgroundType', 'enableStroke'],
-            }
-          ).replace(/%23/g, '')}`}
+          src={`https://capsule-render.vercel.app/api?${capsuleSearchParams(
+            props
+          )}`}
         />
       )}
     </div>

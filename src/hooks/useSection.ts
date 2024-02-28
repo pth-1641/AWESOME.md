@@ -1,7 +1,9 @@
 import { useUuid } from '.';
 import { textSetting } from '../components/toolkits/Text/default';
-import { techSetting } from '../components/toolkits/Techs/default';
-import { socialSetting } from '../components/toolkits/Social/default';
+import {
+  socialSetting,
+  techSetting,
+} from '../components/toolkits/Icon/default';
 import { statsSetting } from '../components/toolkits/Stats/default';
 import { EToolkitType } from '../enums/toolkit.enum';
 

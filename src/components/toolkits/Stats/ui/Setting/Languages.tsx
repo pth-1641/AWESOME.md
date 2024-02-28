@@ -15,22 +15,7 @@ const Languages = (props: IStatsSetting) => {
 
   return (
     <>
-      <CustomSwitch
-        isActive={props.languages.active}
-        label="Active"
-        vertical={false}
-        onChange={(active) =>
-          editSection({
-            ...props,
-            languages: {
-              ...props.languages,
-              active,
-            },
-          })
-        }
-      />
       <CustomSelect
-        className="my-4"
         label="Layout"
         value={props.languages.layout}
         options={Object.values(ELanguageLayout)}
@@ -45,7 +30,6 @@ const Languages = (props: IStatsSetting) => {
         }
       />
       <CustomSelect
-        className="mb-4"
         label="Theme"
         value={props.languages.theme}
         options={Object.values(EGithubReadmeStatsTheme)}
@@ -88,7 +72,7 @@ const Languages = (props: IStatsSetting) => {
           })
         }
       />
-      <div class="grid grid-cols-2 gap-2">
+      <div class="grid grid-cols-2 gap-2 mt-4">
         <CustomSwitch
           isActive={props.languages.hideBorder}
           label="Hide Border"

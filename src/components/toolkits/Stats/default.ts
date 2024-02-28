@@ -1,8 +1,10 @@
 import { DEFAULT_LANGUAGE_COUNT } from '../../../constants';
 import {
+  EChartTheme,
   EGithubReadmeStatsLocale,
   EGithubReadmeStatsTheme,
   ELanguageLayout,
+  EProvider,
   ERankIcon,
   EStreakStatsLocale,
   EStreakStatsMode,
@@ -95,21 +97,38 @@ export interface ITrophyStats {
 }
 
 export const trophyStats: ITrophyStats = {
-  active: true,
+  active: false,
   hideBorder: true,
   theme: ETroyphyStatsTheme.TOKYONIGHT,
   titles: Object.values(ETrophyTitle),
 };
+
+export interface IChartStats {
+  active: boolean;
+  theme: EChartTheme;
+}
+
+export const chartStats: IChartStats = {
+  active: false,
+  theme: EChartTheme.TOKYONIGHT,
+};
+
 export interface IStatsSetting {
+  username: string;
+  providers: EProvider[];
   stats: IGithubReadmeStats;
   languages: ILanguagesStats;
   streak: IStreakStats;
   trophy: ITrophyStats;
+  chart: IChartStats;
 }
 
 export const statsSetting: IStatsSetting = {
+  username: 'pth-1641',
+  providers: Object.values(EProvider),
   stats: githubReadmeStats,
   languages: githubReadmeLanguages,
   streak: streakStats,
   trophy: trophyStats,
+  chart: chartStats,
 };

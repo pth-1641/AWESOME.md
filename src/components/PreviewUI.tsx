@@ -1,8 +1,7 @@
 import { EToolkitType } from '../enums/toolkit.enum';
 import { useAppStore } from '../store/app.store';
-import TechsPreview from './toolkits/Techs/ui/Preview';
 import TextPreview from './toolkits/Text/ui/Preview';
-import SocialPreview from './toolkits/Social/ui/Preview';
+import IconPreview from './toolkits/Icon/ui/Preview';
 import StatsPreview from './toolkits/Stats/ui/Preview';
 
 export const PreviewUI = () => {
@@ -17,10 +16,10 @@ export const PreviewUI = () => {
             <TextPreview id={section.id} />
           )}
           {section.type === EToolkitType.TECH && (
-            <TechsPreview id={section.id} />
+            <IconPreview id={section.id} />
           )}
           {section.type === EToolkitType.SOCIAL && (
-            <SocialPreview id={section.id} />
+            <IconPreview id={section.id} />
           )}
           {section.type === EToolkitType.STATS && (
             <StatsPreview id={section.id} />

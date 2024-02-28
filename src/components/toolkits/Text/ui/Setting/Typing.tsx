@@ -1,4 +1,5 @@
 import { useAppStore } from '../../../../../store/app.store';
+import { hexToOpacity } from '../../../../../utils';
 import CustomColorPicker from '../../../../common/CustomColorPicker';
 import CustomInput from '../../../../common/CustomInput';
 import CustomInputNumber from '../../../../common/CustomInputNumber';
@@ -27,6 +28,7 @@ const Typing = (props: ITextSetting) => {
       <CustomColorPicker
         className="my-4"
         value={props.typing.color}
+        initOpacity={hexToOpacity(props.typing.color.slice(-2))}
         label="Color"
         onChange={(color) =>
           editSection({
@@ -41,7 +43,7 @@ const Typing = (props: ITextSetting) => {
       <CustomColorPicker
         value={props.typing.background}
         label="Background"
-        initOpacity={0}
+        initOpacity={hexToOpacity(props.typing.background.slice(-2))}
         onChange={(background) =>
           editSection({
             ...props,

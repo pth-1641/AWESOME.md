@@ -1,10 +1,10 @@
 import { Icon } from '@iconify/react';
 import { useSectionProps } from '../../../../hooks';
 import { useAppStore } from '../../../../store/app.store';
-import { ITechSetting } from '../default';
+import { IIconSetting } from '../default';
 
 const Preview = ({ id }: { id: string }) => {
-  const props = useSectionProps<ITechSetting>(id);
+  const props = useSectionProps<IIconSetting>(id);
   const sectionId = useAppStore((state) => state.sectionId);
 
   if (!props) return null;
@@ -21,7 +21,7 @@ const Preview = ({ id }: { id: string }) => {
         <>
           <Icon
             key={icon}
-            icon={icon}
+            icon={icon.name}
             width={settings.size}
             height={settings.size}
           />

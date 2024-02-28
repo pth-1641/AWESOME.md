@@ -12,7 +12,7 @@ import {
 } from '../../text.enum';
 import CustomSwitch from '../../../../common/CustomSwitch';
 import CustomInputNumber from '../../../../common/CustomInputNumber';
-import { isInEnum } from '../../../../../utils';
+import { hexToOpacity, isInEnum } from '../../../../../utils';
 
 const Capsule = (props: ITextSetting) => {
   const { editSection } = useAppStore();
@@ -49,6 +49,7 @@ const Capsule = (props: ITextSetting) => {
       {isCustomGradient && (
         <CustomColorPicker
           value={props.capsule.color.slice(-9)}
+          initOpacity={hexToOpacity(props.capsule.color.slice(-2))}
           onChange={(color) =>
             editSection({
               ...props,
@@ -68,6 +69,11 @@ const Capsule = (props: ITextSetting) => {
       ].includes(props.capsule.backgroundType as ECapsuleBackgroundType) && (
         <CustomColorPicker
           value={props.capsule.color.slice(0, 9)}
+          initOpacity={
+            isCustomGradient
+              ? hexToOpacity(props.capsule.color.slice(7, 9))
+              : hexToOpacity(props.capsule.color.slice(-2))
+          }
           onChange={(color) =>
             editSection({
               ...props,
@@ -85,6 +91,7 @@ const Capsule = (props: ITextSetting) => {
         <CustomColorPicker
           label="Text Color"
           className="mt-4"
+          initOpacity={hexToOpacity(props.capsule.fontColor.slice(-2))}
           value={props.capsule.fontColor}
           onChange={(fontColor) =>
             editSection({

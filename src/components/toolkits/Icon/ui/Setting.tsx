@@ -18,14 +18,14 @@ import { Icon } from '@iconify/react';
 import { useEffect, useState } from 'preact/hooks';
 import { useSectionProps } from '../../../../hooks';
 import { useAppStore } from '../../../../store/app.store';
-import { ISocialSetting, SocialIcon } from '../default';
+import { IIconSetting, IIcon } from '../default';
 import CustomInputNumber from '../../../common/CustomInputNumber';
 import CustomSelect from '../../../common/CustomSelect';
 import CustomTabs from '../../../common/CustomTabs';
-import { EAlign } from '../../../../enums/toolkit.enum';
+import { EAlign, EToolkitType } from '../../../../enums/toolkit.enum';
 
 const Setting = ({ id }: { id: string }) => {
-  const props = useSectionProps<ISocialSetting>(id);
+  const props = useSectionProps<IIconSetting>(id);
 
   if (!props) return null;
 
@@ -33,7 +33,7 @@ const Setting = ({ id }: { id: string }) => {
     <CustomTabs
       items={[
         {
-          key: 'icon',
+          key: 'icons',
           label: 'Icons',
           icon: 'material-symbols-light:add',
           children: <Search {...props} />,
@@ -49,7 +49,7 @@ const Setting = ({ id }: { id: string }) => {
   );
 };
 
-const Search = (props: ISocialSetting) => {
+const Search = (props: IIconSetting & { type?: EToolkitType }) => {
   const [icons, setIcons] = useState<string[]>([]);
   const [query, setQuery] = useState<string>('');
   const { editSection } = useAppStore();
@@ -86,7 +86,7 @@ const Search = (props: ISocialSetting) => {
 
   return (
     <>
-      <h4 class="font-semibold">Search</h4>
+      <h4>Search</h4>
       <input
         class="border border-white/15 bg-transparent rounded-md outline-none w-full py-1.5 px-2 mt-2 mb-4"
         type="text"
@@ -113,7 +113,7 @@ const Search = (props: ISocialSetting) => {
           </button>
         ))}
       </div>
-      <h4 class="font-semibold mt-4 flex items-center justify-between">Sort</h4>
+      <h4 class="flex items-center justify-between">Sort</h4>
       <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}
@@ -124,7 +124,13 @@ const Search = (props: ISocialSetting) => {
           strategy={verticalListSortingStrategy}
         >
           {props.icons.map((icon, key) => (
-            <SelectedIcons key={key} index={key} icon={icon} settings={props} />
+            <SelectedIcons
+              hasLink={props.type !== EToolkitType.TECH}
+              key={key}
+              index={key}
+              icon={icon}
+              settings={props}
+            />
           ))}
         </SortableContext>
       </DndContext>
@@ -132,7 +138,7 @@ const Search = (props: ISocialSetting) => {
   );
 };
 
-const Edit = (props: ISocialSetting) => {
+const Edit = (props: IIconSetting) => {
   const { editSection } = useAppStore();
 
   return (
@@ -182,9 +188,10 @@ const Edit = (props: ISocialSetting) => {
 };
 
 const SelectedIcons = (props: {
-  settings: ISocialSetting;
-  icon: SocialIcon;
+  settings: IIconSetting;
+  icon: IIcon;
   index: number;
+  hasLink: boolean;
 }) => {
   const { editSection } = useAppStore();
   const [isExpandLink, setIsExpandLink] = useState<boolean>(false);
@@ -217,7 +224,7 @@ const SelectedIcons = (props: {
             </p>
           </div>
         </div>
-        <div class="flex flex-col items-center gap-1.5">
+        <div class="flex flex-col items-center justify-center gap-1.5">
           <button
             class="hover:text-red-500 duration-150"
             onClick={() =>
@@ -231,37 +238,41 @@ const SelectedIcons = (props: {
           >
             <Icon icon="fluent:delete-20-regular" height={18} />
           </button>
-          <button
-            class="hover:text-sky-500 duration-150"
-            onClick={() => setIsExpandLink((status) => !status)}
-          >
-            <Icon icon="bitcoin-icons:link-outline" height={20} />
-          </button>
+          {props.hasLink ? (
+            <button
+              class="hover:text-sky-500 duration-150"
+              onClick={() => setIsExpandLink((status) => !status)}
+            >
+              <Icon icon="bitcoin-icons:link-outline" height={20} />
+            </button>
+          ) : null}
         </div>
       </div>
-      <div
-        class="duration-300 overflow-hidden"
-        style={{ maxHeight: isExpandLink ? '50px' : 0 }}
-      >
-        <input
-          type="text"
-          value={props.icon.href}
-          class="bg-transparent amd-border outline-none rounded mt-2 px-2 py-1 w-full text-xs"
-          placeholder="https://example.com"
-          onInput={(e) =>
-            editSection({
-              ...props.settings,
-              icons: props.settings.icons.map((icon, idx) => {
-                if (props.index !== idx) return icon;
-                return {
-                  ...props.icon,
-                  href: e.currentTarget.value,
-                };
-              }),
-            })
-          }
-        />
-      </div>
+      {props.hasLink ? (
+        <div
+          class="duration-300 overflow-hidden"
+          style={{ maxHeight: isExpandLink ? '50px' : 0 }}
+        >
+          <input
+            type="text"
+            value={props.icon.href}
+            class="bg-transparent amd-border outline-none rounded mt-2 px-2 py-1 w-full text-xs"
+            placeholder="https://example.com"
+            onInput={(e) =>
+              editSection({
+                ...props.settings,
+                icons: props.settings.icons.map((icon, idx) => {
+                  if (props.index !== idx) return icon;
+                  return {
+                    ...props.icon,
+                    href: e.currentTarget.value,
+                  };
+                }),
+              })
+            }
+          />
+        </div>
+      ) : null}
     </li>
   );
 };

@@ -16,7 +16,7 @@ const CustomInputNumber = ({
   className = '',
 }: CustomInputNumberProps) => {
   return (
-    <div class={className}>
+    <div class={`mt-4 ${className}`}>
       <h6 class="font-semibold">{label}</h6>
       <input
         class="w-full py-1.5 px-2 capitalize amd-border mt-2 text-sm"

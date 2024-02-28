@@ -4,7 +4,7 @@ import { useAppStore } from '../store/app.store';
 import { useSection } from '../hooks';
 
 export const ToolkitSelector = () => {
-  const addSection = useAppStore((state) => state.addSection);
+  const { addSection } = useAppStore();
 
   return (
     <div class="amd-border p-4 flex-1 max-w-64">

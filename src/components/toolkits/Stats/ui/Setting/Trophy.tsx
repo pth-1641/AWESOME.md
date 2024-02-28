@@ -10,34 +10,19 @@ const Trophy = (props: IStatsSetting) => {
 
   return (
     <>
-      <div class="grid grid-cols-2 gap-x-2 gap-y-3">
-        <CustomSwitch
-          isActive={props.trophy.active}
-          label="Active"
-          onChange={(active) =>
-            editSection({
-              ...props,
-              trophy: {
-                ...props.trophy,
-                active,
-              },
-            })
-          }
-        />
-        <CustomSwitch
-          isActive={props.trophy.hideBorder}
-          label="Hide Border"
-          onChange={(hideBorder) =>
-            editSection({
-              ...props,
-              trophy: {
-                ...props.trophy,
-                hideBorder,
-              },
-            })
-          }
-        />
-      </div>
+      <CustomSwitch
+        isActive={props.trophy.hideBorder}
+        label="Hide Border"
+        onChange={(hideBorder) =>
+          editSection({
+            ...props,
+            trophy: {
+              ...props.trophy,
+              hideBorder,
+            },
+          })
+        }
+      />
       <CustomSelect
         label="Theme"
         options={Object.values(ETroyphyStatsTheme)}

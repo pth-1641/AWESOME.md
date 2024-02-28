@@ -13,20 +13,6 @@ const Streak = (props: IStatsSetting) => {
 
   return (
     <>
-      <CustomSwitch
-        isActive={props.streak.active}
-        label="Active"
-        vertical={false}
-        onChange={(active) =>
-          editSection({
-            ...props,
-            streak: {
-              ...props.streak,
-              active,
-            },
-          })
-        }
-      />
       <CustomSelect
         label="Theme"
         options={Object.values(EStreakStatsTheme)}
@@ -72,7 +58,7 @@ const Streak = (props: IStatsSetting) => {
           })
         }
       />
-      <div class="grid grid-cols-2 gap-2">
+      <div class="grid grid-cols-2 gap-2 mt-4">
         <CustomSwitch
           isActive={props.streak.hideBorder}
           label="Hide Border"

@@ -1,9 +1,8 @@
 import { EToolkitType } from '../enums/toolkit.enum';
 import { useSectionProps } from '../hooks';
 import { useAppStore } from '../store/app.store';
-import TechsSetting from './toolkits/Techs/ui/Setting';
 import TextSetting from './toolkits/Text/ui/Setting';
-import SocialSetting from './toolkits/Social/ui/Setting';
+import IconSetting from './toolkits/Icon/ui/Setting';
 import StatsSetting from './toolkits/Stats/ui/Setting';
 
 export const Settings = () => {
@@ -15,8 +14,8 @@ export const Settings = () => {
   return (
     <div class="flex-1 max-w-72 amd-border px-4 pt-2.5 pb-5 overflow-auto">
       {section.type === EToolkitType.TEXT && <TextSetting id={sectionId} />}
-      {section.type === EToolkitType.TECH && <TechsSetting id={sectionId} />}
-      {section.type === EToolkitType.SOCIAL && <SocialSetting id={sectionId} />}
+      {section.type === EToolkitType.TECH && <IconSetting id={sectionId} />}
+      {section.type === EToolkitType.SOCIAL && <IconSetting id={sectionId} />}
       {section.type === EToolkitType.STATS && <StatsSetting id={sectionId} />}
     </div>
   );
