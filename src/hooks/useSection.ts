@@ -5,7 +5,7 @@ import {
   techSetting,
 } from '../components/toolkits/Icon/default';
 import { statsSetting } from '../components/toolkits/Stats/default';
-import { EToolkitType } from '../enums/toolkit.enum';
+import { EToolkitType } from '../enums/share.enum';
 
 const useSection = (type: EToolkitType) => {
   switch (type) {
@@ -16,6 +16,8 @@ const useSection = (type: EToolkitType) => {
     case EToolkitType.SOCIAL:
       return { ...socialSetting, type, id: useUuid() };
     case EToolkitType.STATS:
+      return { ...statsSetting, type, id: useUuid() };
+    case EToolkitType.VIEWS:
       return { ...statsSetting, type, id: useUuid() };
     default:
       return null;

@@ -1,4 +1,4 @@
-import { EAlign } from '../../../enums/toolkit.enum';
+import { EAlign } from '../../../enums/share.enum';
 import {
   ECapsuleAnimation,
   ECapsuleBackgroundType,
@@ -10,6 +10,7 @@ import {
   ETextTag,
 } from './text.enum';
 
+// Typing
 export const DEFAULT_TYPING_DURATION = 5;
 export const DEFAULT_TYPING_PAUSE = 1;
 export const DEFAULT_TYPING_FONT_SIZE = 20;
@@ -19,6 +20,7 @@ export const DEFAULT_TYPING_HEIGHT = 50;
 export const DEFAULT_TYPING_WIDTH = 400;
 export const DEFAULT_TYPING_FONT_FAMILY = 'Fira Code';
 
+// Capsule
 export const DEFAULT_CAPSULE_HEIGHT = 120;
 export const DEFAULT_CAPSULE_FONT_SIZE = 70;
 export const DEFAULT_CAPSULE_FONT_ALIGN = 50;

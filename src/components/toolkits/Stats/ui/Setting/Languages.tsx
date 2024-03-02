@@ -1,9 +1,8 @@
-import { MAX_LANGUAGE_COUNT } from '../../../../../constants';
 import { useAppStore } from '../../../../../store/app.store';
 import CustomInputNumber from '../../../../common/CustomInputNumber';
 import CustomSelect from '../../../../common/CustomSelect';
 import CustomSwitch from '../../../../common/CustomSwitch';
-import { IStatsSetting } from '../../default';
+import { IStatsSetting, MAX_LANGUAGE_COUNT } from '../../default';
 import {
   EGithubReadmeStatsLocale,
   EGithubReadmeStatsTheme,

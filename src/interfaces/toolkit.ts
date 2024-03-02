@@ -1,4 +1,4 @@
-import { EToolkitType } from '../enums/toolkit.enum';
+import { EToolkitType } from '../enums/share.enum';
 
 export interface IToolkit {
   label: string;

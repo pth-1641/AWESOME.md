@@ -1,9 +1,10 @@
 export enum EProvider {
   STATS = 'statistics',
-  LANGUAGES = 'languages',
   STREAK = 'streak',
+  LANGUAGES = 'languages',
   TROPHY = 'trophy',
   CHART = 'chart',
+  SUMMARY = 'summary',
 }
 
 // Github Readme Stats
@@ -398,8 +399,8 @@ export enum ETrophyTitle {
   ORGANIZATIONS = 'Organizations',
 }
 
-// Chart
-export enum EChartTheme {
+// Summary
+export enum ESummaryTheme {
   CYBERPUNK = '2077',
   ALGOLIA = 'algolia',
   APPRENTICE = 'apprentice',
@@ -464,4 +465,19 @@ export enum EChartTheme {
   VUE = 'vue',
   YEBLU = 'yeblu',
   ZENBURN = 'zenburn',
+}
+
+// Chart
+export enum EChartTheme {
+  DEFAULT = 'default',
+  REACT = 'react',
+  REACT_DARK = 'react-dark',
+  GITHUB = 'github',
+  GITHUB_COMPACT = 'github-compact',
+  XCODE = 'xcode',
+  ROGUE = 'rogue',
+  MERKO = 'merko',
+  VUE = 'vue',
+  TOKYONIGHT = 'tokyo-night',
+  HIGH_CONTRAST = 'high-contrast',
 }

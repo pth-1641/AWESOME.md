@@ -1,6 +1,6 @@
-import { ISocialSetting } from '../components/toolkits/Social/default';
+import { IIconSetting } from '../components/toolkits/Icon/default';
 
-const socialToMarkdown = (props: ISocialSetting) => {
+const socialToMarkdown = (props: IIconSetting) => {
   return `<div align="${props.settings.position}">
   ${props.icons
     .map(

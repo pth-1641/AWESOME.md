@@ -1,5 +1,7 @@
-import { DEFAULT_GAP, DEFAULT_ICON_SIZE } from '../../../constants';
-import { EAlign } from '../../../enums/toolkit.enum';
+import { EAlign } from '../../../enums/share.enum';
+
+export const DEFAULT_GAP = 10;
+export const DEFAULT_ICON_SIZE = 40;
 
 export interface IIcon {
   name: string;

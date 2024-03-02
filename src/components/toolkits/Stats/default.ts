@@ -1,6 +1,6 @@
-import { DEFAULT_LANGUAGE_COUNT } from '../../../constants';
+import { EAlign } from '../../../enums/share.enum';
 import {
-  EChartTheme,
+  ESummaryTheme,
   EGithubReadmeStatsLocale,
   EGithubReadmeStatsTheme,
   ELanguageLayout,
@@ -11,7 +11,12 @@ import {
   EStreakStatsTheme,
   ETrophyTitle,
   ETroyphyStatsTheme,
+  EChartTheme,
 } from './stats.enum';
+
+export const DEFAULT_LANGUAGE_COUNT = 5;
+export const MAX_LANGUAGE_COUNT = 20;
+export const DEFAULT_CHART_HEIGHT = 400;
 
 export interface IGithubReadmeStats {
   theme: EGithubReadmeStatsTheme;
@@ -25,6 +30,7 @@ export interface IGithubReadmeStats {
   hideOpts: string[];
   additionOpts: string[];
   lang: EGithubReadmeStatsLocale;
+  align: EAlign;
 }
 
 export const githubReadmeStats: IGithubReadmeStats = {
@@ -39,6 +45,7 @@ export const githubReadmeStats: IGithubReadmeStats = {
   hideOpts: [],
   additionOpts: [],
   lang: EGithubReadmeStatsLocale.EN,
+  align: EAlign.LEFT,
 };
 
 export interface ILanguagesStats {
@@ -51,11 +58,12 @@ export interface ILanguagesStats {
   progressBar: boolean;
   langCount: number;
   lang: EGithubReadmeStatsLocale;
+  align: EAlign;
 }
 
 export const githubReadmeLanguages: ILanguagesStats = {
   theme: EGithubReadmeStatsTheme.TOKYONIGHT,
-  active: true,
+  active: false,
   layout: ELanguageLayout.DEFAULT,
   hideBorder: true,
   animation: true,
@@ -63,6 +71,7 @@ export const githubReadmeLanguages: ILanguagesStats = {
   progressBar: true,
   langCount: DEFAULT_LANGUAGE_COUNT,
   lang: EGithubReadmeStatsLocale.EN,
+  align: EAlign.LEFT,
 };
 
 export interface IStreakStats {
@@ -75,6 +84,7 @@ export interface IStreakStats {
   hideCurrentStreak: boolean;
   hideLongestStreak: boolean;
   lang: EStreakStatsLocale;
+  align: EAlign;
 }
 
 export const streakStats: IStreakStats = {
@@ -87,6 +97,7 @@ export const streakStats: IStreakStats = {
   hideCurrentStreak: false,
   hideLongestStreak: false,
   lang: EStreakStatsLocale.EN,
+  align: EAlign.LEFT,
 };
 
 export interface ITrophyStats {
@@ -94,6 +105,7 @@ export interface ITrophyStats {
   hideBorder: boolean;
   theme: ETroyphyStatsTheme;
   titles: string[];
+  align: EAlign;
 }
 
 export const trophyStats: ITrophyStats = {
@@ -101,16 +113,43 @@ export const trophyStats: ITrophyStats = {
   hideBorder: true,
   theme: ETroyphyStatsTheme.TOKYONIGHT,
   titles: Object.values(ETrophyTitle),
+  align: EAlign.LEFT,
+};
+
+export interface ISummaryStats {
+  active: boolean;
+  theme: ESummaryTheme;
+  align: EAlign;
+}
+
+export const summaryStats: ISummaryStats = {
+  active: false,
+  theme: ESummaryTheme.TOKYONIGHT,
+  align: EAlign.LEFT,
 };
 
 export interface IChartStats {
-  active: boolean;
   theme: EChartTheme;
+  hide_border: boolean;
+  height: number;
+  custom_title: string;
+  hide_title: boolean;
+  area: boolean;
+  radius: number;
+  active: boolean;
+  align: EAlign;
 }
 
 export const chartStats: IChartStats = {
-  active: false,
   theme: EChartTheme.TOKYONIGHT,
+  hide_border: true,
+  height: DEFAULT_CHART_HEIGHT,
+  area: true,
+  custom_title: '',
+  hide_title: false,
+  radius: 0,
+  active: false,
+  align: EAlign.LEFT,
 };
 
 export interface IStatsSetting {
@@ -120,6 +159,7 @@ export interface IStatsSetting {
   languages: ILanguagesStats;
   streak: IStreakStats;
   trophy: ITrophyStats;
+  summary: ISummaryStats;
   chart: IChartStats;
 }
 
@@ -130,5 +170,6 @@ export const statsSetting: IStatsSetting = {
   languages: githubReadmeLanguages,
   streak: streakStats,
   trophy: trophyStats,
+  summary: summaryStats,
   chart: chartStats,
 };

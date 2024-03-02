@@ -1,4 +1,4 @@
-import { EToolkitType } from '../enums/toolkit.enum';
+import { EToolkitType } from '../enums/share.enum';
 import { IToolkit } from '../interfaces/toolkit';
 
 export const toolkits: IToolkit[] = [
@@ -9,7 +9,7 @@ export const toolkits: IToolkit[] = [
   },
   {
     label: 'Techs',
-    iconName: 'fluent:code-block-28-regular',
+    iconName: 'ph:code-duotone',
     type: EToolkitType.TECH,
   },
   {
@@ -22,9 +22,9 @@ export const toolkits: IToolkit[] = [
     iconName: 'material-symbols-light:share-outline',
     type: EToolkitType.SOCIAL,
   },
+  {
+    label: 'Views',
+    iconName: 'lets-icons:view-light',
+    type: EToolkitType.VIEWS,
+  },
 ];
-
-export const DEFAULT_GAP = 10;
-export const DEFAULT_ICON_SIZE = 40;
-export const DEFAULT_LANGUAGE_COUNT = 5;
-export const MAX_LANGUAGE_COUNT = 20;

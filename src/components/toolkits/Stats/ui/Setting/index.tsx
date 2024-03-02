@@ -24,11 +24,13 @@ import CustomSelect from '../../../../common/CustomSelect';
 import CustomTabs from '../../../../common/CustomTabs';
 import { IStatsSetting } from '../../default';
 import { EProvider } from '../../stats.enum';
+import SummarySetting from './Summary';
 import ChartSetting from './Chart';
 import LanguagesSetting from './Languages';
 import StatsSetting from './Stats';
 import StreakSetting from './Streak';
 import TrophySetting from './Trophy';
+import { EAlign } from '../../../../../enums/share.enum';
 
 const Setting = ({ id }: { id: string }) => {
   const props = useSectionProps<IStatsSetting>(id);
@@ -84,6 +86,12 @@ const Layout = (props: IStatsSetting) => {
         label="Github Username"
         value={props.username}
         capitalize={false}
+        onChange={(username) =>
+          editSection({
+            ...props,
+            username,
+          })
+        }
       />
       <h6 class="mt-4">Providers</h6>
       <DndContext
@@ -120,6 +128,7 @@ const Config = (props: IStatsSetting) => {
       {provider === EProvider.LANGUAGES && <LanguagesSetting {...props} />}
       {provider === EProvider.STREAK && <StreakSetting {...props} />}
       {provider === EProvider.TROPHY && <TrophySetting {...props} />}
+      {provider === EProvider.SUMMARY && <SummarySetting {...props} />}
       {provider === EProvider.CHART && <ChartSetting {...props} />}
     </>
   );
@@ -142,12 +151,12 @@ const Provider = (props: {
 
   const key = useMemo(
     () => getEnumKey(EProvider, props.name)?.toLowerCase(),
-    []
+    [props.settings]
   ) as keyof IStatsSetting;
 
   return (
-    <li class="amd-border list-none mt-2 p-2.5" style={style}>
-      <div class="flex gap-2">
+    <li class="amd-border list-none mt-2" style={style}>
+      <div class="flex gap-2 p-2">
         <div
           class="flex items-center gap-2 flex-1"
           ref={setNodeRef}
@@ -155,7 +164,7 @@ const Provider = (props: {
           {...listeners}
         >
           <button>
-            <Icon icon="carbon:drag-vertical" height={20} width={20} />
+            <Icon icon="fluent:drag-20-regular" height={20} width={20} />
           </button>
           <div class="flex-1 select-none capitalize">{props.name}</div>
         </div>
@@ -176,13 +185,41 @@ const Provider = (props: {
           {
             // @ts-ignore
             props.settings[key].active ? (
-              <Icon icon="clarity:eye-hide-line" height={18} />
-            ) : (
               <Icon icon="clarity:eye-line" height={18} />
+            ) : (
+              <Icon icon="clarity:eye-hide-line" height={18} />
             )
           }
         </button>
       </div>
+      <ul class="flex border-t border-white/15">
+        {Object.values(EAlign).map((align, index) => (
+          <button
+            class={`w-full flex justify-center py-1.5 border-white/15 ${
+              index !== 0 ? 'border-l' : ''
+            }`}
+            key={align}
+            onClick={() =>
+              editSection({
+                ...props.settings,
+                [key]: {
+                  // @ts-ignore
+                  ...props.settings[key],
+                  align,
+                },
+              })
+            }
+          >
+            <Icon
+              icon={`ant-design:pic-${align}-outlined`}
+              className={
+                // @ts-ignore
+                props.settings[key].align === align ? 'text-emerald-500' : ''
+              }
+            />
+          </button>
+        ))}
+      </ul>
     </li>
   );
 };

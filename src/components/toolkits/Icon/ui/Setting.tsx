@@ -22,7 +22,7 @@ import { IIconSetting, IIcon } from '../default';
 import CustomInputNumber from '../../../common/CustomInputNumber';
 import CustomSelect from '../../../common/CustomSelect';
 import CustomTabs from '../../../common/CustomTabs';
-import { EAlign, EToolkitType } from '../../../../enums/toolkit.enum';
+import { EAlign, EToolkitType } from '../../../../enums/share.enum';
 
 const Setting = ({ id }: { id: string }) => {
   const props = useSectionProps<IIconSetting>(id);

@@ -1,8 +1,9 @@
-import { EToolkitType } from '../enums/toolkit.enum';
+import { EToolkitType } from '../enums/share.enum';
 import { useAppStore } from '../store/app.store';
 import TextPreview from './toolkits/Text/ui/Preview';
 import IconPreview from './toolkits/Icon/ui/Preview';
 import StatsPreview from './toolkits/Stats/ui/Preview';
+import ViewsPreview from './toolkits/Views/ui/Preview';
 
 export const PreviewUI = () => {
   const sections = useAppStore((state) => state.sections);
@@ -23,6 +24,9 @@ export const PreviewUI = () => {
           )}
           {section.type === EToolkitType.STATS && (
             <StatsPreview id={section.id} />
+          )}
+          {section.type === EToolkitType.VIEWS && (
+            <ViewsPreview id={section.id} />
           )}
         </div>
       ))}

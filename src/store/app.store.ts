@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { EToolkitType } from '../enums/toolkit.enum';
+import { EToolkitType } from '../enums/share.enum';
 
 interface AppState {
   sections: any[];

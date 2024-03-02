@@ -4,6 +4,7 @@ import socialToMarkdown from './social2md.utill';
 import objectToUrl from './obj2url.util.ts';
 import { getEnumKey, isInEnum } from './enums.util.ts';
 import { opacityToHex, hexToOpacity } from './hex.util.ts';
+import { alignImageStyle } from './image.util.ts';
 
 export {
   textToMarkdown,
@@ -14,4 +15,5 @@ export {
   isInEnum,
   opacityToHex,
   hexToOpacity,
+  alignImageStyle,
 };

@@ -1,4 +1,4 @@
-import { EToolkitType } from '../enums/toolkit.enum';
+import { EToolkitType } from '../enums/share.enum';
 import { useSectionProps } from '../hooks';
 import { useAppStore } from '../store/app.store';
 import TextSetting from './toolkits/Text/ui/Setting';

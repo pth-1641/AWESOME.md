@@ -1,4 +1,4 @@
-import { EToolkitType } from '../enums/toolkit.enum';
+import { EToolkitType } from '../enums/share.enum';
 import { techsToMarkdown, textToMarkdown } from '../utils';
 import socialToMarkdown from '../utils/social2md.utill';
 

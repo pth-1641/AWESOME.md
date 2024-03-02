@@ -1,4 +1,4 @@
-import { EAlign } from '../../../../../enums/toolkit.enum';
+import { EAlign } from '../../../../../enums/share.enum';
 import { useAppStore } from '../../../../../store/app.store';
 import CustomSelect from '../../../../common/CustomSelect';
 import { ITextSetting } from '../../default';

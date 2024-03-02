@@ -3,6 +3,7 @@ export enum EToolkitType {
   TECH = 'tech',
   STATS = 'stats',
   SOCIAL = 'social',
+  VIEWS = 'views',
 }
 
 export enum EAlign {

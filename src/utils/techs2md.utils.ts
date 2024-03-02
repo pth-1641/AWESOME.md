@@ -1,11 +1,11 @@
-import { ITechSetting } from '../components/toolkits/Techs/default';
+import { IIconSetting } from '../components/toolkits/Icon/default';
 
-const techsToMarkdown = (props: ITechSetting) => {
+const techsToMarkdown = (props: IIconSetting) => {
   return `<div align="${props.settings.position}">
   ${props.icons
     .map(
       (icon) =>
-        `<img src="https://api.iconify.design/${icon.replace(
+        `<img src="https://api.iconify.design/${icon.name.replace(
           ':',
           '/'
         )}.svg" alt="${icon}" height="${props.settings.size}" />
