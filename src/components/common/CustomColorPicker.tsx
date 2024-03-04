@@ -37,7 +37,7 @@ const CustomColorPicker = ({
 
   return (
     <div class={className}>
-      <h6 class="mb-2">{label}</h6>
+      {label && <h6 class="mb-2 mt-4">{label}</h6>}
       <div class="flex items-center gap-2">
         <label class="flex items-center gap-1.5 rounded border border-white/25 py-1 px-1.5">
           <input

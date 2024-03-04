@@ -38,7 +38,7 @@ const Setting = ({ id }: { id: string }) => {
   if (!props) return null;
 
   return (
-    <div>
+    <>
       <CustomTabs
         items={[
           {
@@ -55,7 +55,7 @@ const Setting = ({ id }: { id: string }) => {
           },
         ]}
       />
-    </div>
+    </>
   );
 };
 

@@ -146,7 +146,7 @@ const Capsule = (props: ITextSetting) => {
           })
         }
       />
-      <div class="grid mt-4 grid-cols-2 gap-y-4 gap-x-5">
+      <div class="grid grid-cols-2 gap-x-5">
         <CustomInputNumber
           value={props.capsule.height}
           label="Height"
@@ -216,7 +216,6 @@ const Capsule = (props: ITextSetting) => {
         />
       </div>
       <CustomSwitch
-        className="mt-4"
         isActive={props.capsule.enableStroke}
         label="Stroke"
         onChange={(enableStroke) =>
@@ -230,7 +229,7 @@ const Capsule = (props: ITextSetting) => {
         }
       />
       {props.capsule.enableStroke && (
-        <div class="flex items-center justify-between gap-5 mt-4">
+        <div class="flex items-center justify-between gap-5">
           <CustomColorPicker
             label="Color"
             value={props.capsule.stroke}

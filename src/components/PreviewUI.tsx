@@ -6,13 +6,18 @@ import StatsPreview from './toolkits/Stats/ui/Preview';
 import ViewsPreview from './toolkits/Views/ui/Preview';
 
 export const PreviewUI = () => {
-  const sections = useAppStore((state) => state.sections);
-  const focusOnSection = useAppStore((state) => state.focusOnSection);
+  const { sectionId, focusOnSection, sections } = useAppStore();
 
   return (
     <div class="flex-1 amd-border p-5 flex flex-col gap-3 overflow-auto">
       {sections.map((section) => (
-        <div key={section.id} onClick={() => focusOnSection(section.id)}>
+        <div
+          class={`border rounded-md p-4 hover:border-emerald-400 cursor-pointer ${
+            sectionId === section.id ? 'border-emerald-400' : 'border-white/15'
+          }`}
+          key={section.id}
+          onClick={() => focusOnSection(section.id)}
+        >
           {section.type === EToolkitType.TEXT && (
             <TextPreview id={section.id} />
           )}

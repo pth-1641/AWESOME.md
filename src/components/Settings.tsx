@@ -4,6 +4,7 @@ import { useAppStore } from '../store/app.store';
 import TextSetting from './toolkits/Text/ui/Setting';
 import IconSetting from './toolkits/Icon/ui/Setting';
 import StatsSetting from './toolkits/Stats/ui/Setting';
+import ViewsSetting from './toolkits/Views/ui/Setting';
 
 export const Settings = () => {
   const sectionId = useAppStore((state) => state.sectionId);
@@ -17,6 +18,7 @@ export const Settings = () => {
       {section.type === EToolkitType.TECH && <IconSetting id={sectionId} />}
       {section.type === EToolkitType.SOCIAL && <IconSetting id={sectionId} />}
       {section.type === EToolkitType.STATS && <StatsSetting id={sectionId} />}
+      {section.type === EToolkitType.VIEWS && <ViewsSetting id={sectionId} />}
     </div>
   );
 };

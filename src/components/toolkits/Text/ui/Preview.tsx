@@ -1,24 +1,15 @@
-import { useSectionProps } from '../../../../hooks';
-import { useAppStore } from '../../../../store/app.store';
 import { h } from 'preact';
-import { ITextSetting } from '../default';
 import { useMemo } from 'preact/hooks';
-import {
-  ECapsuleAnimation,
-  ECapsuleBackgroundType,
-  ECapsuleType,
-  ETextProvider,
-  ETextStyle,
-} from '../text.enum';
-import { isInEnum, objectToUrl } from '../../../../utils';
+import { useSectionProps } from '../../../../hooks';
 import {
   capsuleSearchParams,
   typingSearchParams,
 } from '../../../../utils/text2md.utils';
+import { ITextSetting } from '../default';
+import { ETextProvider, ETextStyle } from '../text.enum';
 
 const Preview = ({ id }: { id: string }) => {
   const props = useSectionProps<ITextSetting>(id);
-  const sectionId = useAppStore((state) => state.sectionId);
 
   if (!props) return null;
   const { text, value, provider } = props;
@@ -34,11 +25,7 @@ const Preview = ({ id }: { id: string }) => {
   }, [text.tag]);
 
   return (
-    <div
-      class={`border rounded-md p-4 hover:border-emerald-400 cursor-pointer break-all ${
-        sectionId === id ? 'border-emerald-400' : 'border-white/15'
-      }`}
-    >
+    <>
       {provider === ETextProvider.TEXT && (
         <>
           {h(
@@ -68,7 +55,7 @@ const Preview = ({ id }: { id: string }) => {
           )}`}
         />
       )}
-    </div>
+    </>
   );
 };
 

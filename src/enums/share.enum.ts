@@ -4,6 +4,9 @@ export enum EToolkitType {
   STATS = 'stats',
   SOCIAL = 'social',
   VIEWS = 'views',
+  MEME = 'meme',
+  QUOTE = 'quote',
+  IMAGE = 'image',
 }
 
 export enum EAlign {

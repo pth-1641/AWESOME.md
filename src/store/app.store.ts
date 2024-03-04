@@ -4,7 +4,7 @@ import { EToolkitType } from '../enums/share.enum';
 interface AppState {
   sections: any[];
   sectionId: string | null;
-  addSection: (sectionType: any) => void;
+  addSection: (section: any) => void;
   focusOnSection: (id: string) => void;
   editSection: (id: any) => void;
 }
@@ -13,7 +13,7 @@ export const useAppStore = create<AppState>((set) => ({
   sections: [],
   sectionId: null,
 
-  addSection: <T>(section: T & { id: string; type: keyof EToolkitType }) =>
+  addSection: <T>(section: T & { id: string; type: EToolkitType }) =>
     set((state) => ({
       sections: [...state.sections, section],
     })),

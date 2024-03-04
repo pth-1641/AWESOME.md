@@ -1,5 +1,4 @@
 import { useSectionProps } from '../../../../hooks';
-import { useAppStore } from '../../../../store/app.store';
 import { alignImageStyle, getEnumKey, objectToUrl } from '../../../../utils';
 import { IStatsSetting } from '../default';
 import {
@@ -12,17 +11,12 @@ import {
 
 const Preview = ({ id }: { id: string }) => {
   const props = useSectionProps<IStatsSetting>(id);
-  const sectionId = useAppStore((state) => state.sectionId);
 
   if (!props) return null;
   const { stats, languages, streak, trophy, summary, chart, username } = props;
 
   return (
-    <div
-      class={`border rounded-md p-4 hover:border-emerald-400 cursor-pointer ${
-        sectionId === id ? 'border-emerald-400' : 'border-white/15'
-      }`}
-    >
+    <>
       {props.providers.map((provider) => (
         <>
           {provider === EProvider.STATS && stats.active && (
@@ -130,7 +124,7 @@ const Preview = ({ id }: { id: string }) => {
           )}
         </>
       ))}
-    </div>
+    </>
   );
 };
 

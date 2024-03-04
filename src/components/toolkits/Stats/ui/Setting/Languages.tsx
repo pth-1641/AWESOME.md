@@ -43,7 +43,7 @@ const Languages = (props: IStatsSetting) => {
         }
       />
       <CustomSelect
-        label="Locale"
+        label="Language"
         options={Object.values(EGithubReadmeStatsLocale)}
         value={props.languages.lang}
         onChange={(lang) =>
@@ -71,7 +71,7 @@ const Languages = (props: IStatsSetting) => {
           })
         }
       />
-      <div class="grid grid-cols-2 gap-2 mt-4">
+      <div class="grid grid-cols-2 gap-2">
         <CustomSwitch
           isActive={props.languages.hideBorder}
           label="Hide Border"

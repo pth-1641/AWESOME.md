@@ -29,7 +29,7 @@ const Streak = (props: IStatsSetting) => {
         }
       />
       <CustomSelect
-        label="Locale"
+        label="Language"
         options={Object.values(EStreakStatsLocale)}
         value={props.streak.lang}
         className="mt-4"
@@ -58,7 +58,7 @@ const Streak = (props: IStatsSetting) => {
           })
         }
       />
-      <div class="grid grid-cols-2 gap-2 mt-4">
+      <div class="grid grid-cols-2 gap-2">
         <CustomSwitch
           isActive={props.streak.hideBorder}
           label="Hide Border"

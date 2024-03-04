@@ -54,7 +54,7 @@ const Typing = (props: ITextSetting) => {
           })
         }
       />
-      <div class="grid mt-4 grid-cols-2 gap-x-5">
+      <div class="grid grid-cols-2 gap-x-5">
         <CustomSwitch
           label="Repeat"
           isActive={props.typing.repeat}
@@ -82,7 +82,7 @@ const Typing = (props: ITextSetting) => {
           }
         />
       </div>
-      <div class="grid grid-cols-2 gap-x-5 gap-y-4 mt-4">
+      <div class="grid grid-cols-2 gap-x-5">
         <CustomInputNumber
           label="Font size"
           value={props.typing.fontSize}

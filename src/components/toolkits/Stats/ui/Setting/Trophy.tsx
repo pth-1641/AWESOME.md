@@ -27,7 +27,6 @@ const Trophy = (props: IStatsSetting) => {
         label="Theme"
         options={Object.values(ETroyphyStatsTheme)}
         value={props.trophy.theme}
-        className="mt-4"
         onChange={(theme) =>
           editSection({
             ...props,

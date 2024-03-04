@@ -20,7 +20,6 @@ const Stats = (props: IStatsSetting) => {
         label="Icon"
         options={Object.values(ERankIcon)}
         value={props.stats.rankIcon}
-        className="mt-4"
         onChange={(rankIcon) =>
           editSection({
             ...props,
@@ -35,7 +34,6 @@ const Stats = (props: IStatsSetting) => {
         label="Locale"
         options={Object.values(EGithubReadmeStatsLocale)}
         value={props.stats.lang}
-        className="mt-4"
         onChange={(lang) =>
           editSection({
             ...props,
@@ -50,7 +48,6 @@ const Stats = (props: IStatsSetting) => {
         label="Theme"
         options={Object.values(EGithubReadmeStatsTheme)}
         value={props.stats.theme}
-        className="mt-4"
         onChange={(theme) =>
           editSection({
             ...props,
@@ -61,7 +58,7 @@ const Stats = (props: IStatsSetting) => {
           })
         }
       />
-      <div class="grid grid-cols-2 gap-2 mt-4">
+      <div class="grid grid-cols-2 gap-2">
         <CustomSwitch
           isActive={props.stats.hideBorder}
           label="Hide Border"

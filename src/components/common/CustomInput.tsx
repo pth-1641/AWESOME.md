@@ -16,7 +16,7 @@ const CustomInput = ({
   capitalize = true,
 }: CustomInputProps) => {
   return (
-    <div class={className}>
+    <div class={`mt-4 ${className}`}>
       <h6 class="font-semibold">{label}</h6>
       <span class="text-xs text-gray-400 leading-5 block">{subtitle}</span>
       <input

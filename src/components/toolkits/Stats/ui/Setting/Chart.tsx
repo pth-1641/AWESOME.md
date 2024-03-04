@@ -29,7 +29,6 @@ const Chart = (props: IStatsSetting) => {
         label="Theme"
         options={Object.values(EChartTheme)}
         value={props.chart.theme}
-        className="mt-4"
         onChange={(theme) =>
           editSection({
             ...props,
@@ -40,7 +39,7 @@ const Chart = (props: IStatsSetting) => {
           })
         }
       />
-      <div class="grid grid-cols-2 gap-4 mt-4">
+      <div class="grid grid-cols-2 gap-x-4">
         <CustomSwitch
           label="Hide Title"
           isActive={props.chart.hide_title}

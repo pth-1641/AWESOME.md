@@ -9,7 +9,7 @@ export const toolkits: IToolkit[] = [
   },
   {
     label: 'Techs',
-    iconName: 'ph:code-duotone',
+    iconName: 'fluent:code-20-regular',
     type: EToolkitType.TECH,
   },
   {
@@ -26,5 +26,20 @@ export const toolkits: IToolkit[] = [
     label: 'Views',
     iconName: 'lets-icons:view-light',
     type: EToolkitType.VIEWS,
+  },
+  {
+    label: 'Image',
+    iconName: 'ph:image-thin',
+    type: EToolkitType.IMAGE,
+  },
+  {
+    label: 'Meme',
+    iconName: 'arcticons:memetastic',
+    type: EToolkitType.MEME,
+  },
+  {
+    label: 'Quote',
+    iconName: 'f7:quote-bubble',
+    type: EToolkitType.QUOTE,
   },
 ];
