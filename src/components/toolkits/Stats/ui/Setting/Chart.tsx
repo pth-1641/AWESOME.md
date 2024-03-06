@@ -23,7 +23,6 @@ const Chart = (props: IStatsSetting) => {
             },
           })
         }
-        capitalize={false}
       />
       <CustomSelect
         label="Theme"

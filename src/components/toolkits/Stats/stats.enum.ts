@@ -1,4 +1,4 @@
-export enum EProvider {
+export enum EStatsProvider {
   STATS = 'statistics',
   STREAK = 'streak',
   LANGUAGES = 'languages',

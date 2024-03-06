@@ -13,7 +13,7 @@ const CustomInput = ({
   value,
   className = '',
   subtitle,
-  capitalize = true,
+  capitalize,
 }: CustomInputProps) => {
   return (
     <div class={`mt-4 ${className}`}>

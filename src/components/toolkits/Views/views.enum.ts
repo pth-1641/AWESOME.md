@@ -1,6 +1,7 @@
 export enum EViewProvider {
   MOE = 'moe',
   KOMAREV = 'komarev',
+  VISIT = 'visit',
 }
 
 export enum EMoeTheme {
@@ -15,4 +16,13 @@ export enum EKomarevStyle {
   FLAT_SQUARE = 'flat-square',
   PLASTIC = 'plastic',
   FOR_THE_BADGE = 'for-the-badge',
+}
+
+export enum EVisitCounterStyle {
+  DIGITAL = 'digi',
+  DIGITAL_ITALIC = 'digii',
+  ELECTROLIZE = 'electrolize',
+  ALIEN = 'alien',
+  LINE_BEAM = 'linebeam',
+  LEDBOARD = 'ledboard',
 }

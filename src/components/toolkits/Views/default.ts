@@ -1,5 +1,10 @@
 import { EAlign } from '../../../enums/share.enum';
-import { EKomarevStyle, EMoeTheme, EViewProvider } from './views.enum';
+import {
+  EKomarevStyle,
+  EMoeTheme,
+  EViewProvider,
+  EVisitCounterStyle,
+} from './views.enum';
 
 export interface IMoeCounter {
   theme: EMoeTheme;
@@ -13,12 +18,24 @@ export interface IKomarevCounter {
   additionViews: number;
 }
 
+export interface IVisitCounter {
+  s: number; // font size
+  c: string; // color
+  bg: string; // background color
+  ff: EVisitCounterStyle; // style
+  no: number; // min number showed
+  tb: string; // text before
+  ta: string; // text after
+}
+
+// General
 export interface IViewsSetting {
   username: string;
   provider: EViewProvider;
   moeCounter: IMoeCounter;
   komarevCounter: IKomarevCounter;
   align: EAlign;
+  visitCounter: IVisitCounter;
 }
 
 export const viewsSetting: IViewsSetting = {
@@ -32,5 +49,14 @@ export const viewsSetting: IViewsSetting = {
     label: 'Profile views',
     activeAddition: false,
     additionViews: 0,
+  },
+  visitCounter: {
+    bg: '#00000000',
+    c: '#00ff00',
+    ff: EVisitCounterStyle.DIGITAL,
+    no: 2,
+    s: 40,
+    ta: '',
+    tb: '',
   },
 };

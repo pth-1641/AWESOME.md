@@ -23,7 +23,7 @@ import CustomInput from '../../../../common/CustomInput';
 import CustomSelect from '../../../../common/CustomSelect';
 import CustomTabs from '../../../../common/CustomTabs';
 import { IStatsSetting } from '../../default';
-import { EProvider } from '../../stats.enum';
+import { EStatsProvider } from '../../stats.enum';
 import SummarySetting from './Summary';
 import ChartSetting from './Chart';
 import LanguagesSetting from './Languages';
@@ -85,7 +85,6 @@ const Layout = (props: IStatsSetting) => {
       <CustomInput
         label="Github Username"
         value={props.username}
-        capitalize={false}
         onChange={(username) =>
           editSection({
             ...props,
@@ -113,23 +112,23 @@ const Layout = (props: IStatsSetting) => {
 };
 
 const Config = (props: IStatsSetting) => {
-  const [provider, setProvider] = useState<string>(EProvider.STATS);
+  const [provider, setProvider] = useState<string>(EStatsProvider.STATS);
 
   return (
     <>
       <CustomSelect
         label="Providers"
         value={provider}
-        options={Object.values(EProvider)}
+        options={Object.values(EStatsProvider)}
         onChange={(value) => setProvider(value)}
         className="mb-4"
       />
-      {provider === EProvider.STATS && <StatsSetting {...props} />}
-      {provider === EProvider.LANGUAGES && <LanguagesSetting {...props} />}
-      {provider === EProvider.STREAK && <StreakSetting {...props} />}
-      {provider === EProvider.TROPHY && <TrophySetting {...props} />}
-      {provider === EProvider.SUMMARY && <SummarySetting {...props} />}
-      {provider === EProvider.CHART && <ChartSetting {...props} />}
+      {provider === EStatsProvider.STATS && <StatsSetting {...props} />}
+      {provider === EStatsProvider.LANGUAGES && <LanguagesSetting {...props} />}
+      {provider === EStatsProvider.STREAK && <StreakSetting {...props} />}
+      {provider === EStatsProvider.TROPHY && <TrophySetting {...props} />}
+      {provider === EStatsProvider.SUMMARY && <SummarySetting {...props} />}
+      {provider === EStatsProvider.CHART && <ChartSetting {...props} />}
     </>
   );
 };
@@ -150,7 +149,7 @@ const Provider = (props: {
   };
 
   const key = useMemo(
-    () => getEnumKey(EProvider, props.name)?.toLowerCase(),
+    () => getEnumKey(EStatsProvider, props.name)?.toLowerCase(),
     [props.settings]
   ) as keyof IStatsSetting;
 

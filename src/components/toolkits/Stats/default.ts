@@ -4,7 +4,7 @@ import {
   EGithubReadmeStatsLocale,
   EGithubReadmeStatsTheme,
   ELanguageLayout,
-  EProvider,
+  EStatsProvider,
   ERankIcon,
   EStreakStatsLocale,
   EStreakStatsMode,
@@ -154,7 +154,7 @@ export const chartStats: IChartStats = {
 
 export interface IStatsSetting {
   username: string;
-  providers: EProvider[];
+  providers: EStatsProvider[];
   stats: IGithubReadmeStats;
   languages: ILanguagesStats;
   streak: IStreakStats;
@@ -165,7 +165,7 @@ export interface IStatsSetting {
 
 export const statsSetting: IStatsSetting = {
   username: 'pth-1641',
-  providers: Object.values(EProvider),
+  providers: Object.values(EStatsProvider),
   stats: githubReadmeStats,
   languages: githubReadmeLanguages,
   streak: streakStats,

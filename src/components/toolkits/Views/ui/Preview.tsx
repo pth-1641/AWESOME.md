@@ -36,6 +36,17 @@ const Preview = ({ id }: { id: string }) => {
           style={alignImageStyle(props.align)}
         />
       )}
+      {props.provider === EViewProvider.VISIT && (
+        <img
+          src={`https://visit-counter.vercel.app/counter.png?${objectToUrl({
+            ...props.visitCounter,
+            page: username,
+            ta: ` ${props.visitCounter.ta.trim()}`,
+            tb: `${props.visitCounter.tb.trim()} `,
+          }).replace(/\%23/g, '')}`}
+          style={alignImageStyle(props.align)}
+        />
+      )}
     </>
   );
 };

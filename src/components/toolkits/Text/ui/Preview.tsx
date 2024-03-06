@@ -1,10 +1,7 @@
 import { h } from 'preact';
 import { useMemo } from 'preact/hooks';
 import { useSectionProps } from '../../../../hooks';
-import {
-  capsuleSearchParams,
-  typingSearchParams,
-} from '../../../../utils/text2md.utils';
+import { capsuleTextUrl, typingTextUrl } from '../../../../utils/text2md.utils';
 import { ITextSetting } from '../default';
 import { ETextProvider, ETextStyle } from '../text.enum';
 
@@ -41,19 +38,9 @@ const Preview = ({ id }: { id: string }) => {
           {isLargeHeading && <div class="mt-2 h-px bg-white/10" />}
         </>
       )}
-      {provider === ETextProvider.TYPING && (
-        <img
-          src={`https://readme-typing-svg.demolab.com?${typingSearchParams(
-            props
-          )}`}
-        />
-      )}
+      {provider === ETextProvider.TYPING && <img src={typingTextUrl(props)} />}
       {provider === ETextProvider.CAPSULE && (
-        <img
-          src={`https://capsule-render.vercel.app/api?${capsuleSearchParams(
-            props
-          )}`}
-        />
+        <img src={capsuleTextUrl(props)} />
       )}
     </>
   );

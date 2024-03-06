@@ -27,7 +27,6 @@ const Komarev = (props: IViewsSetting) => {
       />
       <CustomInput
         label="Label"
-        capitalize={false}
         value={props.komarevCounter.label}
         onChange={(label) =>
           editSection({

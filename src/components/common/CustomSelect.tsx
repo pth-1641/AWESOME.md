@@ -44,7 +44,7 @@ const CustomSelect = ({
               }`}
               onMouseDown={() => onChange?.(option)}
             >
-              {option.replace(/-|_/g, ' ')}
+              {option.toLowerCase().replace(/-|_/g, ' ')}
             </li>
           ))}
         </ul>

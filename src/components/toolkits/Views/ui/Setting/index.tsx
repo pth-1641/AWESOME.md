@@ -7,6 +7,7 @@ import { IViewsSetting } from '../../default';
 import { EViewProvider } from '../../views.enum';
 import MoeSetting from './Moe';
 import KomarevSetting from './Komarev';
+import VisitCounterSetting from './Visit';
 
 const Setting = ({ id }: { id: string }) => {
   const props = useSectionProps<IViewsSetting>(id);
@@ -27,7 +28,6 @@ const Setting = ({ id }: { id: string }) => {
                 <CustomInput
                   label="Github Username"
                   value={props.username}
-                  capitalize={false}
                   onChange={(username) =>
                     editSection({
                       ...props,
@@ -61,6 +61,9 @@ const Setting = ({ id }: { id: string }) => {
                 )}
                 {props.provider === EViewProvider.KOMAREV && (
                   <KomarevSetting {...props} />
+                )}
+                {props.provider === EViewProvider.VISIT && (
+                  <VisitCounterSetting {...props} />
                 )}
               </>
             ),

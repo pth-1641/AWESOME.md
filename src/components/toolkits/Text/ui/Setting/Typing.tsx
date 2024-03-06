@@ -14,6 +14,7 @@ const Typing = (props: ITextSetting) => {
       <CustomInput
         value={props.typing.font}
         label="Font"
+        capitalize
         subtitle="Name from Google Fonts"
         onChange={(font) =>
           editSection({

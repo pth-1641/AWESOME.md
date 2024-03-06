@@ -10,15 +10,11 @@ import {
 
 const textToMarkdown = (props: ITextSetting) => {
   if (props.provider === ETextProvider.TYPING) {
-    return `<img src="https://readme-typing-svg.demolab.com?${typingSearchParams(
-      props
-    )}" />`;
+    return `<img src="${typingTextUrl(props)}" alt=""/>`;
   }
 
   if (props.provider === ETextProvider.CAPSULE) {
-    return `<img src="https://capsule-render.vercel.app/api?${capsuleSearchParams(
-      props
-    )}" />`;
+    return `<img src="${capsuleTextUrl(props)}" alt="" />`;
   }
 
   const textStyleSymbol = () => {
@@ -37,8 +33,8 @@ const textToMarkdown = (props: ITextSetting) => {
 </${props.text.tag}>`;
 };
 
-export const typingSearchParams = (setting: ITextSetting) => {
-  return objectToUrl({
+const typingTextUrl = (setting: ITextSetting) => {
+  return `https://readme-typing-svg.demolab.com?${objectToUrl({
     ...setting.typing,
     lines: setting.value.replace(/\n/g, ';').replace(/\s+/g, ' '),
     vCenter: true,
@@ -46,11 +42,11 @@ export const typingSearchParams = (setting: ITextSetting) => {
     duration: setting.typing.duration * 1000,
     pause: setting.typing.pause * 1000,
     font: setting.typing.font.replace(/(^\w|\s\w)/g, (w) => w.toUpperCase()),
-  });
+  })}`;
 };
 
-export const capsuleSearchParams = (setting: ITextSetting) => {
-  return objectToUrl(
+const capsuleTextUrl = (setting: ITextSetting) => {
+  return `https://capsule-render.vercel.app/api?${objectToUrl(
     {
       ...setting.capsule,
       text: setting.value,
@@ -86,7 +82,8 @@ export const capsuleSearchParams = (setting: ITextSetting) => {
     {
       omit: ['backgroundType', 'enableStroke'],
     }
-  ).replace(/%23/g, '');
+  ).replace(/%23/g, '')}`;
 };
 
+export { typingTextUrl, capsuleTextUrl };
 export default textToMarkdown;
