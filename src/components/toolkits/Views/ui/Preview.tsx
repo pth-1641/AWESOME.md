@@ -1,7 +1,12 @@
 import { useSectionProps } from '../../../../hooks';
 import { alignImageStyle, objectToUrl } from '../../../../utils';
 import { IViewsSetting } from '../default';
-import { EViewProvider } from '../views.enum';
+import {
+  EHitsViewType,
+  EViewProvider,
+  EVisitProIcon,
+  EVisitProTheme,
+} from '../views.enum';
 
 const Preview = ({ id }: { id: string }) => {
   const props = useSectionProps<IViewsSetting>(id);
@@ -10,30 +15,24 @@ const Preview = ({ id }: { id: string }) => {
   const { username } = props;
 
   return (
-    <>
+    <div style={alignImageStyle(props.align)} class="w-max">
       {props.provider === EViewProvider.MOE && (
         <img
           src={`https://count.getloli.com/get/@${username}?theme=${props.moeCounter.theme}`}
-          style={alignImageStyle(props.align)}
         />
       )}
-      {props.provider === EViewProvider.KOMAREV && (
+      {props.provider === EViewProvider.HITS && (
         <img
-          src={`https://komarev.com/ghpvc?${objectToUrl(
+          src={`https://hits.sh/github.com/${username}/hits.svg?${objectToUrl(
             {
-              username,
-              ...props.komarevCounter,
-              base: props.komarevCounter.additionViews,
+              ...props.hitsCounter,
+              view:
+                props.hitsCounter.viewType === EHitsViewType.TODAY
+                  ? 'today-total'
+                  : 'total',
             },
-            {
-              omit: [
-                'additionViews',
-                'activeAddition',
-                props.komarevCounter.abbreviated ? '' : 'abbreviated',
-              ],
-            }
+            { omit: ['viewType'] }
           )}`}
-          style={alignImageStyle(props.align)}
         />
       )}
       {props.provider === EViewProvider.VISIT && (
@@ -44,10 +43,29 @@ const Preview = ({ id }: { id: string }) => {
             ta: ` ${props.visitCounter.ta.trim()}`,
             tb: `${props.visitCounter.tb.trim()} `,
           }).replace(/\%23/g, '')}`}
-          style={alignImageStyle(props.align)}
         />
       )}
-    </>
+      {props.provider === EViewProvider.VISIT_PRO && (
+        <img
+          src={`https://visitcount.itsvg.in/api?${objectToUrl(
+            {
+              id: username,
+              ...props.visitProCounter,
+            },
+            {
+              omit: [
+                props.visitProCounter.color === EVisitProTheme.RANDOM
+                  ? 'color'
+                  : '',
+                props.visitProCounter.icon === EVisitProIcon.RANDOM
+                  ? 'icon'
+                  : '',
+              ],
+            }
+          )}`}
+        />
+      )}
+    </div>
   );
 };
 

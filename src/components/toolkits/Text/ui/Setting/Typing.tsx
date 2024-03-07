@@ -15,7 +15,19 @@ const Typing = (props: ITextSetting) => {
         value={props.typing.font}
         label="Font"
         capitalize
-        subtitle="Name from Google Fonts"
+        subtitle={
+          <>
+            Name from{' '}
+            <a
+              class="text-emerald-500"
+              target="blank"
+              href="https://fonts.google.com"
+              rel="noopener noreferer"
+            >
+              Google Fonts
+            </a>
+          </>
+        }
         onChange={(font) =>
           editSection({
             ...props,

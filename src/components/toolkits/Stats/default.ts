@@ -14,10 +14,6 @@ import {
   EChartTheme,
 } from './stats.enum';
 
-export const DEFAULT_LANGUAGE_COUNT = 5;
-export const MAX_LANGUAGE_COUNT = 20;
-export const DEFAULT_CHART_HEIGHT = 400;
-
 export interface IGithubReadmeStats {
   theme: EGithubReadmeStatsTheme;
   hideBorder: boolean;
@@ -69,7 +65,7 @@ export const githubReadmeLanguages: ILanguagesStats = {
   animation: true,
   hideTitle: false,
   progressBar: true,
-  langCount: DEFAULT_LANGUAGE_COUNT,
+  langCount: 5,
   lang: EGithubReadmeStatsLocale.EN,
   align: EAlign.LEFT,
 };
@@ -143,7 +139,7 @@ export interface IChartStats {
 export const chartStats: IChartStats = {
   theme: EChartTheme.TOKYONIGHT,
   hide_border: true,
-  height: DEFAULT_CHART_HEIGHT,
+  height: 400,
   area: true,
   custom_title: '',
   hide_title: false,

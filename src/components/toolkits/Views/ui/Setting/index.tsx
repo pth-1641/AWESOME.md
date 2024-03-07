@@ -6,8 +6,10 @@ import CustomTabs from '../../../../common/CustomTabs';
 import { IViewsSetting } from '../../default';
 import { EViewProvider } from '../../views.enum';
 import MoeSetting from './Moe';
-import KomarevSetting from './Komarev';
+import HitsSetting from './Hits';
 import VisitCounterSetting from './Visit';
+import VisitProCounterSetting from './VisitPro';
+import { EAlign } from '../../../../../enums/share.enum';
 
 const Setting = ({ id }: { id: string }) => {
   const props = useSectionProps<IViewsSetting>(id);
@@ -36,7 +38,6 @@ const Setting = ({ id }: { id: string }) => {
                   }
                 />
                 <CustomSelect
-                  className="mt-0"
                   label="Provider"
                   value={props.provider}
                   options={Object.values(EViewProvider)}
@@ -44,6 +45,17 @@ const Setting = ({ id }: { id: string }) => {
                     editSection({
                       ...props,
                       provider,
+                    })
+                  }
+                />
+                <CustomSelect
+                  label="Align"
+                  value={props.align}
+                  options={Object.values(EAlign)}
+                  onChange={(align) =>
+                    editSection({
+                      ...props,
+                      align,
                     })
                   }
                 />
@@ -59,11 +71,14 @@ const Setting = ({ id }: { id: string }) => {
                 {props.provider === EViewProvider.MOE && (
                   <MoeSetting {...props} />
                 )}
-                {props.provider === EViewProvider.KOMAREV && (
-                  <KomarevSetting {...props} />
+                {props.provider === EViewProvider.HITS && (
+                  <HitsSetting {...props} />
                 )}
                 {props.provider === EViewProvider.VISIT && (
                   <VisitCounterSetting {...props} />
+                )}
+                {props.provider === EViewProvider.VISIT_PRO && (
+                  <VisitProCounterSetting {...props} />
                 )}
               </>
             ),

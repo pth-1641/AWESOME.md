@@ -2,7 +2,7 @@ import { useAppStore } from '../../../../../store/app.store';
 import CustomInputNumber from '../../../../common/CustomInputNumber';
 import CustomSelect from '../../../../common/CustomSelect';
 import CustomSwitch from '../../../../common/CustomSwitch';
-import { IStatsSetting, MAX_LANGUAGE_COUNT } from '../../default';
+import { IStatsSetting } from '../../default';
 import {
   EGithubReadmeStatsLocale,
   EGithubReadmeStatsTheme,
@@ -59,7 +59,7 @@ const Languages = (props: IStatsSetting) => {
       <CustomInputNumber
         label="Langs Count"
         min={1}
-        max={MAX_LANGUAGE_COUNT}
+        max={20}
         value={props.languages.langCount}
         onChange={(langCount) =>
           editSection({

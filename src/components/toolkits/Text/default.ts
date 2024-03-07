@@ -10,24 +10,6 @@ import {
   ETextTag,
 } from './text.enum';
 
-// Typing
-export const DEFAULT_TYPING_DURATION = 5;
-export const DEFAULT_TYPING_PAUSE = 1;
-export const DEFAULT_TYPING_FONT_SIZE = 20;
-export const DEFAULT_TYPING_COLOR = '#36bcf7ff';
-export const DEFAULT_TYPING_BACKGROUND = '#00000000';
-export const DEFAULT_TYPING_HEIGHT = 50;
-export const DEFAULT_TYPING_WIDTH = 400;
-export const DEFAULT_TYPING_FONT_FAMILY = 'Fira Code';
-
-// Capsule
-export const DEFAULT_CAPSULE_HEIGHT = 120;
-export const DEFAULT_CAPSULE_FONT_SIZE = 70;
-export const DEFAULT_CAPSULE_FONT_ALIGN = 50;
-export const DEFAULT_CAPSULE_ROTATE = 0;
-export const DEFAULT_CAPSULE_STROKE_COLOR = '#10b981';
-export const DEFAULT_CAPSULE_STROKE_WIDTH = 2;
-
 export interface ITextSetting {
   value: string;
   provider: ETextProvider;
@@ -75,31 +57,31 @@ export const textSetting: ITextSetting = {
     style: ETextStyle.NORMAL,
   },
   typing: {
-    fontSize: DEFAULT_TYPING_FONT_SIZE,
+    fontSize: 20,
     repeat: true,
     multiline: false,
-    duration: DEFAULT_TYPING_DURATION,
-    color: DEFAULT_TYPING_COLOR,
-    background: DEFAULT_TYPING_BACKGROUND,
-    pause: DEFAULT_TYPING_PAUSE,
-    width: DEFAULT_TYPING_WIDTH,
-    height: DEFAULT_TYPING_HEIGHT,
-    font: DEFAULT_TYPING_FONT_FAMILY,
+    duration: 5,
+    color: '#36bcf7ff',
+    background: '#00000000',
+    pause: 1,
+    width: 400,
+    height: 50,
+    font: 'Fira Code',
   },
   capsule: {
-    color: DEFAULT_TYPING_BACKGROUND,
+    color: '#00000000',
     type: ECapsuleType.WAVE,
     backgroundType: ECapsuleTheme.TOKYONIGHT,
     section: ECapsuleSection.FOOTER,
-    fontColor: DEFAULT_TYPING_COLOR,
-    height: DEFAULT_CAPSULE_HEIGHT,
+    fontColor: '#36bcf7ff',
+    height: 120,
     animation: ECapsuleAnimation.NONE,
-    fontSize: DEFAULT_CAPSULE_FONT_SIZE,
-    fontAlign: DEFAULT_CAPSULE_FONT_ALIGN,
-    fontAlignY: DEFAULT_CAPSULE_FONT_ALIGN,
-    rotate: DEFAULT_CAPSULE_ROTATE,
+    fontSize: 70,
+    fontAlign: 50,
+    fontAlignY: 50,
+    rotate: 0,
     enableStroke: false,
-    stroke: DEFAULT_CAPSULE_STROKE_COLOR,
-    strokeWidth: DEFAULT_CAPSULE_STROKE_WIDTH,
+    stroke: '#10b981',
+    strokeWidth: 2,
   },
 };

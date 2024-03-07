@@ -1,21 +1,26 @@
 import { EAlign } from '../../../enums/share.enum';
 import {
-  EKomarevStyle,
+  EHitsStyle,
+  EHitsViewType,
   EMoeTheme,
   EViewProvider,
   EVisitCounterStyle,
+  EVisitProIcon,
+  EVisitProTheme,
 } from './views.enum';
 
 export interface IMoeCounter {
   theme: EMoeTheme;
 }
 
-export interface IKomarevCounter {
-  abbreviated: boolean;
-  style: EKomarevStyle;
+export interface IHitsCounter {
+  style: EHitsStyle;
+  viewType: EHitsViewType;
   label: string;
-  activeAddition: boolean;
-  additionViews: number;
+  extraCount: number;
+  color: string;
+  labelColor: string;
+  logo: string;
 }
 
 export interface IVisitCounter {
@@ -28,14 +33,22 @@ export interface IVisitCounter {
   ta: string; // text after
 }
 
+export interface IVisitProCounter {
+  label: string;
+  icon: EVisitProIcon;
+  color: EVisitProTheme;
+  pretty: boolean;
+}
+
 // General
 export interface IViewsSetting {
   username: string;
   provider: EViewProvider;
   moeCounter: IMoeCounter;
-  komarevCounter: IKomarevCounter;
+  hitsCounter: IHitsCounter;
   align: EAlign;
   visitCounter: IVisitCounter;
+  visitProCounter: IVisitProCounter;
 }
 
 export const viewsSetting: IViewsSetting = {
@@ -43,12 +56,14 @@ export const viewsSetting: IViewsSetting = {
   provider: EViewProvider.MOE,
   align: EAlign.CENTER,
   moeCounter: { theme: EMoeTheme.RULE34 },
-  komarevCounter: {
-    style: EKomarevStyle.FLAT_SQUARE,
-    abbreviated: false,
-    label: 'Profile views',
-    activeAddition: false,
-    additionViews: 0,
+  hitsCounter: {
+    color: '#ffffff',
+    extraCount: 0,
+    label: 'Views',
+    labelColor: '#10b981',
+    logo: '',
+    style: EHitsStyle.FLAT_SQUARE,
+    viewType: EHitsViewType.TOTAL,
   },
   visitCounter: {
     bg: '#00000000',
@@ -58,5 +73,11 @@ export const viewsSetting: IViewsSetting = {
     s: 40,
     ta: '',
     tb: '',
+  },
+  visitProCounter: {
+    icon: EVisitProIcon.RANDOM,
+    color: EVisitProTheme.RANDOM,
+    label: '',
+    pretty: true,
   },
 };

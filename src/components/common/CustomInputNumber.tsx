@@ -1,3 +1,5 @@
+import { ChangeEvent, useCallback } from 'preact/compat';
+
 type CustomInputNumberProps = {
   label?: string;
   onChange?: (value: number) => void;
@@ -12,9 +14,19 @@ const CustomInputNumber = ({
   onChange,
   value,
   min = 0,
-  max,
+  max = Number.MAX_SAFE_INTEGER,
   className = '',
 }: CustomInputNumberProps) => {
+  const handleChangeInput = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      let value = +e.currentTarget.value;
+      if (value > max) value = max;
+      if (value < min) value = min;
+      onChange?.(value);
+    },
+    [value]
+  );
+
   return (
     <div class={`mt-4 ${className}`}>
       <h6 class="font-semibold">{label}</h6>
@@ -22,7 +34,7 @@ const CustomInputNumber = ({
         class="w-full py-1.5 px-2 capitalize amd-border mt-2 text-sm"
         type="number"
         value={value}
-        onChange={(e) => onChange?.(+e.currentTarget.value)}
+        onChange={handleChangeInput}
         min={min}
         max={max}
       />

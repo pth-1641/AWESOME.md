@@ -1,8 +1,5 @@
 import { EAlign } from '../../../enums/share.enum';
 
-export const DEFAULT_GAP = 10;
-export const DEFAULT_ICON_SIZE = 40;
-
 export interface IIcon {
   name: string;
   href: string;
@@ -25,8 +22,8 @@ export const socialSetting: IIconSetting = {
   ],
   settings: {
     position: EAlign.LEFT,
-    gap: DEFAULT_GAP,
-    size: DEFAULT_ICON_SIZE,
+    gap: 10,
+    size: 40,
   },
 };
 
@@ -40,7 +37,7 @@ export const techSetting: IIconSetting = {
   ],
   settings: {
     position: EAlign.LEFT,
-    gap: DEFAULT_GAP,
-    size: DEFAULT_ICON_SIZE,
+    gap: 10,
+    size: 40,
   },
 };

@@ -1,7 +1,9 @@
+import { VNode } from 'preact';
+
 type CustomInputProps = {
   value: string;
   label?: string;
-  subtitle?: string;
+  subtitle?: string | VNode;
   onChange?: (value: string) => void;
   className?: string;
   capitalize?: boolean;

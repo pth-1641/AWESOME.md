@@ -6,6 +6,7 @@ import {
 } from '../components/toolkits/Icon/default';
 import { statsSetting } from '../components/toolkits/Stats/default';
 import { viewsSetting } from '../components/toolkits/Views/default';
+import { imageSetting } from '../components/toolkits/Image/default';
 import { EToolkitType } from '../enums/share.enum';
 
 const useSection = (type: EToolkitType) => {
@@ -21,6 +22,8 @@ const useSection = (type: EToolkitType) => {
       return { ...statsSetting, type, id };
     case EToolkitType.VIEWS:
       return { ...viewsSetting, type, id };
+    case EToolkitType.IMAGE:
+      return { ...imageSetting, type, id };
     default:
       return null;
   }

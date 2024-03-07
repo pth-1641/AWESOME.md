@@ -1,19 +1,18 @@
 import { IIconSetting } from '../components/toolkits/Icon/default';
 
 const iconToMarkdown = (props: IIconSetting) => {
-  return `<div align="${props.settings.position}">
-  ${props.icons
+  return `<div align="${props.settings.position}">${props.icons
     .map(
       (icon) =>
-        `<a href="${icon.href ? icon.href : '#'}">
+        `${icon.href ? `<a href="${icon.href}">` : ''}
         <img src="https://api.iconify.design/${icon.name.replace(
           ':',
           '/'
         )}.svg" alt="${icon.name}" height="${props.settings.size}" />
-  </a><img width="${props.settings.gap}"/>`
+        ${icon.href ? '</a>' : ''}<img width="${props.settings.gap}" />`
     )
     .join('')}
-</div>`;
+    </div>`;
 };
 
 export default iconToMarkdown;

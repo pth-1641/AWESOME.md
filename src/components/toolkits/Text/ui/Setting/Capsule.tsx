@@ -2,7 +2,7 @@ import { useMemo } from 'preact/hooks';
 import { useAppStore } from '../../../../../store/app.store';
 import CustomColorPicker from '../../../../common/CustomColorPicker';
 import CustomSelect from '../../../../common/CustomSelect';
-import { DEFAULT_TYPING_COLOR, ITextSetting } from '../../default';
+import { ITextSetting } from '../../default';
 import {
   ECapsuleAnimation,
   ECapsuleBackgroundType,
@@ -40,8 +40,8 @@ const Capsule = (props: ITextSetting) => {
               backgroundType,
               color:
                 backgroundType === ECapsuleBackgroundType.CUSTOM_GRADIENT
-                  ? DEFAULT_TYPING_COLOR.repeat(2)
-                  : DEFAULT_TYPING_COLOR,
+                  ? '#36bcf7ff'.repeat(2)
+                  : '#36bcf7ff',
             },
           })
         }
@@ -218,6 +218,7 @@ const Capsule = (props: ITextSetting) => {
       <CustomSwitch
         isActive={props.capsule.enableStroke}
         label="Stroke"
+        vertical={false}
         onChange={(enableStroke) =>
           editSection({
             ...props,

@@ -1,6 +1,7 @@
 import { Icon } from '@iconify/react';
 import { useSectionProps } from '../../../../hooks';
 import { IIconSetting } from '../default';
+import { alignImageStyle } from '../../../../utils';
 
 const Preview = ({ id }: { id: string }) => {
   const props = useSectionProps<IIconSetting>(id);
@@ -9,7 +10,10 @@ const Preview = ({ id }: { id: string }) => {
   const { settings, icons } = props;
 
   return (
-    <div class="flex flex-wrap gap-y-2.5">
+    <div
+      class="flex flex-wrap gap-y-2.5 w-max"
+      style={alignImageStyle(settings.position)}
+    >
       {icons.map((icon) => (
         <>
           <Icon

@@ -49,6 +49,8 @@ const VisitCounter = (props: IViewsSetting) => {
         <CustomInputNumber
           label="Min number"
           value={props.visitCounter.no}
+          min={2}
+          max={20}
           onChange={(no) =>
             editSection({
               ...props,
