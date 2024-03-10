@@ -6,7 +6,7 @@ import CustomInputNumber from '../../../common/CustomInputNumber';
 import CustomSelect from '../../../common/CustomSelect';
 import { IImageSetting } from '../default';
 
-const Setting = ({ id }: { id: string }) => {
+const Setting = ({ id, hideUrl }: { id: string; hideUrl?: boolean }) => {
   const props = useSectionProps<IImageSetting>(id);
   const { editSection } = useAppStore();
 
@@ -14,29 +14,24 @@ const Setting = ({ id }: { id: string }) => {
 
   return (
     <>
-      <CustomInput
-        value={props.url}
-        label="Image URL"
-        onChange={(url) => editSection({ ...props, url })}
-      />
+      {!hideUrl && (
+        <CustomInput
+          value={props.url}
+          label="Image URL"
+          onChange={(url) => editSection({ ...props, url })}
+        />
+      )}
       <CustomSelect
         value={props.align}
         label="Align"
         options={Object.values(EAlign)}
         onChange={(align) => editSection({ ...props, align })}
       />
-      <div class="grid grid-cols-2 gap-x-5">
-        <CustomInputNumber
-          value={props.height}
-          label="Height"
-          onChange={(height) => editSection({ ...props, height })}
-        />
-        <CustomInputNumber
-          value={props.width}
-          label="Width"
-          onChange={(width) => editSection({ ...props, width })}
-        />
-      </div>
+      <CustomInputNumber
+        value={props.width}
+        label="Width"
+        onChange={(width) => editSection({ ...props, width })}
+      />
     </>
   );
 };

@@ -15,10 +15,10 @@ const Preview = ({ id }: { id: string }) => {
   const { username } = props;
 
   return (
-    <div style={alignImageStyle(props.align)} class="w-max">
+    <div style={alignImageStyle(props.align)} class="w-max max-w-full">
       {props.provider === EViewProvider.MOE && (
         <img
-          src={`https://count.getloli.com/get/@${username}?theme=${props.moeCounter.theme}`}
+          src={`https://moe-counter-grbnb.vercel.app/get/@${username}?theme=${props.moeCounter.theme}`}
         />
       )}
       {props.provider === EViewProvider.HITS && (

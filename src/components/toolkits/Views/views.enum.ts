@@ -8,8 +8,10 @@ export enum EViewProvider {
 export enum EMoeTheme {
   ASOUL = 'asoul',
   MOEBOORU = 'moebooru',
+  MOEBOORU_H = 'moebooru-h',
   RULE34 = 'rule34',
   GELBOORU = 'gelbooru',
+  GELBOORU_H = 'gelbooru-h',
 }
 
 export enum EHitsStyle {
@@ -58,8 +60,8 @@ export enum EVisitProTheme {
   INDIGO = 6,
   ORANGE = 7,
   EMERALD = 8,
-  TEAL = 8,
-  PINK = 8,
-  FUSIA = 8,
-  NEUTRAL = 8,
+  TEAL = 9,
+  PINK = 10,
+  FUSIA = 11,
+  NEUTRAL = 12,
 }

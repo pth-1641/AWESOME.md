@@ -1,5 +1,5 @@
 import { useSectionProps } from '../../../../hooks';
-import { alignImageStyle, objectToUrl } from '../../../../utils';
+import { alignImageStyle } from '../../../../utils';
 import {
   chartUrl,
   languageUrl,
@@ -9,13 +9,13 @@ import {
   trophyUrl,
 } from '../../../../utils/stats2md.utils';
 import { IStatsSetting } from '../default';
-import { EStatsProvider, ETroyphyStatsTheme } from '../stats.enum';
+import { EStatsProvider } from '../stats.enum';
 
 const Preview = ({ id }: { id: string }) => {
   const props = useSectionProps<IStatsSetting>(id);
 
   if (!props) return null;
-  const { stats, languages, streak, trophy, summary, chart, username } = props;
+  const { stats, languages, streak, trophy, summary, chart } = props;
 
   return (
     <>

@@ -6,6 +6,7 @@ import IconSetting from './toolkits/Icon/ui/Setting';
 import StatsSetting from './toolkits/Stats/ui/Setting';
 import ViewsSetting from './toolkits/Views/ui/Setting';
 import ImageSetting from './toolkits/Image/ui/Setting';
+import QuoteSetting from './toolkits/Quote/ui/Setting';
 
 export const Settings = () => {
   const sectionId = useAppStore((state) => state.sectionId);
@@ -21,6 +22,10 @@ export const Settings = () => {
       {section.type === EToolkitType.STATS && <StatsSetting id={sectionId} />}
       {section.type === EToolkitType.VIEWS && <ViewsSetting id={sectionId} />}
       {section.type === EToolkitType.IMAGE && <ImageSetting id={sectionId} />}
+      {section.type === EToolkitType.MEME && (
+        <ImageSetting id={sectionId} hideUrl />
+      )}
+      {section.type === EToolkitType.QUOTE && <QuoteSetting id={sectionId} />}
     </div>
   );
 };

@@ -1,12 +1,16 @@
 import { useUuid } from '.';
-import { textSetting } from '../components/toolkits/Text/default';
 import {
   socialSetting,
   techSetting,
 } from '../components/toolkits/Icon/default';
+import {
+  imageSetting,
+  memeSetting,
+} from '../components/toolkits/Image/default';
 import { statsSetting } from '../components/toolkits/Stats/default';
+import { textSetting } from '../components/toolkits/Text/default';
 import { viewsSetting } from '../components/toolkits/Views/default';
-import { imageSetting } from '../components/toolkits/Image/default';
+import { quoteSetting } from '../components/toolkits/Quote/default';
 import { EToolkitType } from '../enums/share.enum';
 
 const useSection = (type: EToolkitType) => {
@@ -24,6 +28,10 @@ const useSection = (type: EToolkitType) => {
       return { ...viewsSetting, type, id };
     case EToolkitType.IMAGE:
       return { ...imageSetting, type, id };
+    case EToolkitType.MEME:
+      return { ...memeSetting, type, id };
+    case EToolkitType.QUOTE:
+      return { ...quoteSetting, type, id };
     default:
       return null;
   }

@@ -5,7 +5,7 @@ import { StickyGenerateButton } from './components/StickyGenerateButton';
 
 export function App() {
   return (
-    <main class="flex max-w-7xl mx-auto py-6 px-4 gap-4 h-screen">
+    <main class="flex max-w-screen-2xl mx-auto py-6 px-4 gap-4 h-screen">
       <ToolkitSelector />
       <PreviewUI />
       <Settings />

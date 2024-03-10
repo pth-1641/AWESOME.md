@@ -2,9 +2,7 @@ import { useSectionProps } from '../../../../hooks';
 import { IImageSetting } from '../default';
 import { alignImageStyle } from '../../../../utils';
 import { useEffect, useState } from 'preact/hooks';
-
-const UNAVAIABLE_IMAGE =
-  'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg';
+import { UNAVAIABLE_IMAGE } from '../../../../constants';
 
 const Preview = ({ id }: { id: string }) => {
   const props = useSectionProps<IImageSetting>(id);
@@ -19,7 +17,7 @@ const Preview = ({ id }: { id: string }) => {
   return (
     <img
       src={imageUrl}
-      {...props}
+      width={props.width}
       style={alignImageStyle(props.align)}
       onError={() => setImageUrl(UNAVAIABLE_IMAGE)}
     />

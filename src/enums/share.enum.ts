@@ -7,6 +7,7 @@ export enum EToolkitType {
   MEME = 'meme',
   QUOTE = 'quote',
   IMAGE = 'image',
+  DEV_SOCIAL = 'dev_social',
 }
 
 export enum EAlign {

@@ -5,6 +5,7 @@ import IconPreview from './toolkits/Icon/ui/Preview';
 import StatsPreview from './toolkits/Stats/ui/Preview';
 import ViewsPreview from './toolkits/Views/ui/Preview';
 import ImagePreview from './toolkits/Image/ui/Preview';
+import QuotePreview from './toolkits/Quote/ui/Preview';
 
 export const PreviewUI = () => {
   const { sectionId, focusOnSection, sections } = useAppStore();
@@ -36,6 +37,12 @@ export const PreviewUI = () => {
           )}
           {section.type === EToolkitType.IMAGE && (
             <ImagePreview id={section.id} />
+          )}{' '}
+          {section.type === EToolkitType.MEME && (
+            <ImagePreview id={section.id} />
+          )}
+          {section.type === EToolkitType.QUOTE && (
+            <QuotePreview id={section.id} />
           )}
         </div>
       ))}

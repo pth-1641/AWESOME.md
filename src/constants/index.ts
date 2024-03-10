@@ -42,4 +42,12 @@ export const toolkits: IToolkit[] = [
     iconName: 'f7:quote-bubble',
     type: EToolkitType.QUOTE,
   },
+  {
+    label: 'Dev Social',
+    iconName: 'material-symbols-light:logo-dev-outline-rounded',
+    type: EToolkitType.DEV_SOCIAL,
+  },
 ];
+
+export const UNAVAIABLE_IMAGE =
+  'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg';
