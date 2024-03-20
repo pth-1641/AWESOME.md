@@ -1,10 +1,11 @@
-import { getEnumKey, isInEnum } from './enums.util.ts';
-import { hexToOpacity, opacityToHex } from './hex.util.ts';
+import { getEnumKey, isInEnum } from './enums.utils';
+import { hexToOpacity, opacityToHex } from './hex.utils';
 import iconToMarkdown from './icon2md.utils';
-import { alignImageStyle } from './image.util.ts';
-import objectToUrl from './obj2url.utils.ts';
+import { alignImageStyle } from './image.utils';
+import objectToUrl from './obj2url.utils';
 import statsToMarkdown from './stats2md.utils';
 import textToMarkdown from './text2md.utils';
+import viewToMarkdown from './view2md.utils';
 
 export {
   alignImageStyle,
@@ -16,4 +17,5 @@ export {
   opacityToHex,
   statsToMarkdown,
   textToMarkdown,
+  viewToMarkdown,
 };

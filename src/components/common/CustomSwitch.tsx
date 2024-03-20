@@ -11,11 +11,11 @@ const CustomSwitch = ({
   label,
   onChange,
   vertical = true,
-  className = '',
+  className = 'mt-4',
 }: CustomSwitchProps) => {
   return (
     <div
-      class={`flex gap-2.5 mt-4 ${className}`}
+      class={`flex gap-2.5 ${className}`}
       style={
         vertical
           ? { flexDirection: 'column' }

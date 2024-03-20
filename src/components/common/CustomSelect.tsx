@@ -13,12 +13,12 @@ const CustomSelect = ({
   label,
   value,
   onChange,
-  className = '',
+  className = 'mt-4',
 }: CustomSelectProps) => {
   const [showOptions, setShowOptions] = useState<boolean>(false);
 
   return (
-    <section class={`mt-4 ${className}`}>
+    <section class={className}>
       <h6 class="font-semibold mb-2">{label}</h6>
       <div class="relative amd-border cursor-pointer text-sm">
         <input

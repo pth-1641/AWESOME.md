@@ -11,6 +11,7 @@ import { statsSetting } from '../components/toolkits/Stats/default';
 import { textSetting } from '../components/toolkits/Text/default';
 import { viewsSetting } from '../components/toolkits/Views/default';
 import { quoteSetting } from '../components/toolkits/Quote/default';
+import { devSocialSetting } from '../components/toolkits/DevSocial/default';
 import { EToolkitType } from '../enums/share.enum';
 
 const useSection = (type: EToolkitType) => {
@@ -32,6 +33,8 @@ const useSection = (type: EToolkitType) => {
       return { ...memeSetting, type, id };
     case EToolkitType.QUOTE:
       return { ...quoteSetting, type, id };
+    case EToolkitType.DEV_SOCIAL:
+      return { ...devSocialSetting, type, id };
     default:
       return null;
   }

@@ -2,11 +2,12 @@ import { create } from 'zustand';
 import { EToolkitType } from '../enums/share.enum';
 
 interface AppState {
-  sections: any[];
+  sections: (any & { id: string })[];
   sectionId: string | null;
   addSection: (section: any) => void;
   focusOnSection: (id: string) => void;
   editSection: (id: any) => void;
+  swapSection: (sections: any[]) => void;
 }
 
 export const useAppStore = create<AppState>((set) => ({
@@ -28,4 +29,5 @@ export const useAppStore = create<AppState>((set) => ({
         section.id !== setting.id ? section : setting
       ),
     })),
+  swapSection: (newSections: any[]) => set(() => ({ sections: newSections })),
 }));

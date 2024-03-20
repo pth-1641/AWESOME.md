@@ -1,11 +1,11 @@
 const objectToUrl = (
-  obj: Record<string, any>,
+  entity: Record<string, any>,
   options?: { omit: string[] }
 ) => {
-  const omitObj = Object.entries(obj).filter(([key, _]) =>
-    options ? ![...options.omit, 'id'].includes(key) : false
+  const omitEntity = Object.entries(entity).filter(
+    ([key, _]) => ![...(options?.omit || []), 'id'].includes(key)
   );
-  return new URLSearchParams(Object.fromEntries(omitObj)).toString();
+  return new URLSearchParams(Object.fromEntries(omitEntity)).toString();
 };
 
 export default objectToUrl;

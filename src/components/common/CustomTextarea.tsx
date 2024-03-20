@@ -10,11 +10,11 @@ const CustomTextarea = ({
   label,
   onChange,
   value,
-  className = '',
+  className = 'mt-4',
   subtitle,
 }: CustomTextareaProps) => {
   return (
-    <div class={`mt-4 ${className}`}>
+    <div class={className}>
       <h6 class="font-semibold mb-2">{label}</h6>
       <span class="text-xs text-gray-400 leading-5 block">{subtitle}</span>
       <textarea

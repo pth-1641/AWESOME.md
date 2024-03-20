@@ -88,12 +88,12 @@ const Search = (props: IIconSetting & { type?: EToolkitType }) => {
     <>
       <h4>Search</h4>
       <input
-        class="border border-white/15 bg-transparent rounded-md outline-none w-full py-1.5 px-2 mt-2 mb-4"
+        class="border border-white/15 bg-transparent rounded-md outline-none w-full py-1.5 px-2 mt-2"
         type="text"
         placeholder="Search"
         onInput={(e) => setQuery(e.currentTarget.value)}
       />
-      <div class="grid grid-cols-3 gap-3 max-h-80 overflow-auto">
+      <div class="grid grid-cols-3 gap-3 max-h-80 overflow-auto mb-4">
         {icons.map((icon) => (
           <button
             key={icon}

@@ -16,6 +16,7 @@ const Setting = ({ id }: { id: string }) => {
   return (
     <>
       <CustomSelect
+        className="m-0"
         label="Theme"
         value={props.theme}
         options={Object.values(EQuoteTheme)}

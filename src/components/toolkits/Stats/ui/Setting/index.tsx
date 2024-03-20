@@ -16,6 +16,7 @@ import {
 import { CSS } from '@dnd-kit/utilities';
 import { Icon } from '@iconify/react';
 import { useMemo, useState } from 'preact/hooks';
+import { EAlign } from '../../../../../enums/share.enum';
 import { useSectionProps } from '../../../../../hooks';
 import { useAppStore } from '../../../../../store/app.store';
 import { getEnumKey } from '../../../../../utils';
@@ -24,13 +25,12 @@ import CustomSelect from '../../../../common/CustomSelect';
 import CustomTabs from '../../../../common/CustomTabs';
 import { IStatsSetting } from '../../default';
 import { EStatsProvider } from '../../stats.enum';
-import SummarySetting from './Summary';
 import ChartSetting from './Chart';
 import LanguagesSetting from './Languages';
 import StatsSetting from './Stats';
 import StreakSetting from './Streak';
+import SummarySetting from './Summary';
 import TrophySetting from './Trophy';
-import { EAlign } from '../../../../../enums/share.enum';
 
 const Setting = ({ id }: { id: string }) => {
   const props = useSectionProps<IStatsSetting>(id);
