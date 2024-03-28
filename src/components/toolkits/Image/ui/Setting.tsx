@@ -16,6 +16,7 @@ const Setting = ({ id, hideUrl }: { id: string; hideUrl?: boolean }) => {
     <>
       {!hideUrl && (
         <CustomInput
+          className="mb-4"
           value={props.url}
           label="Image URL"
           onChange={(url) => editSection({ ...props, url })}

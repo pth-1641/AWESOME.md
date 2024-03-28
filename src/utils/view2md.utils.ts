@@ -2,6 +2,7 @@ import { objectToUrl } from '.';
 import { IViewsSetting } from '../components/toolkits/Views/default';
 import {
   EHitsViewType,
+  EViewProvider,
   EVisitProIcon,
   EVisitProTheme,
 } from '../components/toolkits/Views/views.enum';
@@ -46,7 +47,24 @@ const visitCounterProUrl = (setting: IViewsSetting) => {
   )}`;
 };
 
-const viewToMarkdown = (props: IViewsSetting) => {};
+const viewToMarkdown = (setting: IViewsSetting) => {
+  let url = '';
+  switch (setting.provider) {
+    case EViewProvider.HITS:
+      url = hitsCounterUrl(setting);
+      break;
+    case EViewProvider.MOE:
+      url = moeCounterUrl(setting);
+      break;
+    case EViewProvider.VISIT:
+      url = visitCounterUrl(setting);
+      break;
+    case EViewProvider.VISIT_PRO:
+      url = visitCounterProUrl(setting);
+      break;
+  }
+  return `<img src="${url}" align="${setting.align}" />`;
+};
 
 export { moeCounterUrl, hitsCounterUrl, visitCounterUrl, visitCounterProUrl };
 export default viewToMarkdown;

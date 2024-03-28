@@ -1,24 +1,19 @@
-import { EAlign } from '../../../../enums/share.enum';
-import { useSectionProps } from '../../../../hooks';
-import { useAppStore } from '../../../../store/app.store';
-import CustomInput from '../../../common/CustomInput';
-import CustomSelect from '../../../common/CustomSelect';
-import CustomSwitch from '../../../common/CustomSwitch';
-import { IQuoteSetting } from '../default';
-import { EQuoteTheme, EQuoteType } from '../quote.enum';
+import { useAppStore } from '../../../../../store/app.store';
+import CustomInput from '../../../../common/CustomInput';
+import CustomSelect from '../../../../common/CustomSelect';
+import CustomSwitch from '../../../../common/CustomSwitch';
+import { IQuoteSetting } from '../../default';
+import { EQuoteTheme, EQuoteType } from '../../quote.enum';
 
-const Setting = ({ id }: { id: string }) => {
-  const props = useSectionProps<IQuoteSetting>(id);
+const Quote = (props: IQuoteSetting) => {
   const { editSection } = useAppStore();
-
-  if (!props) return null;
 
   return (
     <>
       <CustomSelect
         className="m-0"
         label="Theme"
-        value={props.theme}
+        value={props.quote.theme}
         options={Object.values(EQuoteTheme)}
         onChange={(theme) =>
           editSection({
@@ -27,70 +22,74 @@ const Setting = ({ id }: { id: string }) => {
           })
         }
       />
-
       <CustomSelect
         label="Type"
-        value={props.viewType}
+        value={props.quote.viewType}
         options={Object.values(EQuoteType)}
         onChange={(viewType) =>
           editSection({
             ...props,
-            viewType,
+            quote: {
+              ...props.quote,
+              viewType,
+            },
           })
         }
       />
-      <CustomSelect
-        label="Align"
-        value={props.align}
-        options={Object.values(EAlign)}
-        onChange={(align) =>
-          editSection({
-            ...props,
-            align,
-          })
-        }
-      />
+
       <div class="grid grid-cols-2 gap-4">
         <CustomSwitch
           label="Show Border"
-          isActive={props.border}
+          isActive={props.quote.border}
           onChange={(border) =>
             editSection({
               ...props,
-              border,
+              quote: {
+                ...props.quote,
+                border,
+              },
             })
           }
         />
         <CustomSwitch
           label="Custom Quote"
-          isActive={props.customQuote}
+          isActive={props.quote.customQuote}
           onChange={(customQuote) =>
             editSection({
               ...props,
-              customQuote,
+              quote: {
+                ...props.quote,
+                customQuote,
+              },
             })
           }
         />
       </div>
-      {props.customQuote && (
+      {props.quote.customQuote && (
         <>
           <CustomInput
             label="Quote"
-            value={props.quote}
-            onChange={(quote) =>
+            value={props.quote.quote}
+            onChange={(customQuote) =>
               editSection({
                 ...props,
-                quote,
+                quote: {
+                  ...props.quote,
+                  quote: customQuote,
+                },
               })
             }
           />
           <CustomInput
             label="Author"
-            value={props.author}
+            value={props.quote.author}
             onChange={(author) =>
               editSection({
                 ...props,
-                author,
+                quote: {
+                  ...props.quote,
+                  author,
+                },
               })
             }
           />
@@ -100,4 +99,4 @@ const Setting = ({ id }: { id: string }) => {
   );
 };
 
-export default Setting;
+export default Quote;
