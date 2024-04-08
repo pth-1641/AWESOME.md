@@ -5,7 +5,7 @@ import {
   moeCounterUrl,
   visitCounterProUrl,
   visitCounterUrl,
-} from '../../../../utils/view2md.utils';
+} from '../../../../utils/view2md';
 import { IViewsSetting } from '../default';
 import { EViewProvider } from '../views.enum';
 

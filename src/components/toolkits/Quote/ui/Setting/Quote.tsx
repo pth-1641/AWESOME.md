@@ -18,7 +18,10 @@ const Quote = (props: IQuoteSetting) => {
         onChange={(theme) =>
           editSection({
             ...props,
-            theme,
+            quote: {
+              ...props.quote,
+              theme,
+            },
           })
         }
       />

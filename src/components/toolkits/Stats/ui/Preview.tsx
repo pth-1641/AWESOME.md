@@ -7,7 +7,7 @@ import {
   streakUrl,
   summaryUrl,
   trophyUrl,
-} from '../../../../utils/stats2md.utils';
+} from '../../../../utils/stats2md';
 import { IStatsSetting } from '../default';
 import { EStatsProvider } from '../stats.enum';
 

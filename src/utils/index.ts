@@ -1,11 +1,11 @@
-import { getEnumKey, isInEnum } from './enums.utils';
-import { hexToOpacity, opacityToHex } from './hex.utils';
-import iconToMarkdown from './icon2md.utils';
-import { alignImageStyle } from './image.utils';
-import objectToUrl from './obj2url.utils';
-import statsToMarkdown from './stats2md.utils';
-import textToMarkdown from './text2md.utils';
-import viewToMarkdown from './view2md.utils';
+import { getEnumKey, isInEnum } from './enums';
+import { hexToOpacity, opacityToHex } from './hex';
+import iconToMarkdown from './icon2md';
+import { alignImageStyle } from './image';
+import objectToUrl from './obj2url';
+import statsToMarkdown from './stats2md';
+import textToMarkdown from './text2md';
+import viewToMarkdown from './view2md';
 
 export {
   alignImageStyle,

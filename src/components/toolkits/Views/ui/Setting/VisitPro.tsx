@@ -1,6 +1,6 @@
 import { useAppStore } from '../../../../../store/app.store';
 import { getEnumKey } from '../../../../../utils';
-import { getEnumValue } from '../../../../../utils/enums.utils';
+import { getEnumValue } from '../../../../../utils/enums';
 import CustomInput from '../../../../common/CustomInput';
 import CustomSelect from '../../../../common/CustomSelect';
 import CustomSwitch from '../../../../common/CustomSwitch';

@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import { useMemo } from 'preact/hooks';
 import { useSectionProps } from '../../../../hooks';
-import { capsuleTextUrl, typingTextUrl } from '../../../../utils/text2md.utils';
+import { capsuleTextUrl, typingTextUrl } from '../../../../utils/text2md';
 import { ITextSetting } from '../default';
 import { ETextProvider, ETextStyle } from '../text.enum';
 

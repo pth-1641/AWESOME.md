@@ -1,6 +1,6 @@
 import { useAppStore } from '../../../../../store/app.store';
 import { getEnumKey } from '../../../../../utils';
-import { getEnumValue } from '../../../../../utils/enums.utils';
+import { getEnumValue } from '../../../../../utils/enums';
 import CustomColorPicker from '../../../../common/CustomColorPicker';
 import CustomInput from '../../../../common/CustomInput';
 import CustomInputNumber from '../../../../common/CustomInputNumber';

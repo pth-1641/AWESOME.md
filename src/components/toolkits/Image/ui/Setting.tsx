@@ -23,6 +23,7 @@ const Setting = ({ id, hideUrl }: { id: string; hideUrl?: boolean }) => {
         />
       )}
       <CustomSelect
+        className="mt-0"
         value={props.align}
         label="Align"
         options={Object.values(EAlign)}
