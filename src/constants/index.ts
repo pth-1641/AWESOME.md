@@ -51,3 +51,5 @@ export const toolkits: IToolkit[] = [
 
 export const UNAVAIABLE_IMAGE =
   'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg';
+
+export const APP_NAME = 'AWESOME.MD';

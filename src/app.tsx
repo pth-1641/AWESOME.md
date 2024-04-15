@@ -1,7 +1,7 @@
 import { PreviewUI } from './components/PreviewUI';
-import { ToolkitSelector } from './components/ToolkitSelector';
 import { Settings } from './components/Settings';
 import { StickyGenerateButton } from './components/StickyGenerateButton';
+import { ToolkitSelector } from './components/ToolkitSelector';
 
 export function App() {
   return (

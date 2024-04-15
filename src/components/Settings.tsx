@@ -11,12 +11,15 @@ import DevSocialSetting from './toolkits/DevSocial/ui/Setting';
 
 export const Settings = () => {
   const sectionId = useAppStore((state) => state.sectionId);
-  if (!sectionId) return <div class="flex-1 max-w-72 amd-border px-4 py-2.5" />;
+  if (!sectionId)
+    return (
+      <div class="flex-1 max-w-72 amd-border px-4 py-2.5 hidden lg:block" />
+    );
 
   const section = useSectionProps<any>(sectionId);
 
   return (
-    <div class="flex-1 max-w-72 amd-border px-4 pt-2.5 pb-5 overflow-auto">
+    <div class="flex-1 max-w-72 amd-border px-4 pt-2.5 pb-5 overflow-auto hidden lg:block">
       {section.type === EToolkitType.TEXT && <TextSetting id={sectionId} />}
       {section.type === EToolkitType.TECH && <IconSetting id={sectionId} />}
       {section.type === EToolkitType.SOCIAL && <IconSetting id={sectionId} />}

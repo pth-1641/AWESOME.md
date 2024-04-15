@@ -7,7 +7,7 @@ export const ToolkitSelector = () => {
   const { addSection, focusOnSection } = useAppStore();
 
   return (
-    <div class="amd-border p-4 flex-1 max-w-64 overflow-auto">
+    <div class="amd-border p-4 flex-1 max-w-64 overflow-auto hidden lg:block">
       <div class="grid grid-cols-2 gap-4">
         {toolkits.map((item) => (
           <button

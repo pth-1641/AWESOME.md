@@ -1,3 +1,4 @@
+import { EAlign } from '../../../../../enums/share.enum';
 import { useSectionProps } from '../../../../../hooks';
 import { useAppStore } from '../../../../../store/app.store';
 import CustomSelect from '../../../../common/CustomSelect';
@@ -23,6 +24,17 @@ const Setting = ({ id }: { id: string }) => {
           editSection({
             ...props,
             provider,
+          })
+        }
+      />
+      <CustomSelect
+        label="Align"
+        value={props.align}
+        options={Object.values(EAlign)}
+        onChange={(align) =>
+          editSection({
+            ...props,
+            align,
           })
         }
       />

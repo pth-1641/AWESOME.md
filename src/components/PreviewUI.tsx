@@ -14,6 +14,7 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+import { Icon } from '@iconify/react';
 import { EToolkitType } from '../enums/share.enum';
 import { useAppStore } from '../store/app.store';
 import DevSocialPreview from './toolkits/DevSocial/ui/Preview';
@@ -23,6 +24,9 @@ import QuotePreview from './toolkits/Quote/ui/Preview';
 import StatsPreview from './toolkits/Stats/ui/Preview';
 import TextPreview from './toolkits/Text/ui/Preview';
 import ViewsPreview from './toolkits/Views/ui/Preview';
+import { APP_NAME } from '../constants';
+import { useEffect } from 'preact/hooks';
+import { useLocalStorage } from '../hooks';
 
 export const PreviewUI = () => {
   const { sections, swapSection } = useAppStore();
@@ -66,7 +70,7 @@ export const PreviewUI = () => {
 };
 
 const RenderedSection = ({ section }: { section: any & { id: string } }) => {
-  const { sectionId, focusOnSection } = useAppStore();
+  const { sectionId, focusOnSection, removeSection, sections } = useAppStore();
 
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: section.id, transition: null });
@@ -76,9 +80,13 @@ const RenderedSection = ({ section }: { section: any & { id: string } }) => {
     transition,
   };
 
+  useEffect(() => {
+    useLocalStorage.set(APP_NAME, sections);
+  }, [sections]);
+
   return (
     <div
-      class={`border rounded-md p-4 hover:border-emerald-400 cursor-pointer ${
+      class={`border rounded-md p-4 hover:border-emerald-400 cursor-pointer group relative ${
         sectionId === section.id ? 'border-emerald-400' : 'border-white/15'
       }`}
       onMouseDown={() => focusOnSection(section.id)}
@@ -87,6 +95,14 @@ const RenderedSection = ({ section }: { section: any & { id: string } }) => {
       {...listeners}
       style={style}
     >
+      <span
+        class={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 inline-block p-1.5 border rounded-full bg-[#0d1117] border-white/15 duration-100 group-hover:opacity-100 ${
+          sectionId === section.id ? 'opacity-100' : 'opacity-0'
+        }`}
+        onMouseDown={() => removeSection(section.id)}
+      >
+        <Icon icon="mynaui:trash-one" />
+      </span>
       {section.type === EToolkitType.TEXT && <TextPreview id={section.id} />}
       {section.type === EToolkitType.TECH && <IconPreview id={section.id} />}
       {section.type === EToolkitType.SOCIAL && <IconPreview id={section.id} />}
