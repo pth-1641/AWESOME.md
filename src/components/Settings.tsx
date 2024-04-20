@@ -8,8 +8,15 @@ import ViewsSetting from './toolkits/Views/ui/Setting';
 import ImageSetting from './toolkits/Image/ui/Setting';
 import QuoteSetting from './toolkits/Quote/ui/Setting';
 import DevSocialSetting from './toolkits/DevSocial/ui/Setting';
+import { Icon } from '@iconify/react';
 
-export const Settings = () => {
+export const Settings = ({
+  active,
+  onClose,
+}: {
+  active: boolean;
+  onClose: () => void;
+}) => {
   const sectionId = useAppStore((state) => state.sectionId);
   if (!sectionId)
     return (
@@ -19,20 +26,25 @@ export const Settings = () => {
   const section = useSectionProps<any>(sectionId);
 
   return (
-    <div class="flex-1 max-w-72 amd-border px-4 pt-2.5 pb-5 overflow-auto hidden lg:block">
-      {section.type === EToolkitType.TEXT && <TextSetting id={sectionId} />}
-      {section.type === EToolkitType.TECH && <IconSetting id={sectionId} />}
-      {section.type === EToolkitType.SOCIAL && <IconSetting id={sectionId} />}
-      {section.type === EToolkitType.STATS && <StatsSetting id={sectionId} />}
-      {section.type === EToolkitType.VIEWS && <ViewsSetting id={sectionId} />}
-      {section.type === EToolkitType.IMAGE && <ImageSetting id={sectionId} />}
-      {section.type === EToolkitType.MEME && (
-        <ImageSetting id={sectionId} hideUrl />
-      )}
-      {section.type === EToolkitType.QUOTE && <QuoteSetting id={sectionId} />}
-      {section.type === EToolkitType.DEV_SOCIAL && (
-        <DevSocialSetting id={sectionId} />
-      )}
+    <div class="relative">
+      <button class="absolute -left-5 top-8 border border-white/20 rounded p-1 bg-[#0d1117] hidden lg:block">
+        <Icon icon="icon-park-solid:right-one" height={18} />
+      </button>
+      <div class="flex-1 max-w-72 amd-border px-4 pt-2.5 pb-5 overflow-auto hidden lg:block">
+        {section.type === EToolkitType.TEXT && <TextSetting id={sectionId} />}
+        {section.type === EToolkitType.TECH && <IconSetting id={sectionId} />}
+        {section.type === EToolkitType.SOCIAL && <IconSetting id={sectionId} />}
+        {section.type === EToolkitType.STATS && <StatsSetting id={sectionId} />}
+        {section.type === EToolkitType.VIEWS && <ViewsSetting id={sectionId} />}
+        {section.type === EToolkitType.IMAGE && <ImageSetting id={sectionId} />}
+        {section.type === EToolkitType.MEME && (
+          <ImageSetting id={sectionId} hideUrl />
+        )}
+        {section.type === EToolkitType.QUOTE && <QuoteSetting id={sectionId} />}
+        {section.type === EToolkitType.DEV_SOCIAL && (
+          <DevSocialSetting id={sectionId} />
+        )}
+      </div>
     </div>
   );
 };

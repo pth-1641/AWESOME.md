@@ -3,7 +3,13 @@ import { toolkits } from '../constants';
 import { useAppStore } from '../store/app.store';
 import { useSection } from '../hooks';
 
-export const ToolkitSelector = () => {
+export const ToolkitSelector = ({
+  active,
+  onClose,
+}: {
+  active: boolean;
+  onClose: () => void;
+}) => {
   const { addSection, focusOnSection } = useAppStore();
 
   return (
