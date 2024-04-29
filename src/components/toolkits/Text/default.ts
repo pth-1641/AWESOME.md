@@ -13,8 +13,8 @@ import {
 export interface ITextSetting {
   value: string;
   provider: ETextProvider;
+  align: EAlign;
   text: {
-    align: EAlign;
     tag: ETextTag;
     style: ETextStyle;
   };
@@ -51,8 +51,8 @@ export interface ITextSetting {
 export const textSetting: ITextSetting = {
   value: 'AWESOME.md',
   provider: ETextProvider.TEXT,
+  align: EAlign.LEFT,
   text: {
-    align: EAlign.LEFT,
     tag: ETextTag.H1,
     style: ETextStyle.NORMAL,
   },

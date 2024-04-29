@@ -20,16 +20,16 @@ const useGenerateMd = (sections: any[]) => {
       if (section.type === EToolkitType.IMAGE) return imageToMarkdown(section);
       if (section.type === EToolkitType.MEME) return imageToMarkdown(section);
       if (section.type === EToolkitType.QUOTE) return quoteToMarkdown(section);
-      if (section.type === EToolkitType.DEV_SOCIAL) return devSocialToMarkdown(section);
+      if (section.type === EToolkitType.DEV_SOCIAL)
+        return devSocialToMarkdown(section);
     })
-    .join('')
-    .replace('<>', '')
-    .replace('</>', '');
-
-  console.log(md);
-  navigator.clipboard.writeText(md);
-
-  return;
+    .join(
+      `
+`
+    )
+    .replace(/\<\>/g, '')
+    .replace(/\<\/\>/g, '');
+  return md;
 };
 
 export default useGenerateMd;

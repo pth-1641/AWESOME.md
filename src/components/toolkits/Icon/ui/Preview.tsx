@@ -22,7 +22,7 @@ const Preview = ({ id }: { id: string }) => {
             width={settings.size}
             height={settings.size}
           />
-          <img width={settings.gap} class="invisible" />
+          <img width={settings.gap} class="invisible last:hidden" />
         </>
       ))}
     </div>

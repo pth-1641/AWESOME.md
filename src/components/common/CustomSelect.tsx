@@ -30,7 +30,7 @@ const CustomSelect = ({
           onBlur={() => setShowOptions(false)}
         />
         <ul
-          class={`absolute z-10 capitalize bg-[#0d1117] border border-white/15 rounded-md inset-x-0 duration-150 max-h-52 overflow-auto ${
+          class={`absolute z-10 capitalize bg-primary border border-white/15 rounded-md inset-x-0 duration-150 max-h-52 overflow-auto ${
             showOptions
               ? 'opacity-100 top-10 pointer-events-auto'
               : ' opacity-0 top-14 pointer-events-none'

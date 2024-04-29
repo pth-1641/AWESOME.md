@@ -1,4 +1,3 @@
-import { EAlign } from '../../../../../enums/share.enum';
 import { useAppStore } from '../../../../../store/app.store';
 import CustomSelect from '../../../../common/CustomSelect';
 import { ITextSetting } from '../../default';
@@ -19,20 +18,6 @@ const Text = (props: ITextSetting) => {
             text: {
               ...props.text,
               tag,
-            },
-          })
-        }
-      />
-      <CustomSelect
-        label="Align"
-        options={Object.values(EAlign)}
-        value={props.text.align}
-        onChange={(align) =>
-          editSection({
-            ...props,
-            text: {
-              ...props.text,
-              align,
             },
           })
         }

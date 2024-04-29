@@ -4,12 +4,13 @@ import { useSectionProps } from '../../../../hooks';
 import { capsuleTextUrl, typingTextUrl } from '../../../../utils/text2md';
 import { ITextSetting } from '../default';
 import { ETextProvider, ETextStyle } from '../text.enum';
+import { alignImageStyle } from '../../../../utils';
 
 const Preview = ({ id }: { id: string }) => {
   const props = useSectionProps<ITextSetting>(id);
 
   if (!props) return null;
-  const { text, value, provider } = props;
+  const { text, value, provider, align } = props;
 
   const styleTag = useMemo(() => {
     if (text.style === ETextStyle.ITALIC) return 'i';
@@ -29,7 +30,7 @@ const Preview = ({ id }: { id: string }) => {
             text.tag,
             {
               style: {
-                textAlign: text.align,
+                textAlign: align,
                 fontStyle: text.style,
               },
             },
@@ -38,9 +39,11 @@ const Preview = ({ id }: { id: string }) => {
           {isLargeHeading && <div class="mt-2 h-px bg-white/10" />}
         </>
       )}
-      {provider === ETextProvider.TYPING && <img src={typingTextUrl(props)} />}
+      {provider === ETextProvider.TYPING && (
+        <img src={typingTextUrl(props)} style={alignImageStyle(align)} />
+      )}
       {provider === ETextProvider.CAPSULE && (
-        <img src={capsuleTextUrl(props)} />
+        <img src={capsuleTextUrl(props)} style={alignImageStyle(align)} />
       )}
     </>
   );

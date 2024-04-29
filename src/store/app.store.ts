@@ -14,7 +14,7 @@ interface AppState {
 }
 
 export const useAppStore = create<AppState>((set) => ({
-  sections: useLocalStorage.get(APP_NAME) || [],
+  sections: useLocalStorage.getKeysLike(APP_NAME) || [],
   sectionId: null,
 
   addSection: <T>(section: T & { id: string; type: EToolkitType }) =>
@@ -33,10 +33,12 @@ export const useAppStore = create<AppState>((set) => ({
       ),
     })),
   swapSection: (newSections: any[]) => set(() => ({ sections: newSections })),
-  removeSection: (sectionId: string) =>
+  removeSection: (sectionId: string) => {
+    useLocalStorage.remove(`${APP_NAME}_${sectionId}`);
     set((state) => ({
       sections: state.sections.filter((section) => section.id !== sectionId),
       sectionId:
         state.sectionId === sectionId ? state.sections[0].id : sectionId,
-    })),
+    }));
+  },
 }));

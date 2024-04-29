@@ -8,6 +8,7 @@ import TextSetting from './Text';
 import TypingSetting from './Typing';
 import CapsuleSetting from './Capsule';
 import CustomTabs from '../../../../common/CustomTabs';
+import { EAlign } from '../../../../../enums/share.enum';
 
 const Setting = ({ id }: { id: string }) => {
   const props = useSectionProps<ITextSetting>(id);
@@ -34,6 +35,17 @@ const Setting = ({ id }: { id: string }) => {
                     editSection({
                       ...props,
                       provider,
+                    })
+                  }
+                />
+                <CustomSelect
+                  label="Align"
+                  options={Object.values(EAlign)}
+                  value={props.align}
+                  onChange={(align) =>
+                    editSection({
+                      ...props,
+                      align,
                     })
                   }
                 />

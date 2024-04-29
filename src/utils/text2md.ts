@@ -10,11 +10,15 @@ import {
 
 const textToMarkdown = (props: ITextSetting) => {
   if (props.provider === ETextProvider.TYPING) {
-    return `<img src="${typingTextUrl(props)}" alt=""/>`;
+    return `<div align="${props.align}">
+    <img src="${typingTextUrl(props)}" alt="" />
+</div>`;
   }
 
   if (props.provider === ETextProvider.CAPSULE) {
-    return `<img src="${capsuleTextUrl(props)}" alt="" />`;
+    return `<div align="${props.align}">
+    <img src="${capsuleTextUrl(props)}" alt="" />
+</div>`;
   }
 
   const textStyleSymbol = () => {
@@ -28,7 +32,7 @@ const textToMarkdown = (props: ITextSetting) => {
     }
   };
 
-  return `<${props.text.tag} align="${props.text.align}">
+  return `<${props.text.tag} align="${props.align}">
     <${textStyleSymbol()}>${props.value.trim()}</${textStyleSymbol()}>
 </${props.text.tag}>`;
 };

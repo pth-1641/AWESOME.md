@@ -102,31 +102,31 @@ const statsToMarkdown = (props: IStatsSetting) => {
     .map((provider) => {
       if (provider === EStatsProvider.CHART && chart.active)
         return `<div align="${chart.align}">
-                    <img src="${chartUrl(props)}" />
-                </div>`;
+    <img src="${chartUrl(props)}" />
+</div>`;
       if (provider === EStatsProvider.LANGUAGES && languages.active)
         return `<div align="${languages.align}">
-                    <img src="${languageUrl(props)}" />
-                </div>`;
+    <img src="${languageUrl(props)}" />
+</div>`;
       if (provider === EStatsProvider.STATS && stats.active)
         return `<div align="${stats.align}">
-                    <img src="${statisticsUrl(props)}" />
-                </div>`;
+    <img src="${statisticsUrl(props)}" />
+</div>`;
       if (provider === EStatsProvider.STREAK && streak.active)
         return `<div align="${streak.align}">
-                    <img src="${streakUrl(props)}" />
-                </div>`;
+    <img src="${streakUrl(props)}" />
+</div>`;
       if (provider === EStatsProvider.SUMMARY && summary.active)
         return `<div align="${summary.align}">
-                   <img src="${summaryUrl(props)}" />
-                </div>`;
+    <img src="${summaryUrl(props)}" />
+</div>`;
       if (provider === EStatsProvider.TROPHY && trophy.active)
         return `<div align="${trophy.align}">
-                    <img src="${trophyUrl(props)}" />        
-                </div>`;
+    <img src="${trophyUrl(props)}" />        
+</div>`;
     })
-    .filter(Boolean)
-    .join('');
+    .filter(Boolean).join(`
+`);
 };
 
 export default statsToMarkdown;
