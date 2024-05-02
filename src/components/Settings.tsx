@@ -1,14 +1,14 @@
+import { Icon } from '@iconify/react';
 import { EToolkitType } from '../enums/share.enum';
 import { useSectionProps } from '../hooks';
 import { useAppStore } from '../store/app.store';
-import TextSetting from './toolkits/Text/ui/Setting';
+import DevSocialSetting from './toolkits/DevSocial/ui/Setting';
 import IconSetting from './toolkits/Icon/ui/Setting';
-import StatsSetting from './toolkits/Stats/ui/Setting';
-import ViewsSetting from './toolkits/Views/ui/Setting';
 import ImageSetting from './toolkits/Image/ui/Setting';
 import QuoteSetting from './toolkits/Quote/ui/Setting';
-import DevSocialSetting from './toolkits/DevSocial/ui/Setting';
-import { Icon } from '@iconify/react';
+import StatsSetting from './toolkits/Stats/ui/Setting';
+import TextSetting from './toolkits/Text/ui/Setting';
+import ViewsSetting from './toolkits/Views/ui/Setting';
 
 export const Settings = ({
   active,
@@ -17,7 +17,7 @@ export const Settings = ({
   active: boolean;
   onClose: () => void;
 }) => {
-  const sectionId = useAppStore((state) => state.sectionId);
+  const { sectionId } = useAppStore();
 
   if (!sectionId)
     return (

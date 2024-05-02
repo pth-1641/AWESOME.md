@@ -1,5 +1,6 @@
-import { render } from 'preact'
-import { App } from './app.tsx'
-import './index.css'
+import { render } from 'preact';
+import { App } from './app.tsx';
+import './styles/index.css';
+import './styles/prisma-dracula.css';
 
-render(<App />, document.getElementById('app')!)
+render(<App />, document.getElementById('app')!);

@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { EToolkitType } from '../enums/share.enum';
-import { useLocalStorage } from '../hooks';
 import { APP_NAME } from '../constants';
+import { useLocalStorage } from '../hooks';
 
 interface AppState {
   sections: (any & { id: string })[];
@@ -14,7 +14,7 @@ interface AppState {
 }
 
 export const useAppStore = create<AppState>((set) => ({
-  sections: useLocalStorage.getKeysLike(APP_NAME) || [],
+  sections: useLocalStorage.get(APP_NAME) || [],
   sectionId: null,
 
   addSection: <T>(section: T & { id: string; type: EToolkitType }) =>
@@ -34,11 +34,21 @@ export const useAppStore = create<AppState>((set) => ({
     })),
   swapSection: (newSections: any[]) => set(() => ({ sections: newSections })),
   removeSection: (sectionId: string) => {
-    useLocalStorage.remove(`${APP_NAME}_${sectionId}`);
-    set((state) => ({
-      sections: state.sections.filter((section) => section.id !== sectionId),
-      sectionId:
-        state.sectionId === sectionId ? state.sections[0].id : sectionId,
-    }));
+    set((state) => {
+      const sections = state.sections.filter(
+        (section) => section.id !== sectionId
+      );
+      console.log({
+        ids: state.sections.map((s) => s.type),
+        newIds: state.sections
+          .filter((s) => s.id !== sectionId)
+          .map((s) => s.type),
+      });
+      return {
+        sections,
+        // sectionId:
+        //   state.sectionId === sectionId ? sections[0].id : state.sectionId,
+      };
+    });
   },
 }));

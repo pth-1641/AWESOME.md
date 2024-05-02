@@ -25,7 +25,8 @@ const iconToMarkdown = (props: IIconSetting) => {
             : ``
         }`
     )
-    .join('')}
+    .join('')
+    .trim()}
 </div>`;
 };
 

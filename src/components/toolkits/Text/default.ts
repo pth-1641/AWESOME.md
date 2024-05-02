@@ -1,3 +1,4 @@
+import { APP_NAME } from '../../../constants';
 import { EAlign } from '../../../enums/share.enum';
 import {
   ECapsuleAnimation,
@@ -49,7 +50,7 @@ export interface ITextSetting {
 }
 
 export const textSetting: ITextSetting = {
-  value: 'AWESOME.md',
+  value: APP_NAME,
   provider: ETextProvider.TEXT,
   align: EAlign.LEFT,
   text: {

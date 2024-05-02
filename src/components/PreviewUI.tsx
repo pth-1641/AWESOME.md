@@ -15,8 +15,6 @@ import {
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { Icon } from '@iconify/react';
-import { useEffect } from 'preact/hooks';
-import { APP_NAME } from '../constants';
 import { EToolkitType } from '../enums/share.enum';
 import { useAppStore } from '../store/app.store';
 import DevSocialPreview from './toolkits/DevSocial/ui/Preview';
@@ -29,7 +27,6 @@ import ViewsPreview from './toolkits/Views/ui/Preview';
 
 export const PreviewUI = () => {
   const { sections, swapSection } = useAppStore();
-
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
@@ -38,6 +35,7 @@ export const PreviewUI = () => {
   );
 
   const handleDragEnd = (event: any) => {
+    if (!sections.length) return;
     const { active, over } = event;
     if (active.id !== over.id) {
       const oldIndex = sections.findIndex(
@@ -59,8 +57,8 @@ export const PreviewUI = () => {
           items={sections}
           strategy={verticalListSortingStrategy}
         >
-          {sections.map((section, index) => (
-            <RenderedSection key={section.id} section={{ ...section, index }} />
+          {sections.map((section) => (
+            <RenderedSection key={section.id} section={{ ...section }} />
           ))}
         </SortableContext>
       </DndContext>
@@ -78,10 +76,6 @@ const RenderedSection = ({ section }: { section: any & { id: string } }) => {
     transform: CSS.Transform.toString(transform),
     transition,
   };
-
-  useEffect(() => {
-    localStorage.setItem(`${APP_NAME}_${section.id}`, JSON.stringify(section));
-  }, [section]);
 
   return (
     <div

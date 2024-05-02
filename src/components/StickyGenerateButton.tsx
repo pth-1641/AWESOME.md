@@ -1,5 +1,4 @@
 import { Icon } from '@iconify/react';
-// import { useState } from 'preact/hooks';
 import { useAppStore } from '../store/app.store';
 import { useGenerateMd } from '../hooks';
 import { useState } from 'preact/hooks';
@@ -12,6 +11,7 @@ import QuotePreview from './toolkits/Quote/ui/Preview';
 import StatsPreview from './toolkits/Stats/ui/Preview';
 import TextPreview from './toolkits/Text/ui/Preview';
 import ViewsPreview from './toolkits/Views/ui/Preview';
+import Prism from 'prismjs';
 
 export const StickyGenerateButton = () => {
   const [openPreview, setOpenPreview] = useState<boolean>(false);
@@ -111,9 +111,15 @@ const Markdown = () => {
   };
 
   return (
-    <div class="border border-white/20 rounded-md pt-5 text-sm relative max-h-[calc(100vh_-_135px)] overflow-auto">
-      <div class="overflow-auto p-5 pt-0">
-        <pre>{text}</pre>
+    <div class="border border-white/20 rounded-md text-sm relative max-h-[calc(100vh_-_135px)] overflow-auto">
+      <div class="overflow-auto p-5">
+        <pre class="language-html !p-0 !m-0">
+          <code
+            dangerouslySetInnerHTML={{
+              __html: Prism.highlight(text, Prism.languages.html, 'html'),
+            }}
+          />
+        </pre>
       </div>
       <button
         class="rounded-full p-2 border border-white/20 absolute top-3 right-3 text-white/75 hover:text-emerald-300 hover:border-emerald-300 duration-100 bg-primary"

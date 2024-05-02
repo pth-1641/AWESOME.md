@@ -1,6 +1,5 @@
 import { useAppStore } from '../../../../../store/app.store';
 import CustomInput from '../../../../common/CustomInput';
-import CustomInputNumber from '../../../../common/CustomInputNumber';
 import CustomSelect from '../../../../common/CustomSelect';
 import CustomSwitch from '../../../../common/CustomSwitch';
 import { IDevSocialSetting } from '../../default';

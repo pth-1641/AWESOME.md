@@ -125,8 +125,12 @@ const statsToMarkdown = (props: IStatsSetting) => {
     <img src="${trophyUrl(props)}" />        
 </div>`;
     })
-    .filter(Boolean).join(`
-`);
+    .filter(Boolean)
+    .join(
+      `
+`
+    )
+    .trim();
 };
 
 export default statsToMarkdown;

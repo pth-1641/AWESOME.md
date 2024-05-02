@@ -93,7 +93,7 @@ const Search = (props: IIconSetting & { type?: EToolkitType }) => {
         placeholder="Search"
         onInput={(e) => setQuery(e.currentTarget.value)}
       />
-      <div class="grid grid-cols-3 gap-3 max-h-80 overflow-auto mb-4">
+      <div class="grid grid-cols-3 gap-3 max-h-80 overflow-auto my-4">
         {icons.map((icon) => (
           <button
             key={icon}

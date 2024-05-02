@@ -1,13 +1,23 @@
 import { Icon } from '@iconify/react';
+import { useEffect, useState } from 'preact/hooks';
 import { PreviewUI } from './components/PreviewUI';
 import { Settings } from './components/Settings';
 import { StickyGenerateButton } from './components/StickyGenerateButton';
 import { ToolkitSelector } from './components/ToolkitSelector';
-import { useState } from 'preact/hooks';
+import { APP_NAME } from './constants';
+import { useLocalStorage } from './hooks';
+import { useAppStore } from './store/app.store';
 
 export function App() {
   const [activeToolkit, setActiveToolkit] = useState<boolean>(false);
   const [activeConfig, setActiveConfig] = useState<boolean>(false);
+  const { sections } = useAppStore();
+
+  useEffect(() => {
+    useLocalStorage.set(APP_NAME, sections);
+  }, [sections]);
+
+  console.log(sections.map((s) => s.type));
 
   return (
     <main class="flex max-w-screen-2xl mx-auto py-6 px-4 gap-4 h-screen">

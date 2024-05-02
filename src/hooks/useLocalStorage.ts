@@ -1,13 +1,13 @@
+import useHash from './useHash';
+
 const useLocalStorage = {
-  set: (key: string, value: any) =>
-    localStorage.setItem(key, JSON.stringify(value)),
-  remove: (key: string) => localStorage.removeItem(key),
-  getKeysLike: (key: string) => {
-    const initSections: any[] = [];
-    Object.keys(localStorage).forEach((k) => {
-      if (k.includes(key)) initSections.push(JSON.parse(localStorage[k]));
-    });
-    return initSections.sort((a, b) => a.index - b.index);
+  set: (key: string, value: any) => {
+    const hashed = useHash.encrypt(value);
+    localStorage.setItem(key, hashed);
+  },
+  get: (key: string) => {
+    const value = localStorage.getItem(key);
+    return JSON.parse(useHash.decrypt(value || '') || '[]');
   },
 };
 

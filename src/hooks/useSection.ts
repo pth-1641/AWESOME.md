@@ -1,4 +1,3 @@
-import { useUuid } from '.';
 import {
   socialSetting,
   techSetting,
@@ -15,7 +14,7 @@ import { devSocialSetting } from '../components/toolkits/DevSocial/default';
 import { EToolkitType } from '../enums/share.enum';
 
 const useSection = (type: EToolkitType) => {
-  const id = useUuid();
+  const id = crypto.randomUUID();
   switch (type) {
     case EToolkitType.TEXT:
       return { ...textSetting, type, id };
