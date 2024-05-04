@@ -68,7 +68,7 @@ export const StickyGenerateButton = () => {
               ]}
             />
           ) : (
-            <h3 class="text-3xl text-white/80 text-center mt-8 font-medium">
+            <h3 class="text-3xl text-white/80 text-center mt-8 font-medium h-[calc(100vh_-_140px)]">
               Nothing here
             </h3>
           )}
