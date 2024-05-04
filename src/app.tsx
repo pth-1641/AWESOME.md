@@ -22,7 +22,7 @@ export function App() {
 
   return (
     <main class="h-screen py-6 px-4">
-      <div class="flex max-w-screen-2xl mx-auto gap-4 h-[calc(100%_-_10px)]">
+      <div class="flex max-w-screen-2xl mx-auto gap-4 h-[calc(100%_-_25px)] sm:h-[calc(100%_-_10px)]">
         {activeToolkit ? null : (
           <button
             class="fixed -left-1 top-10 border border-white/20 rounded p-1 bg-primary lg:hidden"

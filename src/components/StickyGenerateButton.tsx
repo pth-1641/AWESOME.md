@@ -173,7 +173,7 @@ const Footer = () => {
         <Icon icon="ic:round-star" height={22} />
         Give a star
       </a>
-      <ul class="flex items-center gap-2.5">
+      <ul class="items-center gap-2.5 hidden sm:flex">
         {socials.map((social) => (
           <li>
             <a href={social.href} target="_blank" rel="noopener noreferrer">
