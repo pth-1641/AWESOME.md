@@ -1,6 +1,6 @@
-import { Icon } from '@iconify/react';
-import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
-import { opacityToHex } from '../../utils';
+import { Icon } from "@iconify/react";
+import { useEffect, useMemo, useRef, useState } from "preact/hooks";
+import { opacityToHex } from "../../utils";
 
 type CustomColorPickerProps = {
   value: string;
@@ -15,14 +15,15 @@ const CustomColorPicker = ({
   value,
   label,
   onChange,
-  className = '',
+  className = "",
   initOpacity = 100,
   disableOpacity = false,
 }: CustomColorPickerProps) => {
   const [openOpacityLine, setOpenOpacityLine] = useState<boolean>(false);
   const [opacity, setOpacity] = useState<number>(initOpacity);
+  const [color, setColor] = useState<string>(value);
 
-  const originColor = useMemo(() => value.slice(0, 7), [value]);
+  const originColor = useMemo(() => value.slice(0, 7), [color]);
   const popupRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -31,9 +32,16 @@ const CustomColorPicker = ({
       const isInside = popupRef.current?.contains(e.target);
       if (!isInside) setOpenOpacityLine(false);
     };
-    window.addEventListener('click', handleClick);
-    return () => window.removeEventListener('click', handleClick);
+    window.addEventListener("click", handleClick);
+    return () => window.removeEventListener("click", handleClick);
   }, [openOpacityLine]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      onChange?.(opacityToHex(color, opacity));
+    }, 20);
+    return () => clearTimeout(timeout);
+  }, [color, opacity]);
 
   return (
     <div class={className}>
@@ -43,9 +51,7 @@ const CustomColorPicker = ({
           <input
             type="color"
             value={originColor}
-            onInput={(e) =>
-              onChange?.(opacityToHex(e.currentTarget.value, opacity))
-            }
+            onInput={(e) => setColor(e.currentTarget.value)}
           />
           <span class="text-sm">{originColor}</span>
         </label>
@@ -53,7 +59,7 @@ const CustomColorPicker = ({
           <div class="relative">
             <div
               class={`absolute bottom-8 left-1/2 -translate-x-1/2 bg-[#21262d] flex flex-col items-center px-4 pb-2 pt-4 rounded z-10 duration-150 origin-bottom ${
-                openOpacityLine ? 'scale-100' : 'scale-0'
+                openOpacityLine ? "scale-100" : "scale-0"
               }`}
               ref={popupRef}
             >
@@ -69,10 +75,7 @@ const CustomColorPicker = ({
                   min={0}
                   max={100}
                   value={opacity}
-                  onInput={(e) => {
-                    onChange?.(opacityToHex(value, +e.currentTarget.value));
-                    setOpacity(+e.currentTarget.value);
-                  }}
+                  onInput={(e) => setOpacity(+e.currentTarget.value)}
                 />
               </div>
               <span class="text-xs mt-2">Opacity: {opacity}%</span>

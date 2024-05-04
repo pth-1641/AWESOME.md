@@ -1,4 +1,4 @@
-import useHash from './useHash';
+import useHash from "./useHash";
 
 const useLocalStorage = {
   set: (key: string, value: any) => {
@@ -7,7 +7,7 @@ const useLocalStorage = {
   },
   get: (key: string) => {
     const value = localStorage.getItem(key);
-    return JSON.parse(useHash.decrypt(value || '') || '[]');
+    return JSON.parse(useHash.decrypt(value || "") || "[]");
   },
 };
 

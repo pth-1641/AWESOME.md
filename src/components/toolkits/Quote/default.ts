@@ -1,10 +1,10 @@
-import { EAlign } from '../../../enums/share.enum';
+import { EAlign } from "../../../enums/share.enum";
 import {
   EJokeTheme,
   EQuoteProvider,
   EQuoteTheme,
   EQuoteType,
-} from './quote.enum';
+} from "./quote.enum";
 
 export interface IQuote {
   theme: EQuoteTheme;
@@ -40,18 +40,18 @@ export const quoteSetting: IQuoteSetting = {
     viewType: EQuoteType.HORIZONTAL,
     border: true,
     customQuote: false,
-    author: '',
-    quote: '',
+    author: "",
+    quote: "",
   },
   quoteJokes: {
     customTheme: false,
     theme: EJokeTheme.TOKYONIGHT,
-    aColor: '#0284c7',
-    bgColor: '#fcd34d',
-    borderColor: '#10b981',
-    codeColor: '#a855f7',
-    qColor: '#f43f5e',
-    textColor: '#3b82f6',
+    aColor: "#0284c7",
+    bgColor: "#fcd34d",
+    borderColor: "#10b981",
+    codeColor: "#a855f7",
+    qColor: "#f43f5e",
+    textColor: "#3b82f6",
     hideBorder: true,
   },
   align: EAlign.CENTER,

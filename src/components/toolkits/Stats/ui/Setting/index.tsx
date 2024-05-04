@@ -5,32 +5,32 @@ import {
   closestCenter,
   useSensor,
   useSensors,
-} from '@dnd-kit/core';
+} from "@dnd-kit/core";
 import {
   SortableContext,
   arrayMove,
   sortableKeyboardCoordinates,
   useSortable,
   verticalListSortingStrategy,
-} from '@dnd-kit/sortable';
-import { CSS } from '@dnd-kit/utilities';
-import { Icon } from '@iconify/react';
-import { useMemo, useState } from 'preact/hooks';
-import { EAlign } from '../../../../../enums/share.enum';
-import { useSectionProps } from '../../../../../hooks';
-import { useAppStore } from '../../../../../store/app.store';
-import { getEnumKey } from '../../../../../utils';
-import CustomInput from '../../../../common/CustomInput';
-import CustomSelect from '../../../../common/CustomSelect';
-import CustomTabs from '../../../../common/CustomTabs';
-import { IStatsSetting } from '../../default';
-import { EStatsProvider } from '../../stats.enum';
-import ChartSetting from './Chart';
-import LanguagesSetting from './Languages';
-import StatsSetting from './Stats';
-import StreakSetting from './Streak';
-import SummarySetting from './Summary';
-import TrophySetting from './Trophy';
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+import { Icon } from "@iconify/react";
+import { useMemo, useState } from "preact/hooks";
+import { EAlign } from "../../../../../enums/share.enum";
+import { useSectionProps } from "../../../../../hooks";
+import { useAppStore } from "../../../../../store/app.store";
+import { getEnumKey } from "../../../../../utils";
+import CustomInput from "../../../../common/CustomInput";
+import CustomSelect from "../../../../common/CustomSelect";
+import CustomTabs from "../../../../common/CustomTabs";
+import { IStatsSetting } from "../../default";
+import { EStatsProvider } from "../../stats.enum";
+import ChartSetting from "./Chart";
+import LanguagesSetting from "./Languages";
+import StatsSetting from "./Stats";
+import StreakSetting from "./Streak";
+import SummarySetting from "./Summary";
+import TrophySetting from "./Trophy";
 
 const Setting = ({ id }: { id: string }) => {
   const props = useSectionProps<IStatsSetting>(id);
@@ -42,15 +42,15 @@ const Setting = ({ id }: { id: string }) => {
       <CustomTabs
         items={[
           {
-            key: 'layout',
-            label: 'Layout',
-            icon: 'ph:layout-thin',
+            key: "layout",
+            label: "Layout",
+            icon: "ph:layout-thin",
             children: <Layout {...props} />,
           },
           {
-            key: 'config',
-            label: 'Config',
-            icon: 'iconamoon:settings-thin',
+            key: "config",
+            label: "Config",
+            icon: "iconamoon:settings-thin",
             children: <Config {...props} />,
           },
         ]}
@@ -173,8 +173,7 @@ const Provider = (props: {
             editSection({
               ...props.settings,
               [key]: {
-                // @ts-ignore
-                ...props.settings[key],
+                ...(props.settings[key] as any),
                 // @ts-ignore
                 active: !props.settings[key].active,
               },
@@ -195,15 +194,14 @@ const Provider = (props: {
         {Object.values(EAlign).map((align, index) => (
           <button
             class={`w-full flex justify-center py-1.5 border-white/15 ${
-              index !== 0 ? 'border-l' : ''
+              index !== 0 ? "border-l" : ""
             }`}
             key={align}
             onClick={() =>
               editSection({
                 ...props.settings,
                 [key]: {
-                  // @ts-ignore
-                  ...props.settings[key],
+                  ...(props.settings[key] as any),
                   align,
                 },
               })
@@ -213,7 +211,7 @@ const Provider = (props: {
               icon={`ant-design:pic-${align}-outlined`}
               className={
                 // @ts-ignore
-                props.settings[key].align === align ? 'text-emerald-500' : ''
+                props.settings[key].align === align ? "text-emerald-500" : ""
               }
             />
           </button>

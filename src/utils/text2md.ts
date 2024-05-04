@@ -1,12 +1,12 @@
-import { isInEnum, objectToUrl } from '.';
-import { ITextSetting } from '../components/toolkits/Text/default';
+import { isInEnum, objectToUrl } from ".";
+import { ITextSetting } from "../components/toolkits/Text/default";
 import {
   ECapsuleAnimation,
   ECapsuleBackgroundType,
   ECapsuleType,
   ETextProvider,
   ETextStyle,
-} from '../components/toolkits/Text/text.enum';
+} from "../components/toolkits/Text/text.enum";
 
 const textToMarkdown = (props: ITextSetting) => {
   if (props.provider === ETextProvider.TYPING) {
@@ -21,26 +21,26 @@ const textToMarkdown = (props: ITextSetting) => {
 </div>`;
   }
 
-  const textStyleSymbol = () => {
+  const tagElement = (() => {
     switch (props.text.style) {
       case ETextStyle.ITALIC:
-        return 'i';
+        return "i";
       case ETextStyle.STRIKE:
-        return 'strike';
+        return "strike";
       default:
-        return '';
+        return "";
     }
-  };
+  })();
 
   return `<${props.text.tag} align="${props.align}">
-    <${textStyleSymbol()}>${props.value.trim()}</${textStyleSymbol()}>
+    <${tagElement}>${props.value.trim()}</${tagElement}>
 </${props.text.tag}>`;
 };
 
 const typingTextUrl = (setting: ITextSetting) => {
   return `https://readme-typing-svg.demolab.com?${objectToUrl({
     ...setting.typing,
-    lines: setting.value.replace(/\n/g, ';').replace(/\s+/g, ' '),
+    lines: setting.value.replace(/\n/g, ";").replace(/\s+/g, " "),
     vCenter: true,
     size: setting.typing.fontSize,
     duration: setting.typing.duration * 1000,
@@ -55,8 +55,8 @@ const capsuleTextUrl = (setting: ITextSetting) => {
       ...setting.capsule,
       text: setting.value,
       reversal: true,
-      animation: '',
-      stroke: '',
+      animation: "",
+      stroke: "",
       strokeWidth: 0,
       ...(isInEnum(ECapsuleBackgroundType, setting.capsule.backgroundType)
         ? {
@@ -69,10 +69,10 @@ const capsuleTextUrl = (setting: ITextSetting) => {
       }),
       ...(setting.capsule.backgroundType ===
         ECapsuleBackgroundType.CUSTOM_GRADIENT && {
-        color: setting.capsule.color.replace('#', '0:').replace('#', ',100:'),
+        color: setting.capsule.color.replace("#", "0:").replace("#", ",100:"),
       }),
       ...(setting.capsule.type === ECapsuleType.VENOM && {
-        section: 'header',
+        section: "header",
         reversal: false,
       }),
       ...(setting.capsule.animation !== ECapsuleAnimation.NONE && {
@@ -84,9 +84,9 @@ const capsuleTextUrl = (setting: ITextSetting) => {
       }),
     },
     {
-      omit: ['backgroundType', 'enableStroke'],
+      omit: ["backgroundType", "enableStroke"],
     }
-  ).replace(/%23/g, '')}`;
+  ).replace(/%23/g, "")}`;
 };
 
 export { typingTextUrl, capsuleTextUrl };

@@ -1,14 +1,14 @@
-import { objectToUrl } from '.';
-import { IViewsSetting } from '../components/toolkits/Views/default';
+import { objectToUrl } from ".";
+import { IViewsSetting } from "../components/toolkits/Views/default";
 import {
   EHitsViewType,
   EViewProvider,
   EVisitProIcon,
   EVisitProTheme,
-} from '../components/toolkits/Views/views.enum';
+} from "../components/toolkits/Views/views.enum";
 
 const moeCounterUrl = (setting: IViewsSetting) => {
-  return `https://moe-counter-grbnb.vercel.app/get/@${setting.username}?theme=${setting.moeCounter.theme}`;
+  return `https://count.getloli.com/get/@${setting.username}?theme=${setting.moeCounter.theme}`;
 };
 
 const hitsCounterUrl = (setting: IViewsSetting) => {
@@ -17,10 +17,10 @@ const hitsCounterUrl = (setting: IViewsSetting) => {
       ...setting.hitsCounter,
       view:
         setting.hitsCounter.viewType === EHitsViewType.TODAY
-          ? 'today-total'
-          : 'total',
+          ? "today-total"
+          : "total",
     },
-    { omit: ['viewType'] }
+    { omit: ["viewType"] }
   )}`;
 };
 
@@ -30,7 +30,7 @@ const visitCounterUrl = (setting: IViewsSetting) => {
     page: setting.username,
     ta: ` ${setting.visitCounter.ta.trim()}`,
     tb: `${setting.visitCounter.tb.trim()} `,
-  }).replace(/\%23/g, '')}`;
+  }).replace(/\%23/g, "")}`;
 };
 
 const visitCounterProUrl = (setting: IViewsSetting) => {
@@ -40,15 +40,15 @@ const visitCounterProUrl = (setting: IViewsSetting) => {
     },
     {
       omit: [
-        setting.visitProCounter.color === EVisitProTheme.RANDOM ? 'color' : '',
-        setting.visitProCounter.icon === EVisitProIcon.RANDOM ? 'icon' : '',
+        setting.visitProCounter.color === EVisitProTheme.RANDOM ? "color" : "",
+        setting.visitProCounter.icon === EVisitProIcon.RANDOM ? "icon" : "",
       ],
     }
   )}`;
 };
 
 const viewToMarkdown = (setting: IViewsSetting) => {
-  let url = '';
+  let url = "";
   switch (setting.provider) {
     case EViewProvider.HITS:
       url = hitsCounterUrl(setting);
@@ -63,7 +63,9 @@ const viewToMarkdown = (setting: IViewsSetting) => {
       url = visitCounterProUrl(setting);
       break;
   }
-  return `<img src="${url}" align="${setting.align}" />`;
+  return `<div align="${setting.align}">
+    <img src="${url}" />
+</div>`;
 };
 
 export { moeCounterUrl, hitsCounterUrl, visitCounterUrl, visitCounterProUrl };

@@ -5,25 +5,25 @@ import {
   closestCenter,
   useSensor,
   useSensors,
-} from '@dnd-kit/core';
+} from "@dnd-kit/core";
 import {
   SortableContext,
   arrayMove,
   sortableKeyboardCoordinates,
   useSortable,
   verticalListSortingStrategy,
-} from '@dnd-kit/sortable';
-import { CSS } from '@dnd-kit/utilities';
-import { Icon } from '@iconify/react';
-import { EToolkitType } from '../enums/share.enum';
-import { useAppStore } from '../store/app.store';
-import DevSocialPreview from './toolkits/DevSocial/ui/Preview';
-import IconPreview from './toolkits/Icon/ui/Preview';
-import ImagePreview from './toolkits/Image/ui/Preview';
-import QuotePreview from './toolkits/Quote/ui/Preview';
-import StatsPreview from './toolkits/Stats/ui/Preview';
-import TextPreview from './toolkits/Text/ui/Preview';
-import ViewsPreview from './toolkits/Views/ui/Preview';
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+import { Icon } from "@iconify/react";
+import { EToolkitType } from "../enums/share.enum";
+import { useAppStore } from "../store/app.store";
+import DevSocialPreview from "./toolkits/DevSocial/ui/Preview";
+import IconPreview from "./toolkits/Icon/ui/Preview";
+import ImagePreview from "./toolkits/Image/ui/Preview";
+import QuotePreview from "./toolkits/Quote/ui/Preview";
+import StatsPreview from "./toolkits/Stats/ui/Preview";
+import TextPreview from "./toolkits/Text/ui/Preview";
+import ViewsPreview from "./toolkits/Views/ui/Preview";
 
 export const PreviewUI = () => {
   const { sections, swapSection } = useAppStore();
@@ -37,10 +37,9 @@ export const PreviewUI = () => {
   const handleDragEnd = (event: any) => {
     if (!sections.length) return;
     const { active, over } = event;
-    if (active.id !== over.id) {
-      const oldIndex = sections.findIndex(
-        (section) => section.id === active.id
-      );
+    if (active.id === over.id) return;
+    const oldIndex = sections.findIndex((section) => section.id === active.id);
+    if (oldIndex !== -1) {
       const newIndex = sections.findIndex((section) => section.id === over.id);
       swapSection(arrayMove(sections, oldIndex, newIndex));
     }
@@ -80,7 +79,7 @@ const RenderedSection = ({ section }: { section: any & { id: string } }) => {
   return (
     <div
       class={`border rounded-md p-4 hover:border-emerald-400 cursor-pointer group relative ${
-        sectionId === section.id ? 'border-emerald-400' : 'border-white/15'
+        sectionId === section.id ? "border-emerald-400" : "border-white/15"
       }`}
       onMouseDown={() => focusOnSection(section.id)}
       ref={setNodeRef}
@@ -90,9 +89,9 @@ const RenderedSection = ({ section }: { section: any & { id: string } }) => {
     >
       <span
         class={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 inline-block p-1.5 border rounded-full bg-primary border-white/15 duration-100 group-hover:opacity-100 ${
-          sectionId === section.id ? 'opacity-100' : 'opacity-0'
+          sectionId === section.id ? "opacity-100" : "opacity-0"
         }`}
-        onMouseDown={() => removeSection(section.id)}
+        onMouseDown={(e) => removeSection(section.id)}
       >
         <Icon icon="mynaui:trash-one" />
       </span>
@@ -110,7 +109,7 @@ const RenderedSection = ({ section }: { section: any & { id: string } }) => {
         )}
         {section.type === EToolkitType.IMAGE && (
           <ImagePreview id={section.id} />
-        )}{' '}
+        )}{" "}
         {section.type === EToolkitType.MEME && <ImagePreview id={section.id} />}
         {section.type === EToolkitType.QUOTE && (
           <QuotePreview id={section.id} />

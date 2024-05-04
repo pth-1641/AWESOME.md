@@ -1,9 +1,9 @@
-import { objectToUrl } from '.';
-import { IDevSocialSetting } from '../components/toolkits/DevSocial/default';
+import { objectToUrl } from ".";
+import { IDevSocialSetting } from "../components/toolkits/DevSocial/default";
 import {
   EDevSocialProvider,
   EStackoverflowLayout,
-} from '../components/toolkits/DevSocial/dev-social.enum';
+} from "../components/toolkits/DevSocial/dev-social.enum";
 
 const leetcodeStatsUrl = (setting: IDevSocialSetting) => {
   return `https://leetcard.jacoblin.cool/${
@@ -14,7 +14,7 @@ const leetcodeStatsUrl = (setting: IDevSocialSetting) => {
       border: +setting.leetcodeStats.border,
     },
     {
-      omit: ['username'],
+      omit: ["username"],
     }
   )}`;
 };
@@ -27,8 +27,8 @@ const stackoverflowStatsUrl = (setting: IDevSocialSetting) => {
     {
       omit: [
         setting.stackoverflowStats.layout === EStackoverflowLayout.DEFAULT
-          ? 'layout'
-          : '',
+          ? "layout"
+          : "",
       ],
     }
   )}`;
@@ -37,11 +37,15 @@ const stackoverflowStatsUrl = (setting: IDevSocialSetting) => {
 const devSocialToMarkdown = (setting: IDevSocialSetting) => {
   switch (setting.provider) {
     case EDevSocialProvider.LEETCODE:
-      return `<img src="${leetcodeStatsUrl(setting)}" alt=""/>`;
+      return `<div align="${setting.align}">
+    <img src="${leetcodeStatsUrl(setting)}" alt=""/>
+</div>`;
     case EDevSocialProvider.STACKOVERFLOW:
-      return `<img src="${stackoverflowStatsUrl(setting)}" alt=""/>`;
+      return `<div align="${setting.align}">
+    <img src="${stackoverflowStatsUrl(setting)}" alt=""/>
+</div>`;
     default:
-      return '';
+      return "";
   }
 };
 

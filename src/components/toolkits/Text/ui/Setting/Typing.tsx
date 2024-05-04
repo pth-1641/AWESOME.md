@@ -1,10 +1,10 @@
-import { useAppStore } from '../../../../../store/app.store';
-import { hexToOpacity } from '../../../../../utils';
-import CustomColorPicker from '../../../../common/CustomColorPicker';
-import CustomInput from '../../../../common/CustomInput';
-import CustomInputNumber from '../../../../common/CustomInputNumber';
-import CustomSwitch from '../../../../common/CustomSwitch';
-import { ITextSetting } from '../../default';
+import { useAppStore } from "../../../../../store/app.store";
+import { hexToOpacity } from "../../../../../utils";
+import CustomColorPicker from "../../../../common/CustomColorPicker";
+import CustomInput from "../../../../common/CustomInput";
+import CustomInputNumber from "../../../../common/CustomInputNumber";
+import CustomSwitch from "../../../../common/CustomSwitch";
+import { ITextSetting } from "../../default";
 
 const Typing = (props: ITextSetting) => {
   const { editSection } = useAppStore();
@@ -17,7 +17,7 @@ const Typing = (props: ITextSetting) => {
         capitalize
         subtitle={
           <>
-            Name from{' '}
+            Name from{" "}
             <a
               class="text-emerald-500"
               target="blank"

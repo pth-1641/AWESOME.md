@@ -1,7 +1,7 @@
-import { create } from 'zustand';
-import { EToolkitType } from '../enums/share.enum';
-import { APP_NAME } from '../constants';
-import { useLocalStorage } from '../hooks';
+import { create } from "zustand";
+import { EToolkitType } from "../enums/share.enum";
+import { APP_NAME } from "../constants";
+import { useLocalStorage } from "../hooks";
 
 interface AppState {
   sections: (any & { id: string })[];
@@ -38,16 +38,12 @@ export const useAppStore = create<AppState>((set) => ({
       const sections = state.sections.filter(
         (section) => section.id !== sectionId
       );
-      console.log({
-        ids: state.sections.map((s) => s.type),
-        newIds: state.sections
-          .filter((s) => s.id !== sectionId)
-          .map((s) => s.type),
-      });
       return {
         sections,
-        // sectionId:
-        //   state.sectionId === sectionId ? sections[0].id : state.sectionId,
+        sectionId:
+          state.sectionId === sectionId
+            ? sections[0]?.id || null
+            : state.sectionId,
       };
     });
   },

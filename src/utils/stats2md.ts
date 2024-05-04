@@ -1,12 +1,12 @@
-import { getEnumKey, objectToUrl } from '.';
-import { IStatsSetting } from '../components/toolkits/Stats/default';
+import { getEnumKey, objectToUrl } from ".";
+import { IStatsSetting } from "../components/toolkits/Stats/default";
 import {
   EGithubReadmeStatsLocale,
   ELanguageLayout,
   EStatsProvider,
   EStreakStatsLocale,
   ETroyphyStatsTheme,
-} from '../components/toolkits/Stats/stats.enum';
+} from "../components/toolkits/Stats/stats.enum";
 
 const statisticsUrl = (setting: IStatsSetting) => {
   const { stats, username } = setting;
@@ -23,7 +23,7 @@ const statisticsUrl = (setting: IStatsSetting) => {
     show: stats.additionOpts.toString(),
     locale: getEnumKey(EGithubReadmeStatsLocale, stats.lang)?.replace(
       /_/g,
-      '-'
+      "-"
     ),
   })}`;
 };
@@ -39,7 +39,7 @@ const streakUrl = (setting: IStatsSetting) => {
     hide_current_streak: streak.hideCurrentStreak,
     hide_longest_streak: streak.hideLongestStreak,
     mode: streak.mode,
-    locale: getEnumKey(EStreakStatsLocale, streak.lang)?.replace(/_/g, '-'),
+    locale: getEnumKey(EStreakStatsLocale, streak.lang)?.replace(/_/g, "-"),
   })}`;
 };
 
@@ -53,7 +53,7 @@ const languageUrl = (setting: IStatsSetting) => {
     langs_count: languages.langCount,
     locale: getEnumKey(EGithubReadmeStatsLocale, languages.lang)?.replace(
       /_/g,
-      '-'
+      "-"
     ),
     ...(languages.layout !== ELanguageLayout.DEFAULT && {
       layout: languages.layout,
@@ -70,10 +70,10 @@ const trophyUrl = (setting: IStatsSetting) => {
   return `https://github-trophies.vercel.app?${objectToUrl({
     username,
     theme: trophy.theme,
-    title: trophy.titles.map((t) => t.replace(/\s+/g, '')).toString(),
-    'no-frame': trophy.hideBorder,
+    title: trophy.titles.map((t) => t.replace(/\s+/g, "")).toString(),
+    "no-frame": trophy.hideBorder,
     ...(trophy.theme === ETroyphyStatsTheme.TRANSPARENT && {
-      'no-bg': true,
+      "no-bg": true,
     }),
   })}`;
 };
