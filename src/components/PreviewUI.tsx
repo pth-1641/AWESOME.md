@@ -91,7 +91,10 @@ const RenderedSection = ({ section }: { section: any & { id: string } }) => {
         class={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 inline-block p-1.5 border rounded-full bg-primary border-white/15 duration-100 group-hover:opacity-100 ${
           sectionId === section.id ? "opacity-100" : "opacity-0"
         }`}
-        onMouseDown={() => removeSection(section.id)}
+        onMouseDown={(e) => {
+          e.stopPropagation();
+          removeSection(section.id);
+        }}
       >
         <Icon icon="mynaui:trash-one" />
       </span>

@@ -51,22 +51,24 @@ export const StickyGenerateButton = () => {
             Close
           </button>
           {sections.length ? (
-            <CustomTabs
-              items={[
-                {
-                  key: "preview",
-                  label: "Preview",
-                  icon: "iconoir:view-structure-down",
-                  children: <Preview />,
-                },
-                {
-                  key: "markdown",
-                  label: "Markdown",
-                  icon: "ph:markdown-logo-fill",
-                  children: <Markdown onCopied={() => setCopied(true)} />,
-                },
-              ]}
-            />
+            <div class="h-[calc(100vh_-_115px)]">
+              <CustomTabs
+                items={[
+                  {
+                    key: "preview",
+                    label: "Preview",
+                    icon: "iconoir:view-structure-down",
+                    children: <Preview />,
+                  },
+                  {
+                    key: "markdown",
+                    label: "Markdown",
+                    icon: "ph:markdown-logo-fill",
+                    children: <Markdown onCopied={() => setCopied(true)} />,
+                  },
+                ]}
+              />
+            </div>
           ) : (
             <h3 class="text-3xl text-white/80 text-center mt-8 font-medium h-[calc(100vh_-_140px)]">
               Nothing here
