@@ -11,7 +11,7 @@ const Leetcode = (props: IDevSocialSetting) => {
   return (
     <>
       <CustomInput
-        label="Theme"
+        label="Username"
         value={props.leetcodeStats.username}
         onChange={(username) =>
           editSection({
