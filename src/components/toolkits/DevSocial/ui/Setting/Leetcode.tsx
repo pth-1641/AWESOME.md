@@ -1,15 +1,28 @@
-import { useAppStore } from '../../../../../store/app.store';
-import CustomInput from '../../../../common/CustomInput';
-import CustomSelect from '../../../../common/CustomSelect';
-import CustomSwitch from '../../../../common/CustomSwitch';
-import { IDevSocialSetting } from '../../default';
-import { ELeetcodeExtension, ELeetcodeTheme } from '../../dev-social.enum';
+import { useAppStore } from "../../../../../store/app.store";
+import CustomInput from "../../../../common/CustomInput";
+import CustomSelect from "../../../../common/CustomSelect";
+import CustomSwitch from "../../../../common/CustomSwitch";
+import { IDevSocialSetting } from "../../default";
+import { ELeetcodeExtension, ELeetcodeTheme } from "../../dev-social.enum";
 
 const Leetcode = (props: IDevSocialSetting) => {
   const { editSection } = useAppStore();
 
   return (
     <>
+      <CustomInput
+        label="Theme"
+        value={props.leetcodeStats.username}
+        onChange={(username) =>
+          editSection({
+            ...props,
+            leetcodeStats: {
+              ...props.leetcodeStats,
+              username,
+            },
+          })
+        }
+      />
       <CustomSelect
         label="Theme"
         value={props.leetcodeStats.theme}
@@ -30,7 +43,7 @@ const Leetcode = (props: IDevSocialSetting) => {
         capitalize
         subtitle={
           <>
-            Name from{' '}
+            Name from{" "}
             <a
               class="text-emerald-500"
               target="blank"
